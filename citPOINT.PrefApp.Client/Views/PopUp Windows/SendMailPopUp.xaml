@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.SendMailPopUp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d"
+             d:DesignHeight="140"
+             d:DesignWidth="280">
+
+    <Grid x:Name="LayoutRoot"
+          Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0"
+               Grid.Column="0"
+               Source="/citPOINT.PrefApp.Client;component/Images/alertIcon.png"
+               Width="50"
+               Height="50" />
+        <TextBlock Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   TextWrapping="Wrap"
+                   Name="uxTxtNotifyMessage"
+                   Margin="10"
+                   Text="Do you want to send an E-Mail to all other Negotiators to request from them " />
+        <telerik:RadButton Grid.Row="1"
+                           Grid.Column="1"
+                           Name="uxcmdOkSendMail"
+                           Content="Yes"
+                           Margin="5"
+                           Height="25"
+                           Width="80"
+                           TabIndex="0"
+                           Command="{Binding EditSentMessageCommand}"
+                           CommandParameter="{Binding ElementName=uxcmdOkSendMail, Path=Content}" />
+        <telerik:RadButton Grid.Row="1"
+                           Grid.Column="2"
+                           Name="uxcmdCancel"
+                           Content="No"
+                           Margin="5"
+                           TabIndex="1"
+                           Height="25"
+                           Width="80"
+                           Command="{Binding EditSentMessageCommand}"
+                           CommandParameter="{Binding ElementName=uxcmdCancel, Path=Content}" />
+    </Grid>
+</UserControl>

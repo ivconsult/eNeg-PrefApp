@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.PreferenceSetSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+             xmlns:eNegControls="clr-namespace:citPOINT.eNeg.Common;assembly=citPOINT.eNeg.Common"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d"
+             d:DesignHeight="200"
+             d:DesignWidth="600">
+
+    <UserControl.Resources>
+        <eNegControls:NullableToVisibilityConverter x:Key="nullableToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="466*" />
+            <ColumnDefinition Width="220" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <eNegControls:eNegMessageControl Name="uxtbHint"
+                                         MessageText="Sorry, The Negotiation you want doesn't exist in any Preference Set"
+                                         Margin="0,10,10,0"
+                                         Visibility="Collapsed"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Top"
+                                         Grid.ColumnSpan="2" />
+
+
+
+        <TextBlock Grid.Row="1"
+                   Text="Here you see a list of your Preference Sets and you can create a new set."
+                   Margin="10"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="12"
+                   TextWrapping="Wrap" />
+
+        <telerik:RadButton Grid.Row="1"
+                           Grid.Column="1"
+                           Content="Create new preference set"
+                           Height="30"
+                           Width="200"
+                           Margin="10"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           Name="uxBtnAddNewPreferenceSet"
+                           Command="{Binding AddNewPreferenceSetCommand}" />
+
+        <TextBlock Grid.Row="2"
+                   Text="{Binding CurrentPreferenceSet.PreferenceSetName,FallbackValue='The Negotiation is assigned to &quot;&quot;',StringFormat='The Negotiation is assigned to &quot;{0}&quot;'}"
+                   Visibility="{Binding CurrentPreferenceSet,Converter={StaticResource nullableToVisibilityConverter}}"
+                   Margin="10"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="12"
+                   TextWrapping="Wrap"
+                   Name="uxlblPreferenceSetName" />
+
+        <telerik:RadButton Grid.Row="2"
+                           Grid.Column="1"
+                           Content="Unassign"
+                           Height="30"
+                           Width="200"
+                           Margin="10"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           Name="uxcmdUnAssignSets"
+                           Command="{Binding RemoveNegotiationCommand}"
+                           Visibility="{Binding CurrentPreferenceSet,Converter={StaticResource nullableToVisibilityConverter}}" />
+
+    </Grid>
+</UserControl>

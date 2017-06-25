@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{60ACEB97-67E1-415C-BFF6-BC0C6750F658}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>citPOINT.PrefApp.Client</RootNamespace>
+    <AssemblyName>citPOINT.PrefApp.Client</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>citPOINT.PrefApp.Client.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>citPOINT.PrefApp.Client.App</SilverlightAppEntry>
+    <TestPageFileName>citPOINT.PrefApp.ClientTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>Bin\Debug\citPOINT.PrefApp.Client.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="citPOINT.eNeg.Apps.Common">
+      <HintPath>..\..\citPOINT.eNeg\citPOINT.eNeg.Apps.Common\Bin\Debug\citPOINT.eNeg.Apps.Common.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="citPOINT.eNeg.Common">
+      <HintPath>..\Assemblies\citPOINT.eNeg.Common.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="citPOINT.eNeg.Infrastructure.ClientSide, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Assemblies\citPOINT.eNeg.Infrastructure.ClientSide.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="citPOINT.eNeg.Infrastructure.Common">
+      <HintPath>..\Assemblies\citPOINT.eNeg.Infrastructure.Common.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="DanielVaughan">
+      <HintPath>..\Assemblies\LogginSilverlight\DanielVaughan.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="DanielVaughan.Logging.Silverlight, Version=1.8.3649.26157, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Assemblies\DanielVaughan.Logging.Silverlight.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras.SL4">
+      <HintPath>..\Assemblies\GalaSoft.MvvmLight.Extras.SL4.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.SL4">
+      <HintPath>..\Assemblies\GalaSoft.MvvmLight.SL4.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\Assemblies\Microsoft.Practices.Prism.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.MefExtensions">
+      <HintPath>..\Assemblies\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\Assemblies\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\Assemblies\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Silverlight">
+      <HintPath>..\Assemblies\Microsoft.Practices.Unity.Silverlight.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="mscorlib">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition.Initialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.Client, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.Client.Web, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web.Extensions, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="system">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Net">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Controls">
+      <HintPath>..\Assemblies\System.Windows.Controls.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data">
+      <HintPath>..\Assemblies\System.Windows.Controls.Data.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data.Input">
+      <HintPath>..\Assemblies\System.Windows.Controls.Data.Input.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
+      <HintPath>..\Assemblies\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input">
+      <HintPath>..\Assemblies\System.Windows.Controls.Input.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Navigation">
+      <HintPath>..\Assemblies\System.Windows.Controls.Navigation.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Toolkit">
+      <HintPath>..\Assemblies\System.Windows.Controls.Toolkit.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Data">
+      <HintPath>..\Assemblies\System.Windows.Data.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\Assemblies\System.Windows.Interactivity.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Browser">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls">
+      <HintPath>..\Assemblies\Telerik.Windows.Controls.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Charting">
+      <HintPath>..\Assemblies\Telerik.Windows.Controls.Charting.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView">
+      <HintPath>..\Assemblies\Telerik.Windows.Controls.GridView.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input">
+      <HintPath>..\Assemblies\Telerik.Windows.Controls.Input.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation">
+      <HintPath>..\Assemblies\Telerik.Windows.Controls.Navigation.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RibbonBar">
+      <HintPath>..\Assemblies\Telerik.Windows.Controls.RibbonBar.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data">
+      <HintPath>..\Assemblies\Telerik.Windows.Data.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents">
+      <HintPath>..\Assemblies\Telerik.Windows.Documents.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helper\Helper.cs" />
+    <Compile Include="Helper\ViewModelRepository.cs" />
+    <Compile Include="MainPreferenceAppView.xaml.cs">
+      <DependentUpon>MainPreferenceAppView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\PreferenceAppModule.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Data Matching Views\Addon Report\ExternalReportView.xaml.cs">
+      <DependentUpon>ExternalReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Data Matching Views\Addon Report\ReportMessages.xaml.cs">
+      <DependentUpon>ReportMessages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage Preference Sets Views\Preference Set\PrefSetsPanel.xaml.cs">
+      <DependentUpon>PrefSetsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Data Matching Views\AssignPrefSetToNegotiationView.xaml.cs">
+      <DependentUpon>AssignPrefSetToNegotiationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Data Matching Views\NewMainDataMatchingView.xaml.cs">
+      <DependentUpon>NewMainDataMatchingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage Preference Sets Views\Preference Set\AppSettingsView.xaml.cs">
+      <DependentUpon>AppSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage Preference Sets Views\Edit Preference Set\EditPreferenceSetView.xaml.cs">
+      <DependentUpon>EditPreferenceSetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\IssueTypeToControlConverter.cs" />
+    <Compile Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\IssuesView.xaml.cs">
+      <DependentUpon>IssuesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\Values\Numeric\NumericGraphView.xaml.cs">
+      <DependentUpon>NumericGraphView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\Values\Numeric\NumericTextView.xaml.cs">
+      <DependentUpon>NumericTextView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\Values\Numeric\NumericView.xaml.cs">
+      <DependentUpon>NumericView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\Values\Option\OptionsView.xaml.cs">
+      <DependentUpon>OptionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\Values\ValuesView.xaml.cs">
+      <DependentUpon>ValuesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Data Matching Views\Addon Report\MainExternalReportView.xaml.cs">
+      <DependentUpon>MainExternalReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Data Matching Views\ReportView.xaml.cs">
+      <DependentUpon>ReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\IssueTypesSource.cs" />
+    <Compile Include="Views\Manage Preference Sets Views\Preference Set\PreferenceSetSettingsView.xaml.cs">
+      <DependentUpon>PreferenceSetSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\ViewsAdjustSize.cs" />
+    <Compile Include="Views\MainPagePrefApp.xaml.cs">
+      <DependentUpon>MainPagePrefApp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\PopUp Windows\AddIssuePopUp.xaml.cs">
+      <DependentUpon>AddIssuePopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\AddLaterRatedPopUp.xaml.cs">
+      <DependentUpon>AddLaterRatedPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\AddNegToPrefSet.xaml.cs">
+      <DependentUpon>AddNegToPrefSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\AddOptionPopUp.xaml.cs">
+      <DependentUpon>AddOptionPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\MailEditorPopUp.xaml.cs">
+      <DependentUpon>MailEditorPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\PopUpWindow.xaml.cs">
+      <DependentUpon>PopUpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\AddOrRenamePrefSetPopUp.xaml.cs">
+      <DependentUpon>AddOrRenamePrefSetPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\Publish\PublishToMySetsPopUp.xaml.cs">
+      <DependentUpon>PublishToMySetsPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\Publish\PublishToOrganizationPopUp.xaml.cs">
+      <DependentUpon>PublishToOrganizationPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\Publish\PublishToSetStorePopUp.xaml.cs">
+      <DependentUpon>PublishToSetStorePopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\Publish\ReplacePublishedSetPopUp.xaml.cs">
+      <DependentUpon>ReplacePublishedSetPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\SelectNegotiationsPopUp.xaml.cs">
+      <DependentUpon>SelectNegotiationsPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\SendMailPopUp.xaml.cs">
+      <DependentUpon>SendMailPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp Windows\Top10IssuesView.xaml.cs">
+      <DependentUpon>Top10IssuesView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <ApplicationDefinition Include="Views\PopUp Windows\PopUpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPreferenceAppView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Data Matching Views\Addon Report\ExternalReportView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Data Matching Views\Addon Report\ReportMessages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manage Preference Sets Views\Preference Set\PrefSetsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Data Matching Views\AssignPrefSetToNegotiationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Data Matching Views\NewMainDataMatchingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Manage Preference Sets Views\Preference Set\AppSettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Manage Preference Sets Views\Edit Preference Set\EditPreferenceSetView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\IssuesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\Values\Numeric\NumericGraphView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\Values\Numeric\NumericTextView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\Values\Numeric\NumericView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\Values\Option\OptionsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Manage Preference Sets Views\Edit Preference Set\Issues\Values\ValuesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Data Matching Views\Addon Report\MainExternalReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Data Matching Views\ReportView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainPagePrefApp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manage Preference Sets Views\Preference Set\PreferenceSetSettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PopUp Windows\AddIssuePopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUp Windows\AddLaterRatedPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUp Windows\AddNegToPrefSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUp Windows\AddOptionPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUp Windows\MailEditorPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUp Windows\AddOrRenamePrefSetPopUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PopUp Windows\Publish\PublishToMySetsPopUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PopUp Windows\Publish\PublishToOrganizationPopUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PopUp Windows\Publish\PublishToSetStorePopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUp Windows\Publish\ReplacePublishedSetPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUp Windows\SelectNegotiationsPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUp Windows\SendMailPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUp Windows\Top10IssuesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\DataSources\citPOINT.PrefApp.Data.Web.LoginContext.datasource" />
+    <None Include="Properties\DataSources\citPOINT.PrefApp.Data.Web.PrefAppContext.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\citPOINT.PrefApp.Common\citPOINT.PrefApp.Common.csproj">
+      <Project>{6955AC44-F84E-4BD8-BAF9-E034FD305DF2}</Project>
+      <Name>citPOINT.PrefApp.Common</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\citPOINT.PrefApp.Data\citPOINT.PrefApp.Data.csproj">
+      <Project>{87A51949-5C8A-40BB-AD21-B4CB91714122}</Project>
+      <Name>citPOINT.PrefApp.Data</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\citPOINT.PrefApp.Model\citPOINT.PrefApp.Model.csproj">
+      <Project>{3150E27B-735A-446F-B968-1E361F7D517C}</Project>
+      <Name>citPOINT.PrefApp.Model</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\citPOINT.PrefApp.ViewModel\citPOINT.PrefApp.ViewModel.csproj">
+      <Project>{AB22B9FB-1FB8-4D07-9A6A-67602F2A7ECF}</Project>
+      <Name>citPOINT.PrefApp.ViewModel</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Add-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Rename-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Delete-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\alertIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\email_send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\email_envelope.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Conv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Red_Alarm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Edit_Receivers.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

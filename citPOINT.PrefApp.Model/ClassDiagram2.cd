@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="citPOINT.PrefApp.Model.PreferenceSetsModel">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <Members>
+      <Method Name="AddIssue" Hidden="true" />
+      <Method Name="AddLaterRatedIssue" Hidden="true" />
+      <Method Name="AddNumericIssue" Hidden="true" />
+      <Method Name="AddOptionIssue" Hidden="true" />
+      <Method Name="AddPreferenceSet" Hidden="true" />
+      <Method Name="AddPreferenceSetOrganization" Hidden="true" />
+      <Property Name="Context" Hidden="true" />
+      <Method Name="CopyPreferenceSetTemplate" Hidden="true" />
+      <Method Name="GetIssuesAsync" Hidden="true" />
+      <Event Name="GetIssuesComplete" Hidden="true" />
+      <Method Name="GetIssueTypesAsync" Hidden="true" />
+      <Event Name="GetIssueTypesComplete" Hidden="true" />
+      <Method Name="GetItemName" Hidden="true" />
+      <Method Name="GetLaterRatedIssueAsync" Hidden="true" />
+      <Event Name="GetLaterRatedIssuesComplete" Hidden="true" />
+      <Method Name="GetMainPreferenceSetAsync" Hidden="true" />
+      <Event Name="GetMainPreferenceSetsComplete" Hidden="true" />
+      <Method Name="GetNewPreferenceName" Hidden="true" />
+      <Method Name="GetNumericIssuesAsync" Hidden="true" />
+      <Event Name="GetNumericIssuesComplete" Hidden="true" />
+      <Method Name="GetOptionIssuesAsync" Hidden="true" />
+      <Event Name="GetOptionIssuesComplete" Hidden="true" />
+      <Method Name="GetOrganizationsForUserAsync" Hidden="true" />
+      <Event Name="GetOrganizationsForUserComplete" Hidden="true" />
+      <Method Name="GetPreferenceSetAsync" Hidden="true" />
+      <Method Name="GetPreferenceSetOrganizationsForUserAsync" Hidden="true" />
+      <Event Name="GetPreferenceSetOrganizationsForUserComplete" Hidden="true" />
+      <Event Name="GetPreferenceSetsComplete" Hidden="true" />
+      <Property Name="HasChanges" Hidden="true" />
+      <Property Name="IsBusy" Hidden="true" />
+      <Field Name="LastActionDate" Hidden="true" />
+      <Property Name="MailHelper" Hidden="true" />
+      <Field Name="mHasChanges" Hidden="true" />
+      <Field Name="mIsBusy" Hidden="true" />
+      <Field Name="mMailHelper" Hidden="true" />
+      <Field Name="mPrefAppContext" Hidden="true" />
+      <Method Name="mPrefAppContext_PropertyChanged" Hidden="true" />
+      <Method Name="OnPropertyChanged" Hidden="true" />
+      <Method Name="PerformQuery" Hidden="true" />
+      <Event Name="PropertyChanged" Hidden="true" />
+      <Method Name="PublishPreferenceSet" Hidden="true" />
+      <Method Name="RejectChanges" Hidden="true" />
+      <Method Name="RemoveConversationMessage" Hidden="true" />
+      <Method Name="RemoveIssue" Hidden="true" />
+      <Method Name="RemoveLaterRatedIssue" Hidden="true" />
+      <Method Name="RemoveMessageIssue" Hidden="true" />
+      <Method Name="RemoveMessageLaterRatedIssue" Hidden="true" />
+      <Method Name="RemoveMessageOptionIssue" Hidden="true" />
+      <Method Name="RemoveNegConversation" Hidden="true" />
+      <Method Name="RemoveNumericIssue" Hidden="true" />
+      <Method Name="RemoveOptionIssue" Hidden="true" />
+      <Method Name="RemovePreferenceSet" Hidden="true" />
+      <Method Name="RemovePreferenceSetNeg" Hidden="true" />
+      <Method Name="RemovePreferenceSetOrganization" Hidden="true" />
+      <Method Name="SaveChangesAsync" Hidden="true" />
+      <Event Name="SaveChangesComplete" Hidden="true" />
+      <Event Name="SendingMailCompleted" Hidden="true" />
+      <Method Name="SendMailToNegotiators" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AEAgJBwgFkRBBsAAKAIBAElFkYICQtIYCEFQQRAIAAQ=</HashCode>
+      <FileName>PreferenceSetsModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="citPOINT.PrefApp.Data.Web.IssueStatisticalsResult">
+    <Position X="3.75" Y="1.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

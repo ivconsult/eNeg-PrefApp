@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="DomainServices" elementFormDefault="qualified" targetNamespace="DomainServices" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+  <xs:complexType name="QueryResultOfNegotiation">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Negotiation" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q1:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q2:ArrayOfNegotiation">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfNegotiation" nillable="true" type="tns:QueryResultOfNegotiation" />
+  <xs:complexType name="QueryResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TotalCount" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueryResult" nillable="true" type="tns:QueryResult" />
+  <xs:complexType name="DomainServiceFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDomainException" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OperationErrors" nillable="true" type="tns:ArrayOfValidationResultInfo">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="StackTrace" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DomainServiceFault" nillable="true" type="tns:DomainServiceFault" />
+  <xs:complexType name="ArrayOfValidationResultInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ValidationResultInfo" nillable="true" type="tns:ValidationResultInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfValidationResultInfo" nillable="true" type="tns:ArrayOfValidationResultInfo" />
+  <xs:complexType name="ValidationResultInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SourceMemberNames" nillable="true" type="q3:ArrayOfstring">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="StackTrace" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValidationResultInfo" nillable="true" type="tns:ValidationResultInfo" />
+  <xs:complexType name="QueryResultOfConversation">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Conversation" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q4:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q5:ArrayOfConversation">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfConversation" nillable="true" type="tns:QueryResultOfConversation" />
+  <xs:complexType name="QueryResultOfMessage">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Message" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q6:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q7:ArrayOfMessage">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfMessage" nillable="true" type="tns:QueryResultOfMessage" />
+  <xs:complexType name="QueryResultOfUser">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="User" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q8:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q9:ArrayOfUser">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfUser" nillable="true" type="tns:QueryResultOfUser" />
+  <xs:complexType name="QueryResultOfNegotiationApplicationStatu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NegotiationApplicationStatu" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q10:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q11:ArrayOfNegotiationApplicationStatu">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfNegotiationApplicationStatu" nillable="true" type="tns:QueryResultOfNegotiationApplicationStatu" />
+  <xs:complexType name="QueryResultOfUserOrganization">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserOrganization" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q12:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q13:ArrayOfUserOrganization">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfUserOrganization" nillable="true" type="tns:QueryResultOfUserOrganization" />
+  <xs:complexType name="QueryResultOfOrganization">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Organization" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q14:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q15:ArrayOfOrganization">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfOrganization" nillable="true" type="tns:QueryResultOfOrganization" />
+  <xs:complexType name="QueryResultOfUserLeaveOrganizationResult">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserLeaveOrganizationResult" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q16:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q17:ArrayOfUserLeaveOrganizationResult">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfUserLeaveOrganizationResult" nillable="true" type="tns:QueryResultOfUserLeaveOrganizationResult" />
+  <xs:complexType name="QueryResultOfCulture">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Culture" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q18:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q19:ArrayOfCulture">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfCulture" nillable="true" type="tns:QueryResultOfCulture" />
+  <xs:complexType name="QueryResultOfPreferedLanguage">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="PreferedLanguage" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q20:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q21:ArrayOfPreferedLanguage">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfPreferedLanguage" nillable="true" type="tns:QueryResultOfPreferedLanguage" />
+  <xs:complexType name="QueryResultOfProfile">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Profile" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q22:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q23:ArrayOfProfile">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfProfile" nillable="true" type="tns:QueryResultOfProfile" />
+  <xs:complexType name="QueryResultOfRight">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Right" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q24:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q25:ArrayOfRight">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfRight" nillable="true" type="tns:QueryResultOfRight" />
+  <xs:complexType name="QueryResultOfRole">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Role" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q26:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q27:ArrayOfRole">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfRole" nillable="true" type="tns:QueryResultOfRole" />
+  <xs:complexType name="QueryResultOfRoleRight">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RoleRight" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q28:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q29:ArrayOfRoleRight">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfRoleRight" nillable="true" type="tns:QueryResultOfRoleRight" />
+  <xs:complexType name="QueryResultOfSecurityQuestion">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="SecurityQuestion" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q30:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q31:ArrayOfSecurityQuestion">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfSecurityQuestion" nillable="true" type="tns:QueryResultOfSecurityQuestion" />
+  <xs:complexType name="QueryResultOfUserApplicationStatu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserApplicationStatu" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q32="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q32:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q33:ArrayOfUserApplicationStatu">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfUserApplicationStatu" nillable="true" type="tns:QueryResultOfUserApplicationStatu" />
+  <xs:complexType name="QueryResultOfUserRole">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserRole" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q34:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q35:ArrayOfUserRole">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfUserRole" nillable="true" type="tns:QueryResultOfUserRole" />
+  <xs:complexType name="QueryResultOfNegotiationOrganization">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NegotiationOrganization" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q36="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q36:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q37:ArrayOfNegotiationOrganization">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfNegotiationOrganization" nillable="true" type="tns:QueryResultOfNegotiationOrganization" />
+  <xs:complexType name="QueryResultOfOrganizationType">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="OrganizationType" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q38:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q39:ArrayOfOrganizationType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfOrganizationType" nillable="true" type="tns:QueryResultOfOrganizationType" />
+  <xs:complexType name="QueryResultOfApplication">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Application" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q40="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q40:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q41:ArrayOfApplication">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfApplication" nillable="true" type="tns:QueryResultOfApplication" />
+  <xs:complexType name="QueryResultOfUserOperation">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserOperation" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q42:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q43:ArrayOfUserOperation">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfUserOperation" nillable="true" type="tns:QueryResultOfUserOperation" />
+  <xs:complexType name="QueryResultOfAccountType">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="AccountType" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q44="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q44:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q45:ArrayOfAccountType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfAccountType" nillable="true" type="tns:QueryResultOfAccountType" />
+  <xs:complexType name="QueryResultOfActionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ActionType" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q46="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q46:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q47:ArrayOfActionType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfActionType" nillable="true" type="tns:QueryResultOfActionType" />
+  <xs:complexType name="QueryResultOfAttachement">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Attachement" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q48="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q48:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q49:ArrayOfAttachement">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfAttachement" nillable="true" type="tns:QueryResultOfAttachement" />
+  <xs:complexType name="QueryResultOfCategory">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Category" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q50="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q50:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q51:ArrayOfCategory">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfCategory" nillable="true" type="tns:QueryResultOfCategory" />
+  <xs:complexType name="QueryResultOfCategoryLog">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="CategoryLog" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q52="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q52:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q53:ArrayOfCategoryLog">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfCategoryLog" nillable="true" type="tns:QueryResultOfCategoryLog" />
+  <xs:complexType name="QueryResultOfChannel">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Channel" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q54="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q54:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q55:ArrayOfChannel">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfChannel" nillable="true" type="tns:QueryResultOfChannel" />
+  <xs:complexType name="QueryResultOfChannelType">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ChannelType" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q56="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q56:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q57:ArrayOfChannelType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfChannelType" nillable="true" type="tns:QueryResultOfChannelType" />
+  <xs:complexType name="QueryResultOfCountry">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Country" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q58="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q58:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q59:ArrayOfCountry">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfCountry" nillable="true" type="tns:QueryResultOfCountry" />
+  <xs:complexType name="QueryResultOfHistory">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="History" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q60="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q60:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q61:ArrayOfHistory">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfHistory" nillable="true" type="tns:QueryResultOfHistory" />
+  <xs:complexType name="QueryResultOfLog">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Log" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q62="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q62:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q63:ArrayOfLog">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfLog" nillable="true" type="tns:QueryResultOfLog" />
+  <xs:complexType name="QueryResultOfNegotiationStatu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryResultOf{0}" Namespace="DomainServices" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NegotiationStatu" Namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryResult">
+        <xs:sequence>
+          <xs:element xmlns:q64="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IncludedResults" nillable="true" type="q64:ArrayOfanyType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" minOccurs="0" name="RootResults" nillable="true" type="q65:ArrayOfNegotiationStatu">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResultOfNegotiationStatu" nillable="true" type="tns:QueryResultOfNegotiationStatu" />
+  <xs:complexType name="ArrayOfChangeSetEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChangeSetEntry" nillable="true" type="tns:ChangeSetEntry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChangeSetEntry" nillable="true" type="tns:ArrayOfChangeSetEntry" />
+  <xs:complexType name="ChangeSetEntry">
+    <xs:sequence>
+      <xs:element xmlns:q66="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Associations" nillable="true" type="q66:ArrayOfKeyValueOfstringArrayOfintty7Ep6D1">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q67="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ConflictMembers" nillable="true" type="q67:ArrayOfstring">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:anyType" />
+      <xs:element xmlns:q68="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="EntityActions" nillable="true" type="q68:ArrayOfKeyValueOfstringArrayOfanyTypety7Ep6D1" />
+      <xs:element minOccurs="0" name="HasMemberChanges" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDeleteConflict" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Operation" type="tns:DomainOperation" />
+      <xs:element xmlns:q69="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="OriginalAssociations" nillable="true" type="q69:ArrayOfKeyValueOfstringArrayOfintty7Ep6D1">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="OriginalEntity" nillable="true" type="xs:anyType">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="StoreEntity" nillable="true" type="xs:anyType">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ValidationErrors" nillable="true" type="tns:ArrayOfValidationResultInfo">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChangeSetEntry" nillable="true" type="tns:ChangeSetEntry" />
+  <xs:simpleType name="DomainOperation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Query" />
+      <xs:enumeration value="Insert" />
+      <xs:enumeration value="Update" />
+      <xs:enumeration value="Delete" />
+      <xs:enumeration value="Custom" />
+      <xs:enumeration value="Invoke" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DomainOperation" nillable="true" type="tns:DomainOperation" />
+</xs:schema>

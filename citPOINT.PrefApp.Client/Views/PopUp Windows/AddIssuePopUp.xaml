@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.AddIssuePopUp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:common="clr-namespace:citPOINT.PrefApp.Common;assembly=citPOINT.PrefApp.Common"
+             xmlns:local="clr-namespace:citPOINT.PrefApp.Client"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.SL4"
+             mc:Ignorable="d"
+             d:DesignHeight="190"
+             d:DesignWidth="390"
+             KeyDown="UserControl_KeyDown">
+
+    <UserControl.Resources>
+        <local:IssueTypesSource x:Key="DataSource" />
+        <common:IssueTypeEnableConverter x:Key="IssueTypeEnableConverter" />
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        
+        <telerik:RadWrapPanel Grid.Row="0" 
+                              Grid.ColumnSpan="3"
+                              Margin="6"
+                              Orientation="Horizontal">
+            <TextBlock Text="&quot;"/>
+            <TextBlock Text="{Binding CurrentIssue.IssueName}"/>
+            <TextBlock Text="&quot;"/>
+            <TextBlock Text=" is a new Issue, Please rate it:"/>
+        </telerik:RadWrapPanel>
+        
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0"
+                   Text="Issue Name:"
+                   Margin="6,10" />
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 TabIndex="0"
+                 Name="uxtxtIssueName"
+                 Text="{Binding CurrentIssue.IssueName,Mode=TwoWay}"
+                 Height="30" />
+        <TextBlock Grid.Row="2"
+                   Grid.Column="0"
+                   Text="Issue Type:"
+                   Margin="6,10" />
+        <telerik:RadComboBox Grid.Row="2"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2"
+                  Name="uxcboIssueType"
+                  Height="30"
+                             TabIndex="1"
+                  ItemsSource="{Binding Source={StaticResource DataSource}, Path=IssueTypes}"
+                  DisplayMemberPath="IssueTypeName"
+                  SelectedValuePath="IssueTypeID"
+                  SelectedValue="{Binding CurrentIssue.IssueTypeID,Mode=TwoWay}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <cmd:EventToCommand Command="{Binding ChangeIssueTypeCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </telerik:RadComboBox>
+        <TextBlock Grid.Row="3"
+                   Grid.Column="0"
+                   Text="Scoring:"
+                   Margin="6,10" />
+        <StackPanel Grid.Row="3"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal">
+            <common:eNegRatingControl x:Name="uxScoring"
+                                      Margin="0,7"
+                                      MinWidth="210"
+                                      Height="25"
+                                      TabIndex="2"
+                                      NumberOfItemsToGenerate="10"
+                                      IsEnabled="{Binding CurrentIssue.IssueType.IssueTypeID,Converter={StaticResource IssueTypeEnableConverter}}"
+                                      ValueChanged="uxScoring_ValueChanged" />
+
+            <telerik:RadNumericUpDown Name="uxUpDownRating"
+                                      NullValue="NaN"
+                                      NumberDecimalDigits="2"
+                                      Width="90"
+                                      Height="25"
+                                      TabIndex="3"
+                                      IsEnabled="{Binding CurrentIssue.IssueType.IssueTypeID,Converter={StaticResource IssueTypeEnableConverter}}"
+                                      Value="{Binding CurrentIssue.IssueWeight,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                                      Minimum="0"
+                                      Maximum="100"
+                                      ValueChanged="uxUpDownRating_ValueChanged" />
+        </StackPanel>
+        <telerik:RadButton Grid.Row="4"
+                Grid.Column="1"
+                Name="uxcmdAddIssue"
+                Content="OK"
+                Margin="5"
+                           TabIndex="4"
+                Height="25"
+                Width="190"
+                Command="{Binding CloseAddNewIssuePopUpWindowCommand}"
+                CommandParameter="{Binding CurrentIssue}" />
+    </Grid>
+</UserControl>
+

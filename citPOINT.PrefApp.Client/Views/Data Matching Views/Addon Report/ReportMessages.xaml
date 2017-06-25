@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.ReportMessages"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="200" d:DesignWidth="300" MinWidth="350">
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+
+        <!--Has no Information-->
+        <StackPanel Orientation="Vertical"
+                    Margin="20,0,0,0"
+                    HorizontalAlignment="Left">
+            <Image Source="/citPOINT.PrefApp.Client;component/Images/alertIcon.png"
+                   Stretch="Uniform"
+                   MaxHeight="50"
+                   MaxWidth="50"
+                   Name="uxImgClosed"
+                   VerticalAlignment="Center" />
+
+            <TextBlock xml:space="preserve"
+                       TextWrapping="Wrap"
+                       Foreground="Black"
+                       FontSize="12"
+                       MinWidth="230"
+                       Margin="5"
+                       TextAlignment="Left"
+                       VerticalAlignment="Top"
+                       Name="uxtxtAlertMessage"
+                       Text="{Binding FeedBackMessage,FallbackValue='no feed back'}">
+           </TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd4" namespace="DomainServices" />
+  <xs:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="GetNegotiationsByListOfIDs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NegIDs" nillable="true" type="q1:ArrayOfguid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationsByListOfIDsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="DomainServices" minOccurs="0" name="GetNegotiationsByListOfIDsResult" nillable="true" type="q2:QueryResultOfNegotiation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConversationsByNegotiationID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NegIDs" nillable="true" type="q3:ArrayOfguid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConversationsByNegotiationIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="DomainServices" minOccurs="0" name="GetConversationsByNegotiationIDResult" nillable="true" type="q4:QueryResultOfConversation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMessagesByNegotiationID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="NegotiationIDS" nillable="true" type="q5:ArrayOfNullableOfguid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMessagesByNegotiationIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="DomainServices" minOccurs="0" name="GetMessagesByNegotiationIDResult" nillable="true" type="q6:QueryResultOfMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMessagesByNegotiationIDForApps">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="NegotiationIDS" nillable="true" type="q7:ArrayOfNullableOfguid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMessagesByNegotiationIDForAppsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="DomainServices" minOccurs="0" name="GetMessagesByNegotiationIDForAppsResult" nillable="true" type="q8:QueryResultOfMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAppsStatisticalsByMessages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AppName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q9:guid" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="conversationID" type="q10:guid" />
+        <xs:element minOccurs="0" name="messageContent" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageSubject" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageSender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageReceiver" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAppsStatisticalsByMessagesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateAppsStatisticalsByMessagesResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateReset">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" nillable="true" type="q11:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateResetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="DomainServices" minOccurs="0" name="UpdateResetResult" nillable="true" type="q12:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserByOperationString">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OperationString" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OperationType" type="xs:unsignedByte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserByOperationStringResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="DomainServices" minOccurs="0" name="GetUserByOperationStringResult" nillable="true" type="q13:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserByConfirmMail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OperationString" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserByConfirmMailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="DomainServices" minOccurs="0" name="UpdateUserByConfirmMailResult" nillable="true" type="q14:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteUserOperationByUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q15:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteUserOperationByUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="DomainServices" minOccurs="0" name="DeleteUserOperationByUserIDResult" nillable="true" type="q16:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersCountExceptCurrentUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q17:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersCountExceptCurrentUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUsersCountExceptCurrentUserResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersCountByAlphabetExceptCurrentUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Alphabet" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ColumnName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q18:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersCountByAlphabetExceptCurrentUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUsersCountByAlphabetExceptCurrentUserResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="KeyWord" nillable="true" type="xs:string" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q19:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="DomainServices" minOccurs="0" name="FindUserResult" nillable="true" type="q20:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindUsersCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="KeyWord" nillable="true" type="xs:string" />
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q21:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindUsersCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FindUsersCountResult" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationPageNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="negotiationID" type="q22:guid" />
+        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="statusID" type="q23:guid" />
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userID" type="q24:guid" />
+        <xs:element minOccurs="0" name="itemsPerPageCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationPageNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetNegotiationPageNumberResult" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationCountByStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="StatusType" type="q25:guid" />
+        <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q26:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationCountByStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetNegotiationCountByStatusResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiations">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="DomainServices" minOccurs="0" name="GetNegotiationsResult" nillable="true" type="q27:QueryResultOfNegotiation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConversations">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConversationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="DomainServices" minOccurs="0" name="GetConversationsResult" nillable="true" type="q28:QueryResultOfConversation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationApplicationStatusByNegotiationID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NegIDs" nillable="true" type="q29:ArrayOfguid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationApplicationStatusByNegotiationIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="DomainServices" minOccurs="0" name="GetNegotiationApplicationStatusByNegotiationIDResult" nillable="true" type="q30:QueryResultOfNegotiationApplicationStatu" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckOnNegotiationRepeat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="negotiationID" type="q31:guid" />
+        <xs:element minOccurs="0" name="negotiationName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q32="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userID" type="q32:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckOnNegotiationRepeatResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckOnNegotiationRepeatResult" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserOrganizationsForUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userID" type="q33:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserOrganizationsForUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="DomainServices" minOccurs="0" name="GetUserOrganizationsForUserResult" nillable="true" type="q34:QueryResultOfUserOrganization" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationsForUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userID" type="q35:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationsForUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="DomainServices" minOccurs="0" name="GetOrganizationsForUserResult" nillable="true" type="q36:QueryResultOfOrganization" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationsOwners">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="organizationIDs" nillable="true" type="q37:ArrayOfguid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationsOwnersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="DomainServices" minOccurs="0" name="GetOrganizationsOwnersResult" nillable="true" type="q38:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationMembers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="organizationID" type="q39:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationMembersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="DomainServices" minOccurs="0" name="GetOrganizationMembersResult" nillable="true" type="q40:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationMembersStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="organizationID" type="q41:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationMembersStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="DomainServices" minOccurs="0" name="GetOrganizationMembersStatusResult" nillable="true" type="q42:QueryResultOfUserOrganization" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUserLeaveOrganization">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userID" type="q43:guid" />
+        <xs:element xmlns:q44="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="organizationID" type="q44:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUserLeaveOrganizationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="DomainServices" minOccurs="0" name="CanUserLeaveOrganizationResult" nillable="true" type="q45:QueryResultOfUserLeaveOrganizationResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserCulture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userID" type="q46:guid" />
+        <xs:element minOccurs="0" name="cultureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserCultureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateUserCultureResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCultures">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCulturesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="DomainServices" minOccurs="0" name="GetCulturesResult" nillable="true" type="q47:QueryResultOfCulture" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPreferedLanguage">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPreferedLanguageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="DomainServices" minOccurs="0" name="GetPreferedLanguageResult" nillable="true" type="q48:QueryResultOfPreferedLanguage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProfile">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProfileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="DomainServices" minOccurs="0" name="GetProfileResult" nillable="true" type="q49:QueryResultOfProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRight">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="DomainServices" minOccurs="0" name="GetRightResult" nillable="true" type="q50:QueryResultOfRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRole">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="DomainServices" minOccurs="0" name="GetRoleResult" nillable="true" type="q51:QueryResultOfRole" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRoleRight">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRoleRightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="DomainServices" minOccurs="0" name="GetRoleRightResult" nillable="true" type="q52:QueryResultOfRoleRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSecurityQuestion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSecurityQuestionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="DomainServices" minOccurs="0" name="GetSecurityQuestionResult" nillable="true" type="q53:QueryResultOfSecurityQuestion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUser">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="DomainServices" minOccurs="0" name="GetUserResult" nillable="true" type="q54:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserApplicationStatus">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserApplicationStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="DomainServices" minOccurs="0" name="GetUserApplicationStatusResult" nillable="true" type="q55:QueryResultOfUserApplicationStatu" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserRole">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserRoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="DomainServices" minOccurs="0" name="GetUserRoleResult" nillable="true" type="q56:QueryResultOfUserRole" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationOrganizations">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationOrganizationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="DomainServices" minOccurs="0" name="GetNegotiationOrganizationsResult" nillable="true" type="q57:QueryResultOfNegotiationOrganization" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizations">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="DomainServices" minOccurs="0" name="GetOrganizationsResult" nillable="true" type="q58:QueryResultOfOrganization" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationTypes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrganizationTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="DomainServices" minOccurs="0" name="GetOrganizationTypesResult" nillable="true" type="q59:QueryResultOfOrganizationType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMessageToConversation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AppName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q60="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q60:guid" />
+        <xs:element xmlns:q61="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="conversationID" type="q61:guid" />
+        <xs:element minOccurs="0" name="messageContent" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageSubject" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageSender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageReceiver" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isSent" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMessageToConversationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddMessageToConversationResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationsByUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q62:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationsByUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="DomainServices" minOccurs="0" name="GetNegotiationsByUserIDResult" nillable="true" type="q63:QueryResultOfNegotiation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActiveSupportApplicationsForConversation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="conversationID" type="q64:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActiveSupportApplicationsForConversationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="DomainServices" minOccurs="0" name="GetActiveSupportApplicationsForConversationResult" nillable="true" type="q65:QueryResultOfApplication" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserCanLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserCanLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="DomainServices" minOccurs="0" name="UserCanLoginResult" nillable="true" type="q66:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q67:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="DomainServices" minOccurs="0" name="GetUserByIDResult" nillable="true" type="q68:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeUserOnline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" nillable="true" type="q69:guid" />
+        <xs:element minOccurs="0" name="IPAddress" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeUserOnlineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="DomainServices" minOccurs="0" name="MakeUserOnlineResult" nillable="true" type="q70:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeUserOffline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q71="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" nillable="true" type="q71:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeUserOfflineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q72="DomainServices" minOccurs="0" name="MakeUserOfflineResult" nillable="true" type="q72:QueryResultOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAppsActiveForDM">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q73:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAppsActiveForDMResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="DomainServices" minOccurs="0" name="GetAppsActiveForDMResult" nillable="true" type="q74:QueryResultOfUserApplicationStatu" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateDataMatchingStatusInAddon">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AppName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q75="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q75:guid" />
+        <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateDataMatchingStatusInAddonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q76="DomainServices" minOccurs="0" name="UpdateDataMatchingStatusInAddonResult" nillable="true" type="q76:QueryResultOfUserApplicationStatu" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveApplicationDMStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AppName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q77="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q77:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveApplicationDMStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q78="DomainServices" minOccurs="0" name="RetrieveApplicationDMStatusResult" nillable="true" type="q78:QueryResultOfUserApplicationStatu" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAvailableNegotiationsToAnalysis">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q79="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UserID" type="q79:guid" />
+        <xs:element minOccurs="0" name="AppName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAvailableNegotiationsToAnalysisResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q80="DomainServices" minOccurs="0" name="GetAvailableNegotiationsToAnalysisResult" nillable="true" type="q80:QueryResultOfNegotiation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserOperations">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserOperationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q81="DomainServices" minOccurs="0" name="GetUserOperationsResult" nillable="true" type="q81:QueryResultOfUserOperation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountType">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q82="DomainServices" minOccurs="0" name="GetAccountTypeResult" nillable="true" type="q82:QueryResultOfAccountType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActionTypes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActionTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q83="DomainServices" minOccurs="0" name="GetActionTypesResult" nillable="true" type="q83:QueryResultOfActionType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetApplications">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetApplicationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q84="DomainServices" minOccurs="0" name="GetApplicationsResult" nillable="true" type="q84:QueryResultOfApplication" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAttachements">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAttachementsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q85="DomainServices" minOccurs="0" name="GetAttachementsResult" nillable="true" type="q85:QueryResultOfAttachement" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategories">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q86="DomainServices" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q86:QueryResultOfCategory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoryLogs">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoryLogsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q87="DomainServices" minOccurs="0" name="GetCategoryLogsResult" nillable="true" type="q87:QueryResultOfCategoryLog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChannels">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChannelsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q88="DomainServices" minOccurs="0" name="GetChannelsResult" nillable="true" type="q88:QueryResultOfChannel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChannelTypes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChannelTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q89="DomainServices" minOccurs="0" name="GetChannelTypesResult" nillable="true" type="q89:QueryResultOfChannelType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCountry">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCountryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q90="DomainServices" minOccurs="0" name="GetCountryResult" nillable="true" type="q90:QueryResultOfCountry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistories">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistoriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q91="DomainServices" minOccurs="0" name="GetHistoriesResult" nillable="true" type="q91:QueryResultOfHistory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLogs">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLogsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q92="DomainServices" minOccurs="0" name="GetLogsResult" nillable="true" type="q92:QueryResultOfLog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMessages">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMessagesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q93="DomainServices" minOccurs="0" name="GetMessagesResult" nillable="true" type="q93:QueryResultOfMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationApplicationStatus">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationApplicationStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q94="DomainServices" minOccurs="0" name="GetNegotiationApplicationStatusResult" nillable="true" type="q94:QueryResultOfNegotiationApplicationStatu" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationStatus">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNegotiationStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q95="DomainServices" minOccurs="0" name="GetNegotiationStatusResult" nillable="true" type="q95:QueryResultOfNegotiationStatu" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubmitChanges">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q96="DomainServices" minOccurs="0" name="changeSet" nillable="true" type="q96:ArrayOfChangeSetEntry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubmitChangesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q97="DomainServices" minOccurs="0" name="SubmitChangesResult" nillable="true" type="q97:ArrayOfChangeSetEntry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

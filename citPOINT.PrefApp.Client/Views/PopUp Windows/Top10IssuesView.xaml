@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.Top10IssuesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="200"
+             xmlns:common="clr-namespace:citPOINT.PrefApp.Common;assembly=citPOINT.PrefApp.Common"
+             d:DesignWidth="300"
+             MaxHeight="314"
+             MinHeight="314"
+             MaxWidth="400"
+             MinWidth="400">
+
+    <UserControl.Resources>
+        <common:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="262*" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+
+        <!--BorderBrush="Black"
+                             BorderThickness="0"-->
+        
+        <telerik:RadGridView Name="uxIssueStatisticalsGridView"
+                             VerticalAlignment="Stretch"
+                             
+                             CanUserDeleteRows="False"
+                             CanUserInsertRows="False"
+                             AutoGenerateColumns="False"
+                             ReorderColumnsMode="None"
+                             ShowGroupPanel="False"
+                             GridLinesVisibility="Both"
+                             HorizontalAlignment="Stretch"
+                             SelectionMode="Single"
+                             IsFilteringAllowed="False"
+                             RowIndicatorVisibility="Collapsed"
+                             ItemsSource="{Binding Top10IssuesSource}">
+            <telerik:RadGridView.Columns>
+
+                <telerik:GridViewColumn UniqueName="SelectIssue"
+                                        IsResizable="False"
+                                        IsReorderable="False">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Path=IsSelected,Mode=TwoWay}"
+                                        />
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+
+                <telerik:GridViewColumn UniqueName="Rank"
+                                        Header="Rank"
+                                        Width="40"
+                                        IsReorderable="False">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Rank}" />
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+
+                <telerik:GridViewColumn UniqueName="IssueName"
+                                        Header="Issue Name"
+                                        Width="*"
+                                        IsReorderable="False">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding IssueName}"
+                                       TextWrapping="Wrap" />
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+
+                <telerik:GridViewColumn UniqueName="TimesUsed"
+                                        Header="Times Used"
+                                        Width="75"
+                                        IsReorderable="False">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TimesUsed}" />
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+
+        <Grid Visibility="{Binding IsBusy, Mode=TwoWay,Converter={StaticResource booleanToVisibilityConverter}}">
+
+            <telerik:RadBusyIndicator IsBusy="True"
+                                      HorizontalAlignment="Center"
+                                      Name="uxloading"
+                                      VerticalAlignment="Center" />
+        </Grid>
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+
+            <telerik:RadButton Grid.Row="1"
+                               Height="25"
+                               Width="100"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Content="Drag Issues"
+                               Name="uxcmdDragSelectedIssues"
+                               Command="{Binding DragSelectedIssuesCommand}" />
+
+            <telerik:RadButton Grid.Row="1"
+                               Height="25"
+                               Width="100"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Content="Cancel" Margin="15,0,0,0"
+                               Command="{Binding CancelCommand}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

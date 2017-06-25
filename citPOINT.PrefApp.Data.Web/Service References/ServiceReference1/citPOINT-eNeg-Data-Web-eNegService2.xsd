@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Negotiation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Deleted" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DeletedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsNegSelected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNewNegotiation" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NegotiationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="NegotiationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Negotiation" nillable="true" type="tns:Negotiation" />
+  <xs:complexType name="Conversation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConversationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ConversationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Deleted" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DeletedBy" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="DeletedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsConvSelected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNewConversation" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NegotiationID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Conversation" nillable="true" type="tns:Conversation" />
+  <xs:complexType name="Message">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChannelID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ConversationID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Deleted" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DeletedBy" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="DeletedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsAppsMessage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsChecked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MessageContent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MessageID" type="ser:guid" />
+      <xs:element minOccurs="0" name="MessageReceiver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageSender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageSubject" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Negotiator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Received" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Sent" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Message" nillable="true" type="tns:Message" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountTypeID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AnswerHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AnswerSalt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CheckForNewEmailAddress" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CheckForNewPassword" type="xs:boolean" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CultureID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Disabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HasPublicProfile" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IPAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsFemale" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMale" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsUserMaintenance" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LCID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LastLoginDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Locked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LockedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewEmailConfirmation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewPassword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewPasswordConfirmation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Online" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordAnswer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordConfirmation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProfileDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reset" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SecurityQuestionID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserID" type="ser:guid" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="eNegRights" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="eNegRoles" nillable="true" type="q2:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="NegotiationApplicationStatu">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ApplicationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="NegotiationApplicationStatusID" type="ser:guid" />
+      <xs:element minOccurs="0" name="NegotiationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NegotiationApplicationStatu" nillable="true" type="tns:NegotiationApplicationStatu" />
+  <xs:complexType name="Application">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ApplicationSettingLink" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApplicationTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HasSettingsLink" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Application" nillable="true" type="tns:Application" />
+  <xs:complexType name="UserOrganization">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DeletedBy" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="DeletedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MemberStatus" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="OrganizationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserID" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserOrganizationID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserOrganization" nillable="true" type="tns:UserOrganization" />
+  <xs:complexType name="Organization">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DeletedBy" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="DeletedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrganizationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="OrganizationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganizationTypeID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Organization" nillable="true" type="tns:Organization" />
+  <xs:complexType name="UserLeaveOrganizationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AlternativeOwnerID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="CanLeave" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OwnersCount" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserLeaveOrganizationResult" nillable="true" type="tns:UserLeaveOrganizationResult" />
+  <xs:complexType name="Culture">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CultureID" type="xs:int" />
+      <xs:element minOccurs="0" name="CultureName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Culture" nillable="true" type="tns:Culture" />
+  <xs:complexType name="PreferedLanguage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LCID" type="xs:int" />
+      <xs:element minOccurs="0" name="PreferedLanguage1" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PreferedLanguage" nillable="true" type="tns:PreferedLanguage" />
+  <xs:complexType name="Profile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrentTheme" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProfileID" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Profile" nillable="true" type="tns:Profile" />
+  <xs:complexType name="Right">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RightDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RightID" type="ser:guid" />
+      <xs:element minOccurs="0" name="RightName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Right" nillable="true" type="tns:Right" />
+  <xs:complexType name="Role">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RoleDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleID" type="ser:guid" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Role" nillable="true" type="tns:Role" />
+  <xs:complexType name="RoleRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RightID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="RoleID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="RoleRightID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RoleRight" nillable="true" type="tns:RoleRight" />
+  <xs:complexType name="SecurityQuestion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Question" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecurityQuestionID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SecurityQuestion" nillable="true" type="tns:SecurityQuestion" />
+  <xs:complexType name="UserApplicationStatu">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsDMActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserAppStatusID" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserApplicationStatu" nillable="true" type="tns:UserApplicationStatu" />
+  <xs:complexType name="UserRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RoleID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserRoleID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserRole" nillable="true" type="tns:UserRole" />
+  <xs:complexType name="NegotiationOrganization">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DeletedBy" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="DeletedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NegotiationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="NegotiationOrganizationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="OrganizationID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NegotiationOrganization" nillable="true" type="tns:NegotiationOrganization" />
+  <xs:complexType name="OrganizationType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrganizationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganizationTypeID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrganizationType" nillable="true" type="tns:OrganizationType" />
+  <xs:complexType name="UserOperation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NewEmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="OperationString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserOperation" nillable="true" type="tns:UserOperation" />
+  <xs:complexType name="AccountType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountTypeID" type="ser:guid" />
+      <xs:element minOccurs="0" name="TypeDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountType" nillable="true" type="tns:AccountType" />
+  <xs:complexType name="ActionType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActionDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActionTypeID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActionType" nillable="true" type="tns:ActionType" />
+  <xs:complexType name="Attachement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttachementContent" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="AttachementID" type="ser:guid" />
+      <xs:element minOccurs="0" name="AttachementName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageID" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Attachement" nillable="true" type="tns:Attachement" />
+  <xs:complexType name="Category">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Category" nillable="true" type="tns:Category" />
+  <xs:complexType name="CategoryLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="CategoryLogID" type="xs:int" />
+      <xs:element minOccurs="0" name="LogID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CategoryLog" nillable="true" type="tns:CategoryLog" />
+  <xs:complexType name="Channel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChannelID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ChannelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChannelTypeID" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Channel" nillable="true" type="tns:Channel" />
+  <xs:complexType name="ChannelType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChannelTypeID" type="ser:guid" />
+      <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChannelType" nillable="true" type="tns:ChannelType" />
+  <xs:complexType name="Country">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountryID" type="ser:guid" />
+      <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Country" nillable="true" type="tns:Country" />
+  <xs:complexType name="History">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActionDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ActionTypeID" type="ser:guid" />
+      <xs:element minOccurs="0" name="HistoryID" type="ser:guid" />
+      <xs:element minOccurs="0" name="NewValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OldValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TableName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="History" nillable="true" type="tns:History" />
+  <xs:complexType name="Log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppDomainName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FormattedMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LogID" type="xs:int" />
+      <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="ProcessID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Severity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ThreadName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Win32ThreadId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Log" nillable="true" type="tns:Log" />
+  <xs:complexType name="NegotiationStatu">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StatusDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NegotiationStatu" nillable="true" type="tns:NegotiationStatu" />
+  <xs:complexType name="ArrayOfNegotiation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Negotiation" nillable="true" type="tns:Negotiation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNegotiation" nillable="true" type="tns:ArrayOfNegotiation" />
+  <xs:complexType name="ArrayOfConversation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Conversation" nillable="true" type="tns:Conversation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConversation" nillable="true" type="tns:ArrayOfConversation" />
+  <xs:complexType name="ArrayOfMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="ArrayOfNegotiationApplicationStatu">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NegotiationApplicationStatu" nillable="true" type="tns:NegotiationApplicationStatu" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNegotiationApplicationStatu" nillable="true" type="tns:ArrayOfNegotiationApplicationStatu" />
+  <xs:complexType name="ArrayOfUserOrganization">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserOrganization" nillable="true" type="tns:UserOrganization" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserOrganization" nillable="true" type="tns:ArrayOfUserOrganization" />
+  <xs:complexType name="ArrayOfOrganization">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Organization" nillable="true" type="tns:Organization" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrganization" nillable="true" type="tns:ArrayOfOrganization" />
+  <xs:complexType name="ArrayOfUserLeaveOrganizationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserLeaveOrganizationResult" nillable="true" type="tns:UserLeaveOrganizationResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserLeaveOrganizationResult" nillable="true" type="tns:ArrayOfUserLeaveOrganizationResult" />
+  <xs:complexType name="ArrayOfCulture">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Culture" nillable="true" type="tns:Culture" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCulture" nillable="true" type="tns:ArrayOfCulture" />
+  <xs:complexType name="ArrayOfPreferedLanguage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PreferedLanguage" nillable="true" type="tns:PreferedLanguage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPreferedLanguage" nillable="true" type="tns:ArrayOfPreferedLanguage" />
+  <xs:complexType name="ArrayOfProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Profile" nillable="true" type="tns:Profile" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProfile" nillable="true" type="tns:ArrayOfProfile" />
+  <xs:complexType name="ArrayOfRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Right" nillable="true" type="tns:Right" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRight" nillable="true" type="tns:ArrayOfRight" />
+  <xs:complexType name="ArrayOfRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Role" nillable="true" type="tns:Role" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRole" nillable="true" type="tns:ArrayOfRole" />
+  <xs:complexType name="ArrayOfRoleRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RoleRight" nillable="true" type="tns:RoleRight" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRoleRight" nillable="true" type="tns:ArrayOfRoleRight" />
+  <xs:complexType name="ArrayOfSecurityQuestion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SecurityQuestion" nillable="true" type="tns:SecurityQuestion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSecurityQuestion" nillable="true" type="tns:ArrayOfSecurityQuestion" />
+  <xs:complexType name="ArrayOfUserApplicationStatu">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserApplicationStatu" nillable="true" type="tns:UserApplicationStatu" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserApplicationStatu" nillable="true" type="tns:ArrayOfUserApplicationStatu" />
+  <xs:complexType name="ArrayOfUserRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserRole" nillable="true" type="tns:UserRole" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserRole" nillable="true" type="tns:ArrayOfUserRole" />
+  <xs:complexType name="ArrayOfNegotiationOrganization">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NegotiationOrganization" nillable="true" type="tns:NegotiationOrganization" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNegotiationOrganization" nillable="true" type="tns:ArrayOfNegotiationOrganization" />
+  <xs:complexType name="ArrayOfOrganizationType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrganizationType" nillable="true" type="tns:OrganizationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrganizationType" nillable="true" type="tns:ArrayOfOrganizationType" />
+  <xs:complexType name="ArrayOfApplication">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Application" nillable="true" type="tns:Application" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApplication" nillable="true" type="tns:ArrayOfApplication" />
+  <xs:complexType name="ArrayOfUserOperation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserOperation" nillable="true" type="tns:UserOperation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserOperation" nillable="true" type="tns:ArrayOfUserOperation" />
+  <xs:complexType name="ArrayOfAccountType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccountType" nillable="true" type="tns:AccountType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccountType" nillable="true" type="tns:ArrayOfAccountType" />
+  <xs:complexType name="ArrayOfActionType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActionType" nillable="true" type="tns:ActionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActionType" nillable="true" type="tns:ArrayOfActionType" />
+  <xs:complexType name="ArrayOfAttachement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Attachement" nillable="true" type="tns:Attachement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttachement" nillable="true" type="tns:ArrayOfAttachement" />
+  <xs:complexType name="ArrayOfCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory" />
+  <xs:complexType name="ArrayOfCategoryLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoryLog" nillable="true" type="tns:CategoryLog" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategoryLog" nillable="true" type="tns:ArrayOfCategoryLog" />
+  <xs:complexType name="ArrayOfChannel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Channel" nillable="true" type="tns:Channel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChannel" nillable="true" type="tns:ArrayOfChannel" />
+  <xs:complexType name="ArrayOfChannelType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChannelType" nillable="true" type="tns:ChannelType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChannelType" nillable="true" type="tns:ArrayOfChannelType" />
+  <xs:complexType name="ArrayOfCountry">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Country" nillable="true" type="tns:Country" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCountry" nillable="true" type="tns:ArrayOfCountry" />
+  <xs:complexType name="ArrayOfHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="History" nillable="true" type="tns:History" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHistory" nillable="true" type="tns:ArrayOfHistory" />
+  <xs:complexType name="ArrayOfLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Log" nillable="true" type="tns:Log" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLog" nillable="true" type="tns:ArrayOfLog" />
+  <xs:complexType name="ArrayOfNegotiationStatu">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NegotiationStatu" nillable="true" type="tns:NegotiationStatu" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNegotiationStatu" nillable="true" type="tns:ArrayOfNegotiationStatu" />
+</xs:schema>

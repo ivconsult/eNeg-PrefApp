@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.MainPagePrefApp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:eNegControls="clr-namespace:citPOINT.eNeg.Common;assembly=citPOINT.eNeg.Common"
+             xmlns:common="clr-namespace:citPOINT.PrefApp.Common;assembly=citPOINT.PrefApp.Common"
+             xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+             xmlns:local="clr-namespace:citPOINT.PrefApp.Client"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="600"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
+
+    <UserControl.Resources>
+
+    </UserControl.Resources>
+    <Grid x:Name="uxGridLayoutRoot"
+          VerticalAlignment="Stretch"
+          HorizontalAlignment="Stretch">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Border BorderThickness="1,1,1,1"
+                BorderBrush="Gray" Padding="1">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="#FFFCF5F5"
+                                  Offset="0.407" />
+                    <GradientStop Color="#FFD8D8D8"
+                                  Offset="1" />
+                    <GradientStop Color="#A0FFFFFF"
+                                  Offset="0.517" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel Orientation="Horizontal"
+                        Name="uxMenu">
+                <Border BorderBrush="#FF1B8EAA"
+                        BorderThickness="0"
+                        CornerRadius="2">
+                    <HyperlinkButton x:Name="uxcmdPrefSets"
+                                     FontSize="14"
+                                     Command="{Binding Path=ChangeScreenCommand}"
+                                     CommandParameter="ReportView"
+                                     HorizontalContentAlignment="Stretch"
+                                     VerticalContentAlignment="Stretch"
+                                     Width="120"
+                                     Padding="0"
+                                     MouseMove="uxcmdAppSettings_MouseMove"
+                                     MouseLeave="uxcmdAppSettings_MouseLeave">
+                        <HyperlinkButton.Content>
+                            <TextBlock Text="Analysis"
+                                       Foreground="Black"
+                                       TextAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
+                </Border>
+                <!--<Rectangle Width="2"
+                           Fill="DarkGray" />-->
+                <Border BorderBrush="#FF1B8EAA"
+                        BorderThickness="0"
+                        CornerRadius="2">
+                    <HyperlinkButton x:Name="uxcmdDataMatching"
+                                     FontSize="14"
+                                     Command="{Binding Path=ChangeScreenCommand}"
+                                     CommandParameter="DataMatchingView"
+                                     HorizontalContentAlignment="Stretch"
+                                     VerticalContentAlignment="Stretch"
+                                     Width="120"
+                                     Padding="0"
+                                     MouseMove="uxcmdAppSettings_MouseMove"
+                                     MouseLeave="uxcmdAppSettings_MouseLeave">
+                        <HyperlinkButton.Content>
+                            <TextBlock Text="Data Matching"
+                                       Foreground="Black"
+                                       TextAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
+                </Border>
+                <Border BorderBrush="#FF1B8EAA"
+                        BorderThickness="0"
+                        CornerRadius="2">
+                    <HyperlinkButton x:Name="uxcmdAppSettings"
+                                     FontSize="14"
+                                     Command="{Binding Path=ChangeScreenCommand}"
+                                     CommandParameter="AppSettingsView"
+                                     HorizontalContentAlignment="Stretch"
+                                     VerticalContentAlignment="Stretch"
+                                     Width="120"
+                                     Padding="0"
+                                     MouseMove="uxcmdAppSettings_MouseMove"
+                                     MouseLeave="uxcmdAppSettings_MouseLeave">
+                        <HyperlinkButton.Content>
+                            <TextBlock Text="App Settings"
+                                       Foreground="Black"
+                                       TextAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
+                </Border>
+                <!--<Rectangle Width="2"
+                           Fill="DarkGray" />-->
+            </StackPanel>
+        </Border>
+
+        <Border   Grid.Row="1"
+                  BorderThickness="1,0,1,1"
+                  BorderBrush="Black"
+                  HorizontalAlignment="Stretch"
+                  
+                  VerticalAlignment="Stretch"
+                  >
+            <ContentControl Name="uxContentMainPage"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"></ContentControl>
+        </Border>
+    </Grid>
+</UserControl>

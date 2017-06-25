@@ -1,0 +1,2388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PrefAppModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="PrefAppModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="PrefAppModel.Store.__RefactorLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ActionType" EntityType="PrefAppModel.Store.ActionType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConversationMessage" EntityType="PrefAppModel.Store.ConversationMessage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="History" EntityType="PrefAppModel.Store.History" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Issue" EntityType="PrefAppModel.Store.Issue" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IssueType" EntityType="PrefAppModel.Store.IssueType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LaterRatedIssue" EntityType="PrefAppModel.Store.LaterRatedIssue" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MainPreferenceSet" EntityType="PrefAppModel.Store.MainPreferenceSet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MessageIssue" EntityType="PrefAppModel.Store.MessageIssue" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MessageLaterRatedIssue" EntityType="PrefAppModel.Store.MessageLaterRatedIssue" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MessageOptionIssue" EntityType="PrefAppModel.Store.MessageOptionIssue" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NegConversation" EntityType="PrefAppModel.Store.NegConversation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NumericIssue" EntityType="PrefAppModel.Store.NumericIssue" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OptionIssue" EntityType="PrefAppModel.Store.OptionIssue" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PreferenceSet" EntityType="PrefAppModel.Store.PreferenceSet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PreferenceSetNeg" EntityType="PrefAppModel.Store.PreferenceSetNeg" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PreferenceSetOrganization" EntityType="PrefAppModel.Store.PreferenceSetOrganization" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HighValuesNegs" EntityType="PrefAppModel.Store.HighValuesNegs" store:Type="Views" store:Schema="dbo" store:Name="HighValuesNegs">
+            <DefiningQuery>SELECT 
+      [HighValuesNegs].[NegotiationName] AS [NegotiationName], 
+      [HighValuesNegs].[PreferenceSetName] AS [PreferenceSetName], 
+      [HighValuesNegs].[CounterPartsCount] AS [CounterPartsCount], 
+      [HighValuesNegs].[NegID] AS [NegID]
+      FROM [dbo].[HighValuesNegs] AS [HighValuesNegs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="IssueHistoryView" EntityType="PrefAppModel.Store.IssueHistoryView" store:Type="Views" store:Schema="dbo" store:Name="IssueHistoryView">
+            <DefiningQuery>SELECT 
+      [IssueHistoryView].[IssueName] AS [IssueName], 
+      [IssueHistoryView].[PreferenceSetName] AS [PreferenceSetName], 
+      [IssueHistoryView].[NegotiationName] AS [NegotiationName], 
+      [IssueHistoryView].[IssueWeight] AS [IssueWeight], 
+      [IssueHistoryView].[NegID] AS [NegID]
+      FROM [dbo].[IssueHistoryView] AS [IssueHistoryView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Conversat__NegCo__398D8EEE" Association="PrefAppModel.Store.FK__Conversat__NegCo__398D8EEE">
+            <End Role="NegConversation" EntitySet="NegConversation" />
+            <End Role="ConversationMessage" EntitySet="ConversationMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__History__ActionT__3A81B327" Association="PrefAppModel.Store.FK__History__ActionT__3A81B327">
+            <End Role="ActionType" EntitySet="ActionType" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Issue__IssueType__3C69FB99" Association="PrefAppModel.Store.FK__Issue__IssueType__3C69FB99">
+            <End Role="IssueType" EntitySet="IssueType" />
+            <End Role="Issue" EntitySet="Issue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Issue__Preferenc__19DFD96B" Association="PrefAppModel.Store.FK__Issue__Preferenc__19DFD96B">
+            <End Role="PreferenceSet" EntitySet="PreferenceSet" />
+            <End Role="Issue" EntitySet="Issue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LaterRate__Issue__3D5E1FD2" Association="PrefAppModel.Store.FK__LaterRate__Issue__3D5E1FD2">
+            <End Role="Issue" EntitySet="Issue" />
+            <End Role="LaterRatedIssue" EntitySet="LaterRatedIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessageIs__Conve__3E52440B" Association="PrefAppModel.Store.FK__MessageIs__Conve__3E52440B">
+            <End Role="ConversationMessage" EntitySet="ConversationMessage" />
+            <End Role="MessageIssue" EntitySet="MessageIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessageIs__Issue__3F466844" Association="PrefAppModel.Store.FK__MessageIs__Issue__3F466844">
+            <End Role="Issue" EntitySet="Issue" />
+            <End Role="MessageIssue" EntitySet="MessageIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessageLa__Later__412EB0B6" Association="PrefAppModel.Store.FK__MessageLa__Later__412EB0B6">
+            <End Role="LaterRatedIssue" EntitySet="LaterRatedIssue" />
+            <End Role="MessageLaterRatedIssue" EntitySet="MessageLaterRatedIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessageLa__Messa__403A8C7D" Association="PrefAppModel.Store.FK__MessageLa__Messa__403A8C7D">
+            <End Role="MessageIssue" EntitySet="MessageIssue" />
+            <End Role="MessageLaterRatedIssue" EntitySet="MessageLaterRatedIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessageOp__Messa__4222D4EF" Association="PrefAppModel.Store.FK__MessageOp__Messa__4222D4EF">
+            <End Role="MessageIssue" EntitySet="MessageIssue" />
+            <End Role="MessageOptionIssue" EntitySet="MessageOptionIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessageOp__Optio__4316F928" Association="PrefAppModel.Store.FK__MessageOp__Optio__4316F928">
+            <End Role="OptionIssue" EntitySet="OptionIssue" />
+            <End Role="MessageOptionIssue" EntitySet="MessageOptionIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NegConver__Prefe__440B1D61" Association="PrefAppModel.Store.FK__NegConver__Prefe__440B1D61">
+            <End Role="PreferenceSetNeg" EntitySet="PreferenceSetNeg" />
+            <End Role="NegConversation" EntitySet="NegConversation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NumericIs__Issue__44FF419A" Association="PrefAppModel.Store.FK__NumericIs__Issue__44FF419A">
+            <End Role="Issue" EntitySet="Issue" />
+            <End Role="NumericIssue" EntitySet="NumericIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OptionIss__Issue__45F365D3" Association="PrefAppModel.Store.FK__OptionIss__Issue__45F365D3">
+            <End Role="Issue" EntitySet="Issue" />
+            <End Role="OptionIssue" EntitySet="OptionIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preferenc__MainP__1AD3FDA4" Association="PrefAppModel.Store.FK__Preferenc__MainP__1AD3FDA4">
+            <End Role="MainPreferenceSet" EntitySet="MainPreferenceSet" />
+            <End Role="PreferenceSet" EntitySet="PreferenceSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preferenc__Prefe__1BC821DD" Association="PrefAppModel.Store.FK__Preferenc__Prefe__1BC821DD">
+            <End Role="PreferenceSet" EntitySet="PreferenceSet" />
+            <End Role="PreferenceSetNeg" EntitySet="PreferenceSetNeg" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreferenceSetOrganization_PreferenceSet" Association="PrefAppModel.Store.FK_PreferenceSetOrganization_PreferenceSet">
+            <End Role="PreferenceSet" EntitySet="PreferenceSet" />
+            <End Role="PreferenceSetOrganization" EntitySet="PreferenceSetOrganization" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActionType">
+          <Key>
+            <PropertyRef Name="ActionTypeID" />
+          </Key>
+          <Property Name="ActionTypeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ActionName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ConversationMessage">
+          <Key>
+            <PropertyRef Name="ConversationMessageID" />
+          </Key>
+          <Property Name="ConversationMessageID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MessageID" Type="uniqueidentifier" />
+          <Property Name="Percentage" Type="decimal" Scale="2" />
+          <Property Name="NegConversationID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsSent" Type="bit" />
+          <Property Name="IsExceedVariation" Type="bit" Nullable="false" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+          <Property Name="RatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="SN" />
+          </Key>
+          <Property Name="SN" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ActionTypeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OldValue" Type="xml" Nullable="false" />
+          <Property Name="NewValue" Type="xml" Nullable="false" />
+          <Property Name="DoneBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ActionDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="IssueID" />
+          </Key>
+          <Property Name="IssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IssueName" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="PreferenceSetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IssueTypeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IssueWeight" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="IssueType">
+          <Key>
+            <PropertyRef Name="IssueTypeID" />
+          </Key>
+          <Property Name="IssueTypeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IssueTypeName" Type="nvarchar" Nullable="false" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="LaterRatedIssue">
+          <Key>
+            <PropertyRef Name="LaterRatedIssueID" />
+          </Key>
+          <Property Name="LaterRatedIssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LaterRatedIssueValue" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="IssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LaterRatedIssueWeight" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MainPreferenceSet">
+          <Key>
+            <PropertyRef Name="MainPreferenceSetID" />
+          </Key>
+          <Property Name="MainPreferenceSetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MainPreferenceSetName" Type="nvarchar" Nullable="false" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="MessageIssue">
+          <Key>
+            <PropertyRef Name="MessageIssueID" />
+          </Key>
+          <Property Name="MessageIssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ConversationMessageID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="300" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+          <Property Name="Score" Type="decimal" Scale="2" />
+        </EntityType>
+        <EntityType Name="MessageLaterRatedIssue">
+          <Key>
+            <PropertyRef Name="MessageLaterRatedIssueID" />
+          </Key>
+          <Property Name="MessageLaterRatedIssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MessageIssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LaterRatedIssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MessageOptionIssue">
+          <Key>
+            <PropertyRef Name="MessageOptionIssueID" />
+          </Key>
+          <Property Name="MessageOptionIssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MessageIssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OptionIssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NegConversation">
+          <Key>
+            <PropertyRef Name="NegConversationID" />
+          </Key>
+          <Property Name="NegConversationID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ConversationID" Type="uniqueidentifier" />
+          <Property Name="Percentage" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PreferenceSetNegID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NumericIssue">
+          <Key>
+            <PropertyRef Name="NumericIssueID" />
+          </Key>
+          <Property Name="NumericIssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MinimumValue" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="MaximumValue" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="OptimumValueStart" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="OptimumValueEnd" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="MinimumOperator" Type="tinyint" Nullable="false" />
+          <Property Name="MaximumOperator" Type="tinyint" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OptionIssue">
+          <Key>
+            <PropertyRef Name="OptionIssueID" />
+          </Key>
+          <Property Name="OptionIssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OptionIssueValue" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="IssueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OptionIssueWeight" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PreferenceSet">
+          <Key>
+            <PropertyRef Name="PreferenceSetID" />
+          </Key>
+          <Property Name="PreferenceSetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreferenceSetName" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="Checkvariation" Type="bit" Nullable="false" />
+          <Property Name="VariationValue" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="MaxPercentage" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MainPreferenceSetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PreferenceSetNeg">
+          <Key>
+            <PropertyRef Name="PreferenceSetNegID" />
+          </Key>
+          <Property Name="PreferenceSetNegID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NegID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Percentage" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PreferenceSetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NegotiationName" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="StatusID" Type="uniqueidentifier" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PreferenceSetOrganization">
+          <Key>
+            <PropertyRef Name="PreferenceSetOrganizationID" />
+          </Key>
+          <Property Name="PreferenceSetOrganizationID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreferenceSetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrganizationID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="uniqueidentifier" />
+          <Property Name="DeletedOn" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'PrefApp.dbo.HighValuesNegs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="HighValuesNegs">
+          <Key>
+            <PropertyRef Name="NegotiationName" />
+            <PropertyRef Name="PreferenceSetName" />
+            <PropertyRef Name="NegID" />
+          </Key>
+          <Property Name="NegotiationName" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="PreferenceSetName" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="CounterPartsCount" Type="int" />
+          <Property Name="NegID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'PrefApp.dbo.IssueHistoryView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="IssueHistoryView">
+          <Key>
+            <PropertyRef Name="IssueName" />
+            <PropertyRef Name="PreferenceSetName" />
+            <PropertyRef Name="NegotiationName" />
+            <PropertyRef Name="IssueWeight" />
+            <PropertyRef Name="NegID" />
+          </Key>
+          <Property Name="IssueName" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="PreferenceSetName" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="NegotiationName" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="IssueWeight" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="NegID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Conversat__NegCo__398D8EEE">
+          <End Role="NegConversation" Type="PrefAppModel.Store.NegConversation" Multiplicity="1" />
+          <End Role="ConversationMessage" Type="PrefAppModel.Store.ConversationMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NegConversation">
+              <PropertyRef Name="NegConversationID" />
+            </Principal>
+            <Dependent Role="ConversationMessage">
+              <PropertyRef Name="NegConversationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__History__ActionT__3A81B327">
+          <End Role="ActionType" Type="PrefAppModel.Store.ActionType" Multiplicity="1" />
+          <End Role="History" Type="PrefAppModel.Store.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActionType">
+              <PropertyRef Name="ActionTypeID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="ActionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Issue__IssueType__3C69FB99">
+          <End Role="IssueType" Type="PrefAppModel.Store.IssueType" Multiplicity="1" />
+          <End Role="Issue" Type="PrefAppModel.Store.Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IssueType">
+              <PropertyRef Name="IssueTypeID" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="IssueTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Issue__Preferenc__19DFD96B">
+          <End Role="PreferenceSet" Type="PrefAppModel.Store.PreferenceSet" Multiplicity="1" />
+          <End Role="Issue" Type="PrefAppModel.Store.Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferenceSet">
+              <PropertyRef Name="PreferenceSetID" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="PreferenceSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LaterRate__Issue__3D5E1FD2">
+          <End Role="Issue" Type="PrefAppModel.Store.Issue" Multiplicity="1" />
+          <End Role="LaterRatedIssue" Type="PrefAppModel.Store.LaterRatedIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue">
+              <PropertyRef Name="IssueID" />
+            </Principal>
+            <Dependent Role="LaterRatedIssue">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessageIs__Conve__3E52440B">
+          <End Role="ConversationMessage" Type="PrefAppModel.Store.ConversationMessage" Multiplicity="1" />
+          <End Role="MessageIssue" Type="PrefAppModel.Store.MessageIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConversationMessage">
+              <PropertyRef Name="ConversationMessageID" />
+            </Principal>
+            <Dependent Role="MessageIssue">
+              <PropertyRef Name="ConversationMessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessageIs__Issue__3F466844">
+          <End Role="Issue" Type="PrefAppModel.Store.Issue" Multiplicity="1" />
+          <End Role="MessageIssue" Type="PrefAppModel.Store.MessageIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue">
+              <PropertyRef Name="IssueID" />
+            </Principal>
+            <Dependent Role="MessageIssue">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessageLa__Later__412EB0B6">
+          <End Role="LaterRatedIssue" Type="PrefAppModel.Store.LaterRatedIssue" Multiplicity="1" />
+          <End Role="MessageLaterRatedIssue" Type="PrefAppModel.Store.MessageLaterRatedIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaterRatedIssue">
+              <PropertyRef Name="LaterRatedIssueID" />
+            </Principal>
+            <Dependent Role="MessageLaterRatedIssue">
+              <PropertyRef Name="LaterRatedIssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessageLa__Messa__403A8C7D">
+          <End Role="MessageIssue" Type="PrefAppModel.Store.MessageIssue" Multiplicity="1" />
+          <End Role="MessageLaterRatedIssue" Type="PrefAppModel.Store.MessageLaterRatedIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessageIssue">
+              <PropertyRef Name="MessageIssueID" />
+            </Principal>
+            <Dependent Role="MessageLaterRatedIssue">
+              <PropertyRef Name="MessageIssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessageOp__Messa__4222D4EF">
+          <End Role="MessageIssue" Type="PrefAppModel.Store.MessageIssue" Multiplicity="1" />
+          <End Role="MessageOptionIssue" Type="PrefAppModel.Store.MessageOptionIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessageIssue">
+              <PropertyRef Name="MessageIssueID" />
+            </Principal>
+            <Dependent Role="MessageOptionIssue">
+              <PropertyRef Name="MessageIssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessageOp__Optio__4316F928">
+          <End Role="OptionIssue" Type="PrefAppModel.Store.OptionIssue" Multiplicity="1" />
+          <End Role="MessageOptionIssue" Type="PrefAppModel.Store.MessageOptionIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OptionIssue">
+              <PropertyRef Name="OptionIssueID" />
+            </Principal>
+            <Dependent Role="MessageOptionIssue">
+              <PropertyRef Name="OptionIssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NegConver__Prefe__440B1D61">
+          <End Role="PreferenceSetNeg" Type="PrefAppModel.Store.PreferenceSetNeg" Multiplicity="1" />
+          <End Role="NegConversation" Type="PrefAppModel.Store.NegConversation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferenceSetNeg">
+              <PropertyRef Name="PreferenceSetNegID" />
+            </Principal>
+            <Dependent Role="NegConversation">
+              <PropertyRef Name="PreferenceSetNegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NumericIs__Issue__44FF419A">
+          <End Role="Issue" Type="PrefAppModel.Store.Issue" Multiplicity="1" />
+          <End Role="NumericIssue" Type="PrefAppModel.Store.NumericIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue">
+              <PropertyRef Name="IssueID" />
+            </Principal>
+            <Dependent Role="NumericIssue">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OptionIss__Issue__45F365D3">
+          <End Role="Issue" Type="PrefAppModel.Store.Issue" Multiplicity="1" />
+          <End Role="OptionIssue" Type="PrefAppModel.Store.OptionIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue">
+              <PropertyRef Name="IssueID" />
+            </Principal>
+            <Dependent Role="OptionIssue">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preferenc__MainP__1AD3FDA4">
+          <End Role="MainPreferenceSet" Type="PrefAppModel.Store.MainPreferenceSet" Multiplicity="1" />
+          <End Role="PreferenceSet" Type="PrefAppModel.Store.PreferenceSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainPreferenceSet">
+              <PropertyRef Name="MainPreferenceSetID" />
+            </Principal>
+            <Dependent Role="PreferenceSet">
+              <PropertyRef Name="MainPreferenceSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preferenc__Prefe__1BC821DD">
+          <End Role="PreferenceSet" Type="PrefAppModel.Store.PreferenceSet" Multiplicity="1" />
+          <End Role="PreferenceSetNeg" Type="PrefAppModel.Store.PreferenceSetNeg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferenceSet">
+              <PropertyRef Name="PreferenceSetID" />
+            </Principal>
+            <Dependent Role="PreferenceSetNeg">
+              <PropertyRef Name="PreferenceSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreferenceSetOrganization_PreferenceSet">
+          <End Role="PreferenceSet" Type="PrefAppModel.Store.PreferenceSet" Multiplicity="1" />
+          <End Role="PreferenceSetOrganization" Type="PrefAppModel.Store.PreferenceSetOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferenceSet">
+              <PropertyRef Name="PreferenceSetID" />
+            </Principal>
+            <Dependent Role="PreferenceSetOrganization">
+              <PropertyRef Name="PreferenceSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetBestCounterPartsCount" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KeyWord" Type="nvarchar" Mode="In" />
+          <Parameter Name="CurrentNegotiationID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspActionTypeDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActionTypeID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspActionTypeInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActionTypeID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ActionName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspActionTypeSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActionTypeID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspActionTypeUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActionTypeID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ActionName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspConversationMessageDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConversationMessageID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspConversationMessageInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConversationMessageID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="MessageID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Percentage" Type="decimal" Mode="In" />
+          <Parameter Name="NegConversationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IsSent" Type="bit" Mode="In" />
+          <Parameter Name="IsExceedVariation" Type="bit" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+          <Parameter Name="RatedDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspConversationMessageSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConversationMessageID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspConversationMessageSelectLast2OffersIDs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NegotiationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ConversationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OfferType" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="uspConversationMessageSelectLast2OffersRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NegotiationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ConversationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OfferType" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="uspConversationMessageSelectOfferDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConversationMessageID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspConversationMessageUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConversationMessageID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="MessageID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Percentage" Type="decimal" Mode="In" />
+          <Parameter Name="NegConversationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IsSent" Type="bit" Mode="In" />
+          <Parameter Name="IsExceedVariation" Type="bit" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+          <Parameter Name="RatedDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspHistoryDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SN" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspHistoryInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SN" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="TableName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActionTypeID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OldValue" Type="xml" Mode="In" />
+          <Parameter Name="NewValue" Type="xml" Mode="In" />
+          <Parameter Name="DoneBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ActionDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspHistorySelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SN" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspHistoryUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SN" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="TableName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActionTypeID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OldValue" Type="xml" Mode="In" />
+          <Parameter Name="NewValue" Type="xml" Mode="In" />
+          <Parameter Name="DoneBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ActionDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspIssueDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspIssueHistorySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KeyWord" Type="nvarchar" Mode="In" />
+          <Parameter Name="CurrentNegotiationID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspIssueInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueName" Type="nvarchar" Mode="In" />
+          <Parameter Name="PreferenceSetID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueTypeID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueWeight" Type="decimal" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspIssueSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspIssueSelectForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ListOfOrganizations" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspIssueSelectStatisticals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspIssueTypeDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IssueTypeID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspIssueTypeInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IssueTypeID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueTypeName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspIssueTypeSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IssueTypeID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspIssueTypeUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IssueTypeID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueTypeName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspIssueUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueName" Type="nvarchar" Mode="In" />
+          <Parameter Name="PreferenceSetID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueTypeID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueWeight" Type="decimal" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspLaterRatedIssueDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LaterRatedIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspLaterRatedIssueInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LaterRatedIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="LaterRatedIssueValue" Type="nvarchar" Mode="In" />
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="LaterRatedIssueWeight" Type="decimal" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspLaterRatedIssueSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LaterRatedIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspLaterRatedIssueSelectForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ListOfOrganizations" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspLaterRatedIssueUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LaterRatedIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="LaterRatedIssueValue" Type="nvarchar" Mode="In" />
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="LaterRatedIssueWeight" Type="decimal" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspMessageIssueDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspMessageIssueInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ConversationMessageID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Score" Type="decimal" Mode="In" />
+          <Parameter Name="Value" Type="nvarchar" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspMessageIssueSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspMessageIssueSelectMaxMinValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="preferenceSetNegID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueTypeID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IsMaxValue" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="uspMessageIssueUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ConversationMessageID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Score" Type="decimal" Mode="In" />
+          <Parameter Name="Value" Type="nvarchar" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspMessageLaterRatedIssueDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageLaterRatedIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspMessageLaterRatedIssueInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageLaterRatedIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="MessageIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="LaterRatedIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspMessageLaterRatedIssueSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageLaterRatedIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspMessageLaterRatedIssueUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageLaterRatedIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="MessageIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="LaterRatedIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspMessageOptionIssueDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageOptionIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspMessageOptionIssueInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageOptionIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="MessageIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OptionIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspMessageOptionIssueSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageOptionIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspMessageOptionIssueUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MessageOptionIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="MessageIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OptionIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspNegConversationDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NegConversationID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspNegConversationInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NegConversationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ConversationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Percentage" Type="decimal" Mode="In" />
+          <Parameter Name="PreferenceSetNegID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspNegConversationSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NegConversationID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspNegConversationSelectPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConversationID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspNegConversationUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NegConversationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ConversationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Percentage" Type="decimal" Mode="In" />
+          <Parameter Name="PreferenceSetNegID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspNumericIssueDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumericIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspNumericIssueInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumericIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="MinimumValue" Type="decimal" Mode="In" />
+          <Parameter Name="MaximumValue" Type="decimal" Mode="In" />
+          <Parameter Name="OptimumValueStart" Type="decimal" Mode="In" />
+          <Parameter Name="OptimumValueEnd" Type="decimal" Mode="In" />
+          <Parameter Name="MinimumOperator" Type="tinyint" Mode="In" />
+          <Parameter Name="MaximumOperator" Type="tinyint" Mode="In" />
+          <Parameter Name="Unit" Type="nvarchar" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspNumericIssueSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumericIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspNumericIssueSelectForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ListOfOrganizations" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspNumericIssueUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumericIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="MinimumValue" Type="decimal" Mode="In" />
+          <Parameter Name="MaximumValue" Type="decimal" Mode="In" />
+          <Parameter Name="OptimumValueStart" Type="decimal" Mode="In" />
+          <Parameter Name="OptimumValueEnd" Type="decimal" Mode="In" />
+          <Parameter Name="MinimumOperator" Type="tinyint" Mode="In" />
+          <Parameter Name="MaximumOperator" Type="tinyint" Mode="In" />
+          <Parameter Name="Unit" Type="nvarchar" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspOptionIssueDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OptionIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspOptionIssueInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OptionIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OptionIssueValue" Type="nvarchar" Mode="In" />
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OptionIssueWeight" Type="decimal" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspOptionIssueSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OptionIssueID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspOptionIssueSelectForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ListOfOrganizations" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspOptionIssueUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OptionIssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OptionIssueValue" Type="nvarchar" Mode="In" />
+          <Parameter Name="IssueID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OptionIssueWeight" Type="decimal" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="PreferenceSetName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Checkvariation" Type="bit" Mode="In" />
+          <Parameter Name="VariationValue" Type="decimal" Mode="In" />
+          <Parameter Name="MaxPercentage" Type="decimal" Mode="In" />
+          <Parameter Name="UserID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="MainPreferenceSetID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetNegDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetNegID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetNegInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetNegID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="NegID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Percentage" Type="decimal" Mode="In" />
+          <Parameter Name="PreferenceSetID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="NegotiationName" Type="nvarchar" Mode="In" />
+          <Parameter Name="StatusID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetNegSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetNegID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetNegSelectPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NegotiationID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetNegUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetNegID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="NegID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Percentage" Type="decimal" Mode="In" />
+          <Parameter Name="PreferenceSetID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="NegotiationName" Type="nvarchar" Mode="In" />
+          <Parameter Name="StatusID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetOrganizationDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetOrganizationID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetOrganizationInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetOrganizationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="PreferenceSetID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OrganizationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetOrganizationSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetOrganizationID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetOrganizationUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetOrganizationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="PreferenceSetID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OrganizationID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetSelectForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ListOfOrganizations" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspPreferenceSetUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreferenceSetID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="PreferenceSetName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Checkvariation" Type="bit" Mode="In" />
+          <Parameter Name="VariationValue" Type="decimal" Mode="In" />
+          <Parameter Name="MaxPercentage" Type="decimal" Mode="In" />
+          <Parameter Name="UserID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="MainPreferenceSetID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+          <Parameter Name="DeletedBy" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DeletedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspUpdateConvAndNegPercentage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConversationMessageID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrefAppModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="PrefAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="PrefAppModel.C__RefactorLog" />
+          <EntitySet Name="ActionTypes" EntityType="PrefAppModel.ActionType" />
+          <EntitySet Name="IssueTypes" EntityType="PrefAppModel.IssueType" />
+          <EntitySet Name="MainPreferenceSets" EntityType="PrefAppModel.MainPreferenceSet" />
+          <EntitySet Name="Histories" EntityType="PrefAppModel.History" />
+          <EntitySet Name="Issues" EntityType="PrefAppModel.Issue" />
+          <EntitySet Name="LaterRatedIssues" EntityType="PrefAppModel.LaterRatedIssue" />
+          <EntitySet Name="NumericIssues" EntityType="PrefAppModel.NumericIssue" />
+          <EntitySet Name="OptionIssues" EntityType="PrefAppModel.OptionIssue" />
+          <EntitySet Name="PreferenceSets" EntityType="PrefAppModel.PreferenceSet" />
+          <AssociationSet Name="FK__History__ActionT__2C3393D01" Association="PrefAppModel.FK__History__ActionT__2C3393D01">
+            <End EntitySet="ActionTypes" Role="ActionType" />
+            <End EntitySet="Histories" Role="History1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Issue__IssueType__2E1BDC421" Association="PrefAppModel.FK__Issue__IssueType__2E1BDC421">
+            <End Role="IssueType" EntitySet="IssueTypes" />
+            <End Role="Issue1" EntitySet="Issues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Issue__Preferenc__2D27B8091" Association="PrefAppModel.FK__Issue__Preferenc__2D27B8091">
+            <End Role="PreferenceSet1" EntitySet="PreferenceSets" />
+            <End Role="Issue1" EntitySet="Issues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LaterRate__Issue__2F10007B1" Association="PrefAppModel.FK__LaterRate__Issue__2F10007B1">
+            <End Role="Issue1" EntitySet="Issues" />
+            <End Role="LaterRatedIssue1" EntitySet="LaterRatedIssues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NumericIs__Issue__30F848ED1" Association="PrefAppModel.FK__NumericIs__Issue__30F848ED1">
+            <End Role="Issue1" EntitySet="Issues" />
+            <End Role="NumericIssue1" EntitySet="NumericIssues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OptionIss__Issue__31EC6D261" Association="PrefAppModel.FK__OptionIss__Issue__31EC6D261">
+            <End Role="Issue1" EntitySet="Issues" />
+            <End Role="OptionIssue1" EntitySet="OptionIssues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preferenc__MainP__32E0915F1" Association="PrefAppModel.FK__Preferenc__MainP__32E0915F1">
+            <End Role="MainPreferenceSet" EntitySet="MainPreferenceSets" />
+            <End Role="PreferenceSet1" EntitySet="PreferenceSets" />
+          </AssociationSet>
+          <EntitySet Name="MessageOptionIssues" EntityType="PrefAppModel.MessageOptionIssue" />
+          <AssociationSet Name="FK__MessageOp__Optio__72C60C4A" Association="PrefAppModel.FK__MessageOp__Optio__72C60C4A">
+            <End Role="OptionIssue" EntitySet="OptionIssues" />
+            <End Role="MessageOptionIssue" EntitySet="MessageOptionIssues" />
+          </AssociationSet>
+          <EntitySet Name="ConversationMessages" EntityType="PrefAppModel.ConversationMessage" />
+          <EntitySet Name="MessageIssues" EntityType="PrefAppModel.MessageIssue" />
+          <EntitySet Name="NegConversations" EntityType="PrefAppModel.NegConversation" />
+          <EntitySet Name="PreferenceSetNegs" EntityType="PrefAppModel.PreferenceSetNeg" />
+          <AssociationSet Name="FK__Conversat__NegCo__0E6E26BF" Association="PrefAppModel.FK__Conversat__NegCo__0E6E26BF">
+            <End Role="NegConversation" EntitySet="NegConversations" />
+            <End Role="ConversationMessage" EntitySet="ConversationMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessageIs__Conve__0F624AF8" Association="PrefAppModel.FK__MessageIs__Conve__0F624AF8">
+            <End Role="ConversationMessage" EntitySet="ConversationMessages" />
+            <End Role="MessageIssue" EntitySet="MessageIssues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessageIs__Issue__10566F31" Association="PrefAppModel.FK__MessageIs__Issue__10566F31">
+            <End Role="Issue" EntitySet="Issues" />
+            <End Role="MessageIssue" EntitySet="MessageIssues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessageOp__Messa__123EB7A3" Association="PrefAppModel.FK__MessageOp__Messa__123EB7A3">
+            <End Role="MessageIssue" EntitySet="MessageIssues" />
+            <End Role="MessageOptionIssue" EntitySet="MessageOptionIssues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NegConver__Prefe__1332DBDC" Association="PrefAppModel.FK__NegConver__Prefe__1332DBDC">
+            <End Role="PreferenceSetNeg" EntitySet="PreferenceSetNegs" />
+            <End Role="NegConversation" EntitySet="NegConversations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preferenc__Prefe__14270015" Association="PrefAppModel.FK__Preferenc__Prefe__14270015">
+            <End Role="PreferenceSet" EntitySet="PreferenceSets" />
+            <End Role="PreferenceSetNeg" EntitySet="PreferenceSetNegs" />
+          </AssociationSet>
+          <EntitySet Name="MessageLaterRatedIssues" EntityType="PrefAppModel.MessageLaterRatedIssue" />
+          <AssociationSet Name="FK__MessageLa__Later__2645B050" Association="PrefAppModel.FK__MessageLa__Later__2645B050">
+            <End Role="LaterRatedIssue" EntitySet="LaterRatedIssues" />
+            <End Role="MessageLaterRatedIssue" EntitySet="MessageLaterRatedIssues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessageLa__Messa__25518C17" Association="PrefAppModel.FK__MessageLa__Messa__25518C17">
+            <End Role="MessageIssue" EntitySet="MessageIssues" />
+            <End Role="MessageLaterRatedIssue" EntitySet="MessageLaterRatedIssues" />
+          </AssociationSet>
+          <FunctionImport Name="GetMessageIssueSelectMaxMinValue" ReturnType="Collection(Decimal)">
+            <Parameter Name="preferenceSetNegID" Mode="In" Type="Guid" />
+            <Parameter Name="IssueTypeID" Mode="In" Type="Guid" />
+            <Parameter Name="IssueID" Mode="In" Type="Guid" />
+            <Parameter Name="IsMaxValue" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateConversationAndNegotiationPercentage">
+          <Parameter Name="ConversationMessageID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="PreferenceSetOrganizations" EntityType="PrefAppModel.PreferenceSetOrganization" />
+          <AssociationSet Name="FK_PreferenceSetOrganization_PreferenceSet" Association="PrefAppModel.FK_PreferenceSetOrganization_PreferenceSet">
+            <End Role="PreferenceSet" EntitySet="PreferenceSets" />
+            <End Role="PreferenceSetOrganization" EntitySet="PreferenceSetOrganizations" />
+          </AssociationSet>
+          <FunctionImport Name="GetPreferenceSetForUser" EntitySet="PreferenceSets" ReturnType="Collection(PrefAppModel.PreferenceSet)">
+            <Parameter Name="UserID" Mode="In" Type="Guid" />
+            <Parameter Name="ListOfOrganizations" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetIssueForUser" EntitySet="Issues" ReturnType="Collection(PrefAppModel.Issue)">
+            <Parameter Name="UserID" Mode="In" Type="Guid" />
+            <Parameter Name="ListOfOrganizations" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetNumericIssueForUser" EntitySet="NumericIssues" ReturnType="Collection(PrefAppModel.NumericIssue)">
+            <Parameter Name="UserID" Mode="In" Type="Guid" />
+            <Parameter Name="ListOfOrganizations" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetOptionIssueForUser" EntitySet="OptionIssues" ReturnType="Collection(PrefAppModel.OptionIssue)">
+            <Parameter Name="UserID" Mode="In" Type="Guid" />
+            <Parameter Name="ListOfOrganizations" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetLaterRatedIssueForUser" EntitySet="LaterRatedIssues" ReturnType="Collection(PrefAppModel.LaterRatedIssue)">
+            <Parameter Name="UserID" Mode="In" Type="Guid" />
+            <Parameter Name="ListOfOrganizations" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetIssueStatisticals" ReturnType="Collection(PrefAppModel.IssueStatisticalsResult)">
+          <Parameter Name="UserID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="HighValuesNegs" EntityType="PrefAppModel.HighValuesNeg" />
+          <EntitySet Name="IssueHistoryViews" EntityType="PrefAppModel.IssueHistoryView" />
+          <FunctionImport Name="GetIssueHistory" ReturnType="Collection(PrefAppModel.IssueHistoryResult)">
+          <Parameter Name="KeyWord" Mode="In" Type="String" />
+            <Parameter Name="CurrentNegotiationID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="GetConversationPeriod" ReturnType="Collection(PrefAppModel.ConversationPeriod)">
+          <Parameter Name="ConversationID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="GetNegotiationPeriod" ReturnType="Collection(PrefAppModel.ConversationPeriod)">
+          <Parameter Name="NegotiationID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="GetLastTwoOffersRate" ReturnType="Collection(Decimal)">
+            <Parameter Name="NegotiationID" Mode="In" Type="Guid" />
+            <Parameter Name="ConversationID" Mode="In" Type="Guid" />
+            <Parameter Name="OfferType" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="GetLastTwoOffersIDs" ReturnType="Collection(Guid)">
+            <Parameter Name="NegotiationID" Mode="In" Type="Guid" />
+            <Parameter Name="ConversationID" Mode="In" Type="Guid" />
+            <Parameter Name="OfferType" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="GetOfferDetailsForConversationMessage" ReturnType="Collection(PrefAppModel.OfferItem_Result)">
+          <Parameter Name="ConversationMessageID" Mode="In" Type="Guid" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActionType">
+          <Key>
+            <PropertyRef Name="ActionTypeID" />
+          </Key>
+          <Property Name="ActionTypeID" Type="Guid" Nullable="false" />
+          <Property Name="ActionName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Histories" Relationship="PrefAppModel.FK__History__ActionT__2C3393D01" FromRole="ActionType" ToRole="History1" />
+        </EntityType>
+        <EntityType Name="IssueType">
+          <Key>
+            <PropertyRef Name="IssueTypeID" />
+          </Key>
+          <Property Name="IssueTypeID" Type="Guid" Nullable="false" />
+          <Property Name="IssueTypeName" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Issues" Relationship="PrefAppModel.FK__Issue__IssueType__2E1BDC421" FromRole="IssueType" ToRole="Issue1" />
+        </EntityType>
+        <EntityType Name="MainPreferenceSet">
+          <Key>
+            <PropertyRef Name="MainPreferenceSetID" />
+          </Key>
+          <Property Name="MainPreferenceSetID" Type="Guid" Nullable="false" />
+          <Property Name="MainPreferenceSetName" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PreferenceSets" Relationship="PrefAppModel.FK__Preferenc__MainP__32E0915F1" FromRole="MainPreferenceSet" ToRole="PreferenceSet1" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="SN" />
+          </Key>
+          <Property Name="SN" Nullable="false" Type="Guid" />
+          <Property Name="TableName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="ActionTypeID" Nullable="false" Type="Guid" />
+          <Property Name="OldValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="NewValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="DoneBy" Nullable="false" Type="Guid" />
+          <Property Name="ActionDate" Nullable="false" Type="DateTime" />
+          <NavigationProperty Name="ActionType" Relationship="PrefAppModel.FK__History__ActionT__2C3393D01" FromRole="History1" ToRole="ActionType" />
+        </EntityType>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="IssueID" />
+          </Key>
+          <Property Type="Guid" Name="IssueID" Nullable="false" />
+          <Property Type="String" Name="IssueName" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="PreferenceSetID" Nullable="false" />
+          <Property Type="Guid" Name="IssueTypeID" Nullable="false" />
+          <Property Type="Decimal" Name="IssueWeight" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="IssueType" Relationship="PrefAppModel.FK__Issue__IssueType__2E1BDC421" FromRole="Issue1" ToRole="IssueType" />
+          <NavigationProperty Name="PreferenceSet" Relationship="PrefAppModel.FK__Issue__Preferenc__2D27B8091" FromRole="Issue1" ToRole="PreferenceSet1" />
+          <NavigationProperty Name="LaterRatedIssues" Relationship="PrefAppModel.FK__LaterRate__Issue__2F10007B1" FromRole="Issue1" ToRole="LaterRatedIssue1" />
+          <NavigationProperty Name="NumericIssues" Relationship="PrefAppModel.FK__NumericIs__Issue__30F848ED1" FromRole="Issue1" ToRole="NumericIssue1" />
+          <NavigationProperty Name="OptionIssues" Relationship="PrefAppModel.FK__OptionIss__Issue__31EC6D261" FromRole="Issue1" ToRole="OptionIssue1" />
+          <NavigationProperty Name="MessageIssues" Relationship="PrefAppModel.FK__MessageIs__Issue__10566F31" FromRole="Issue" ToRole="MessageIssue" />
+        </EntityType>
+        <EntityType Name="LaterRatedIssue">
+          <Key>
+            <PropertyRef Name="LaterRatedIssueID" />
+          </Key>
+          <Property Type="Guid" Name="LaterRatedIssueID" Nullable="false" />
+          <Property Type="String" Name="LaterRatedIssueValue" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="IssueID" Nullable="false" />
+          <Property Type="Decimal" Name="LaterRatedIssueWeight" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="Issue" Relationship="PrefAppModel.FK__LaterRate__Issue__2F10007B1" FromRole="LaterRatedIssue1" ToRole="Issue1" />
+          <NavigationProperty Name="MessageLaterRatedIssues" Relationship="PrefAppModel.FK__MessageLa__Later__2645B050" FromRole="LaterRatedIssue" ToRole="MessageLaterRatedIssue" />
+          </EntityType>
+        <EntityType Name="NumericIssue">
+          <Key>
+            <PropertyRef Name="NumericIssueID" />
+          </Key>
+          <Property Type="Guid" Name="NumericIssueID" Nullable="false" />
+          <Property Type="Guid" Name="IssueID" Nullable="false" />
+          <Property Type="Decimal" Name="MinimumValue" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="MaximumValue" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="OptimumValueStart" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="OptimumValueEnd" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Byte" Name="MinimumOperator" Nullable="false" />
+          <Property Type="Byte" Name="MaximumOperator" Nullable="false" />
+          <Property Type="String" Name="Unit" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="Issue" Relationship="PrefAppModel.FK__NumericIs__Issue__30F848ED1" FromRole="NumericIssue1" ToRole="Issue1" />
+        </EntityType>
+        <EntityType Name="OptionIssue">
+          <Key>
+            <PropertyRef Name="OptionIssueID" />
+          </Key>
+          <Property Type="Guid" Name="OptionIssueID" Nullable="false" />
+          <Property Type="String" Name="OptionIssueValue" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="IssueID" Nullable="false" />
+          <Property Type="Decimal" Name="OptionIssueWeight" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="Issue" Relationship="PrefAppModel.FK__OptionIss__Issue__31EC6D261" FromRole="OptionIssue1" ToRole="Issue1" />
+          <NavigationProperty Name="MessageOptionIssues" Relationship="PrefAppModel.FK__MessageOp__Optio__72C60C4A" FromRole="OptionIssue" ToRole="MessageOptionIssue" />
+        </EntityType>
+        <EntityType Name="PreferenceSet">
+          <Key>
+            <PropertyRef Name="PreferenceSetID" />
+          </Key>
+          <Property Type="Guid" Name="PreferenceSetID" Nullable="false" />
+          <Property Type="String" Name="PreferenceSetName" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="UserID" Nullable="false" />
+          <Property Type="Guid" Name="MainPreferenceSetID" Nullable="false" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="Issues" Relationship="PrefAppModel.FK__Issue__Preferenc__2D27B8091" FromRole="PreferenceSet1" ToRole="Issue1" />
+          <NavigationProperty Name="MainPreferenceSet" Relationship="PrefAppModel.FK__Preferenc__MainP__32E0915F1" FromRole="PreferenceSet1" ToRole="MainPreferenceSet" />
+          <NavigationProperty Name="PreferenceSetNegs" Relationship="PrefAppModel.FK__Preferenc__Prefe__14270015" FromRole="PreferenceSet" ToRole="PreferenceSetNeg" />
+          <Property Type="Boolean" Name="Checkvariation" Nullable="false" />
+          <Property Type="Decimal" Name="VariationValue" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="PreferenceSetOrganizations" Relationship="PrefAppModel.FK_PreferenceSetOrganization_PreferenceSet" FromRole="PreferenceSet" ToRole="PreferenceSetOrganization" />
+          <Property Type="Decimal" Name="MaxPercentage" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <Association Name="FK__History__ActionT__2C3393D01">
+          <End Type="PrefAppModel.ActionType" Multiplicity="1" Role="ActionType" />
+          <End Type="PrefAppModel.History" Multiplicity="*" Role="History1" />
+          <ReferentialConstraint>
+            <Principal Role="ActionType">
+              <PropertyRef Name="ActionTypeID" />
+            </Principal>
+            <Dependent Role="History1">
+              <PropertyRef Name="ActionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Issue__IssueType__2E1BDC421">
+          <End Type="PrefAppModel.IssueType" Role="IssueType" Multiplicity="1" />
+          <End Type="PrefAppModel.Issue" Role="Issue1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IssueType">
+              <PropertyRef Name="IssueTypeID" />
+            </Principal>
+            <Dependent Role="Issue1">
+              <PropertyRef Name="IssueTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Issue__Preferenc__2D27B8091">
+          <End Type="PrefAppModel.PreferenceSet" Role="PreferenceSet1" Multiplicity="1" />
+          <End Type="PrefAppModel.Issue" Role="Issue1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferenceSet1">
+              <PropertyRef Name="PreferenceSetID" />
+            </Principal>
+            <Dependent Role="Issue1">
+              <PropertyRef Name="PreferenceSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LaterRate__Issue__2F10007B1">
+          <End Type="PrefAppModel.Issue" Role="Issue1" Multiplicity="1" />
+          <End Type="PrefAppModel.LaterRatedIssue" Role="LaterRatedIssue1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue1">
+              <PropertyRef Name="IssueID" />
+            </Principal>
+            <Dependent Role="LaterRatedIssue1">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NumericIs__Issue__30F848ED1">
+          <End Type="PrefAppModel.Issue" Role="Issue1" Multiplicity="1" />
+          <End Type="PrefAppModel.NumericIssue" Role="NumericIssue1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue1">
+              <PropertyRef Name="IssueID" />
+            </Principal>
+            <Dependent Role="NumericIssue1">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OptionIss__Issue__31EC6D261">
+          <End Type="PrefAppModel.Issue" Role="Issue1" Multiplicity="1" />
+          <End Type="PrefAppModel.OptionIssue" Role="OptionIssue1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue1">
+              <PropertyRef Name="IssueID" />
+            </Principal>
+            <Dependent Role="OptionIssue1">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preferenc__MainP__32E0915F1">
+          <End Type="PrefAppModel.MainPreferenceSet" Role="MainPreferenceSet" Multiplicity="1" />
+          <End Type="PrefAppModel.PreferenceSet" Role="PreferenceSet1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainPreferenceSet">
+              <PropertyRef Name="MainPreferenceSetID" />
+            </Principal>
+            <Dependent Role="PreferenceSet1">
+              <PropertyRef Name="MainPreferenceSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MessageOptionIssue">
+          <Key>
+            <PropertyRef Name="MessageOptionIssueID" />
+          </Key>
+          <Property Type="Guid" Name="MessageOptionIssueID" Nullable="false" />
+          <Property Type="Guid" Name="MessageIssueID" Nullable="false" />
+          <Property Type="Guid" Name="OptionIssueID" Nullable="false" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="OptionIssue" Relationship="PrefAppModel.FK__MessageOp__Optio__72C60C4A" FromRole="MessageOptionIssue" ToRole="OptionIssue" />
+          <NavigationProperty Name="MessageIssue" Relationship="PrefAppModel.FK__MessageOp__Messa__123EB7A3" FromRole="MessageOptionIssue" ToRole="MessageIssue" />
+        </EntityType>
+        <Association Name="FK__MessageOp__Optio__72C60C4A">
+          <End Type="PrefAppModel.OptionIssue" Role="OptionIssue" Multiplicity="1" />
+          <End Type="PrefAppModel.MessageOptionIssue" Role="MessageOptionIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OptionIssue">
+              <PropertyRef Name="OptionIssueID" />
+            </Principal>
+            <Dependent Role="MessageOptionIssue">
+              <PropertyRef Name="OptionIssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ConversationMessage">
+          <Key>
+            <PropertyRef Name="ConversationMessageID" />
+          </Key>
+          <Property Type="Guid" Name="ConversationMessageID" Nullable="false" />
+          <Property Type="Guid" Name="MessageID" />
+          <Property Type="Decimal" Name="Percentage" Precision="18" Scale="0" Nullable="true" />
+          <Property Type="Guid" Name="NegConversationID" Nullable="false" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="NegConversation" Relationship="PrefAppModel.FK__Conversat__NegCo__0E6E26BF" FromRole="ConversationMessage" ToRole="NegConversation" />
+          <NavigationProperty Name="MessageIssues" Relationship="PrefAppModel.FK__MessageIs__Conve__0F624AF8" FromRole="ConversationMessage" ToRole="MessageIssue" />
+          <Property Type="DateTime" Name="RatedDate" />
+          <Property Type="Boolean" Name="IsSent" />
+          <Property Type="Boolean" Name="IsExceedVariation" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MessageIssue">
+          <Key>
+            <PropertyRef Name="MessageIssueID" />
+          </Key>
+          <Property Type="Guid" Name="MessageIssueID" Nullable="false" />
+          <Property Type="Guid" Name="ConversationMessageID" Nullable="false" />
+          <Property Type="Guid" Name="IssueID" Nullable="false" />
+          <Property Type="Decimal" Name="Score" Precision="18" Scale="0" />
+          <Property Type="String" Name="Value" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="ConversationMessage" Relationship="PrefAppModel.FK__MessageIs__Conve__0F624AF8" FromRole="MessageIssue" ToRole="ConversationMessage" />
+          <NavigationProperty Name="Issue" Relationship="PrefAppModel.FK__MessageIs__Issue__10566F31" FromRole="MessageIssue" ToRole="Issue" />
+          <NavigationProperty Name="MessageOptionIssues" Relationship="PrefAppModel.FK__MessageOp__Messa__123EB7A3" FromRole="MessageIssue" ToRole="MessageOptionIssue" />
+          <NavigationProperty Name="MessageLaterRatedIssues" Relationship="PrefAppModel.FK__MessageLa__Messa__25518C17" FromRole="MessageIssue" ToRole="MessageLaterRatedIssue" />
+        </EntityType>
+        <EntityType Name="NegConversation">
+          <Key>
+            <PropertyRef Name="NegConversationID" />
+          </Key>
+          <Property Type="Guid" Name="NegConversationID" Nullable="false" />
+          <Property Type="Guid" Name="ConversationID" />
+          <Property Type="Decimal" Name="Percentage" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Guid" Name="PreferenceSetNegID" Nullable="false" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="ConversationMessages" Relationship="PrefAppModel.FK__Conversat__NegCo__0E6E26BF" FromRole="NegConversation" ToRole="ConversationMessage" />
+          <NavigationProperty Name="PreferenceSetNeg" Relationship="PrefAppModel.FK__NegConver__Prefe__1332DBDC" FromRole="NegConversation" ToRole="PreferenceSetNeg" />
+        </EntityType>
+        <EntityType Name="PreferenceSetNeg">
+          <Key>
+            <PropertyRef Name="PreferenceSetNegID" />
+          </Key>
+          <Property Type="Guid" Name="PreferenceSetNegID" Nullable="false" />
+          <Property Type="Guid" Name="NegID" Nullable="false" />
+          <Property Type="Decimal" Name="Percentage" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Guid" Name="PreferenceSetID" Nullable="false" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="NegConversations" Relationship="PrefAppModel.FK__NegConver__Prefe__1332DBDC" FromRole="PreferenceSetNeg" ToRole="NegConversation" />
+          <NavigationProperty Name="PreferenceSet" Relationship="PrefAppModel.FK__Preferenc__Prefe__14270015" FromRole="PreferenceSetNeg" ToRole="PreferenceSet" />
+          <Property Type="String" Name="NegotiationName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="StatusID" />
+        </EntityType>
+        <Association Name="FK__Conversat__NegCo__0E6E26BF">
+          <End Type="PrefAppModel.NegConversation" Role="NegConversation" Multiplicity="1" />
+          <End Type="PrefAppModel.ConversationMessage" Role="ConversationMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NegConversation">
+              <PropertyRef Name="NegConversationID" />
+            </Principal>
+            <Dependent Role="ConversationMessage">
+              <PropertyRef Name="NegConversationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessageIs__Conve__0F624AF8">
+          <End Type="PrefAppModel.ConversationMessage" Role="ConversationMessage" Multiplicity="1" />
+          <End Type="PrefAppModel.MessageIssue" Role="MessageIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConversationMessage">
+              <PropertyRef Name="ConversationMessageID" />
+            </Principal>
+            <Dependent Role="MessageIssue">
+              <PropertyRef Name="ConversationMessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessageIs__Issue__10566F31">
+          <End Type="PrefAppModel.Issue" Role="Issue" Multiplicity="1" />
+          <End Type="PrefAppModel.MessageIssue" Role="MessageIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue">
+              <PropertyRef Name="IssueID" />
+            </Principal>
+            <Dependent Role="MessageIssue">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessageOp__Messa__123EB7A3">
+          <End Type="PrefAppModel.MessageIssue" Role="MessageIssue" Multiplicity="1" />
+          <End Type="PrefAppModel.MessageOptionIssue" Role="MessageOptionIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessageIssue">
+              <PropertyRef Name="MessageIssueID" />
+            </Principal>
+            <Dependent Role="MessageOptionIssue">
+              <PropertyRef Name="MessageIssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NegConver__Prefe__1332DBDC">
+          <End Type="PrefAppModel.PreferenceSetNeg" Role="PreferenceSetNeg" Multiplicity="1" />
+          <End Type="PrefAppModel.NegConversation" Role="NegConversation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferenceSetNeg">
+              <PropertyRef Name="PreferenceSetNegID" />
+            </Principal>
+            <Dependent Role="NegConversation">
+              <PropertyRef Name="PreferenceSetNegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preferenc__Prefe__14270015">
+          <End Type="PrefAppModel.PreferenceSet" Role="PreferenceSet" Multiplicity="1" />
+          <End Type="PrefAppModel.PreferenceSetNeg" Role="PreferenceSetNeg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferenceSet">
+              <PropertyRef Name="PreferenceSetID" />
+            </Principal>
+            <Dependent Role="PreferenceSetNeg">
+              <PropertyRef Name="PreferenceSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MessageLaterRatedIssue">
+          <Key>
+            <PropertyRef Name="MessageLaterRatedIssueID" />
+          </Key>
+          <Property Type="Guid" Name="MessageLaterRatedIssueID" Nullable="false" />
+          <Property Type="Guid" Name="MessageIssueID" Nullable="false" />
+          <Property Type="Guid" Name="LaterRatedIssueID" Nullable="false" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="LaterRatedIssue" Relationship="PrefAppModel.FK__MessageLa__Later__2645B050" FromRole="MessageLaterRatedIssue" ToRole="LaterRatedIssue" />
+          <NavigationProperty Name="MessageIssue" Relationship="PrefAppModel.FK__MessageLa__Messa__25518C17" FromRole="MessageLaterRatedIssue" ToRole="MessageIssue" />
+        </EntityType>
+        <Association Name="FK__MessageLa__Later__2645B050">
+          <End Type="PrefAppModel.LaterRatedIssue" Role="LaterRatedIssue" Multiplicity="1" />
+          <End Type="PrefAppModel.MessageLaterRatedIssue" Role="MessageLaterRatedIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaterRatedIssue">
+              <PropertyRef Name="LaterRatedIssueID" />
+            </Principal>
+            <Dependent Role="MessageLaterRatedIssue">
+              <PropertyRef Name="LaterRatedIssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessageLa__Messa__25518C17">
+          <End Type="PrefAppModel.MessageIssue" Role="MessageIssue" Multiplicity="1" />
+          <End Type="PrefAppModel.MessageLaterRatedIssue" Role="MessageLaterRatedIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessageIssue">
+              <PropertyRef Name="MessageIssueID" />
+            </Principal>
+            <Dependent Role="MessageLaterRatedIssue">
+              <PropertyRef Name="MessageIssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PreferenceSetOrganization">
+          <Key>
+            <PropertyRef Name="PreferenceSetOrganizationID" />
+          </Key>
+          <Property Type="Guid" Name="PreferenceSetOrganizationID" Nullable="false" />
+          <Property Type="Guid" Name="PreferenceSetID" Nullable="false" />
+          <Property Type="Guid" Name="OrganizationID" Nullable="false" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <Property Type="Guid" Name="DeletedBy" />
+          <Property Type="DateTime" Name="DeletedOn" />
+          <NavigationProperty Name="PreferenceSet" Relationship="PrefAppModel.FK_PreferenceSetOrganization_PreferenceSet" FromRole="PreferenceSetOrganization" ToRole="PreferenceSet" />
+        </EntityType>
+        <Association Name="FK_PreferenceSetOrganization_PreferenceSet">
+          <End Type="PrefAppModel.PreferenceSet" Role="PreferenceSet" Multiplicity="1" />
+          <End Type="PrefAppModel.PreferenceSetOrganization" Role="PreferenceSetOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferenceSet">
+              <PropertyRef Name="PreferenceSetID" />
+            </Principal>
+            <Dependent Role="PreferenceSetOrganization">
+              <PropertyRef Name="PreferenceSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="IssueStatisticalsResult">
+          <Property Type="String" Name="IssueName" Nullable="false" MaxLength="300" />
+          <Property Type="Int32" Name="TimesUsed" Nullable="true" />
+          <Property Type="Int64" Name="Rank" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="HighValuesNeg">
+          <Key>
+            <PropertyRef Name="NegotiationName" />
+            <PropertyRef Name="PreferenceSetName" />
+            <PropertyRef Name="NegID" />
+          </Key>
+          <Property Type="String" Name="NegotiationName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreferenceSetName" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CounterPartsCount" />
+          <Property Type="Guid" Name="NegID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IssueHistoryView">
+          <Key>
+            <PropertyRef Name="IssueName" />
+            <PropertyRef Name="PreferenceSetName" />
+            <PropertyRef Name="NegotiationName" />
+            <PropertyRef Name="IssueWeight" />
+            <PropertyRef Name="NegID" />
+          </Key>
+          <Property Type="String" Name="IssueName" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreferenceSetName" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NegotiationName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="IssueWeight" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Guid" Name="NegID" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="IssueHistoryResult">
+          <Property Type="String" Name="IssueName" Nullable="false" MaxLength="300" />
+          <Property Type="Int32" Name="TimesUsed" Nullable="true" />
+          <Property Type="Decimal" Name="AverageScore" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Int64" Name="Rank" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConversationPeriod">
+          <Property Type="DateTime" Name="MinConversationDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="MaxConversationDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="OfferItem_Result">
+          <Property Type="Guid" Name="IssueID" Nullable="false" />
+          <Property Type="Decimal" Name="Score" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="OptionRate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Guid" Name="OptionID" Nullable="true" />
+          <Property Type="Int64" Name="Rank" Nullable="false" />
+          <Property Type="Guid" Name="IssueTypeID" Nullable="false" />
+          <Property Type="String" Name="Value" Nullable="true" MaxLength="300" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PrefAppModelStoreContainer" CdmEntityContainer="PrefAppEntities">
+          <EntitySetMapping Name="C__RefactorLog"><EntityTypeMapping TypeName="PrefAppModel.C__RefactorLog"><MappingFragment StoreEntitySet="__RefactorLog">
+            <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ActionTypes"><EntityTypeMapping TypeName="PrefAppModel.ActionType"><MappingFragment StoreEntitySet="ActionType">
+            <ScalarProperty Name="ActionTypeID" ColumnName="ActionTypeID" />
+            <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.ActionType">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspActionTypeInsert">
+                  <ScalarProperty Name="ActionName" ParameterName="ActionName" />
+                  <ScalarProperty Name="ActionTypeID" ParameterName="ActionTypeID" />
+                </InsertFunction>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspActionTypeDelete">
+                  <ScalarProperty Name="ActionTypeID" ParameterName="ActionTypeID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspActionTypeUpdate">
+                  <ScalarProperty Name="ActionName" ParameterName="ActionName" Version="Current" />
+                  <ScalarProperty Name="ActionTypeID" ParameterName="ActionTypeID" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+            </EntitySetMapping>
+          <EntitySetMapping Name="IssueTypes"><EntityTypeMapping TypeName="PrefAppModel.IssueType"><MappingFragment StoreEntitySet="IssueType">
+            <ScalarProperty Name="IssueTypeID" ColumnName="IssueTypeID" />
+            <ScalarProperty Name="IssueTypeName" ColumnName="IssueTypeName" />
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.IssueType">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspIssueTypeDelete">
+                  <ScalarProperty Name="IssueTypeID" ParameterName="IssueTypeID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspIssueTypeUpdate">
+                  <ScalarProperty Name="IssueTypeName" ParameterName="IssueTypeName" Version="Current" />
+                  <ScalarProperty Name="IssueTypeID" ParameterName="IssueTypeID" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspIssueTypeInsert">
+                  <ScalarProperty Name="IssueTypeName" ParameterName="IssueTypeName" />
+                  <ScalarProperty Name="IssueTypeID" ParameterName="IssueTypeID" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MainPreferenceSets"><EntityTypeMapping TypeName="PrefAppModel.MainPreferenceSet"><MappingFragment StoreEntitySet="MainPreferenceSet">
+            <ScalarProperty Name="MainPreferenceSetID" ColumnName="MainPreferenceSetID" />
+            <ScalarProperty Name="MainPreferenceSetName" ColumnName="MainPreferenceSetName" />
+          </MappingFragment></EntityTypeMapping>
+            </EntitySetMapping>
+          <EntitySetMapping Name="Histories">
+            <EntityTypeMapping TypeName="PrefAppModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="DoneBy" ColumnName="DoneBy" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="ActionTypeID" ColumnName="ActionTypeID" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.History">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspHistoryDelete">
+                  <ScalarProperty Name="SN" ParameterName="SN" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspHistoryUpdate">
+                  <ScalarProperty Name="ActionDate" ParameterName="ActionDate" Version="Current" />
+                  <ScalarProperty Name="DoneBy" ParameterName="DoneBy" Version="Current" />
+                  <ScalarProperty Name="NewValue" ParameterName="NewValue" Version="Current" />
+                  <ScalarProperty Name="OldValue" ParameterName="OldValue" Version="Current" />
+                  <ScalarProperty Name="ActionTypeID" ParameterName="ActionTypeID" Version="Current" />
+                  <ScalarProperty Name="TableName" ParameterName="TableName" Version="Current" />
+                  <ScalarProperty Name="SN" ParameterName="SN" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspHistoryInsert">
+                  <ScalarProperty Name="ActionDate" ParameterName="ActionDate" />
+                  <ScalarProperty Name="DoneBy" ParameterName="DoneBy" />
+                  <ScalarProperty Name="NewValue" ParameterName="NewValue" />
+                  <ScalarProperty Name="OldValue" ParameterName="OldValue" />
+                  <ScalarProperty Name="ActionTypeID" ParameterName="ActionTypeID" />
+                  <ScalarProperty Name="TableName" ParameterName="TableName" />
+                  <ScalarProperty Name="SN" ParameterName="SN" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Issues">
+            <EntityTypeMapping TypeName="PrefAppModel.Issue">
+              <MappingFragment StoreEntitySet="Issue">
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="IssueWeight" ColumnName="IssueWeight" />
+                <ScalarProperty Name="IssueTypeID" ColumnName="IssueTypeID" />
+                <ScalarProperty Name="PreferenceSetID" ColumnName="PreferenceSetID" />
+                <ScalarProperty Name="IssueName" ColumnName="IssueName" />
+                <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.Issue">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspIssueDelete">
+                  <ScalarProperty Name="IssueID" ParameterName="IssueID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspIssueUpdate">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="IssueWeight" ParameterName="IssueWeight" Version="Current" />
+                  <ScalarProperty Name="IssueTypeID" ParameterName="IssueTypeID" Version="Current" />
+                  <ScalarProperty Name="PreferenceSetID" ParameterName="PreferenceSetID" Version="Current" />
+                  <ScalarProperty Name="IssueName" ParameterName="IssueName" Version="Current" />
+                  <ScalarProperty Name="IssueID" ParameterName="IssueID" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspIssueInsert">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="IssueWeight" ParameterName="IssueWeight" />
+                  <ScalarProperty Name="IssueTypeID" ParameterName="IssueTypeID" />
+                  <ScalarProperty Name="PreferenceSetID" ParameterName="PreferenceSetID" />
+                  <ScalarProperty Name="IssueName" ParameterName="IssueName" />
+                  <ScalarProperty Name="IssueID" ParameterName="IssueID" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LaterRatedIssues">
+            <EntityTypeMapping TypeName="PrefAppModel.LaterRatedIssue">
+              <MappingFragment StoreEntitySet="LaterRatedIssue">
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LaterRatedIssueWeight" ColumnName="LaterRatedIssueWeight" />
+                <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+                <ScalarProperty Name="LaterRatedIssueValue" ColumnName="LaterRatedIssueValue" />
+                <ScalarProperty Name="LaterRatedIssueID" ColumnName="LaterRatedIssueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.LaterRatedIssue">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspLaterRatedIssueInsert">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="LaterRatedIssueWeight" ParameterName="LaterRatedIssueWeight" />
+                  <ScalarProperty Name="IssueID" ParameterName="IssueID" />
+                  <ScalarProperty Name="LaterRatedIssueValue" ParameterName="LaterRatedIssueValue" />
+                  <ScalarProperty Name="LaterRatedIssueID" ParameterName="LaterRatedIssueID" />
+                </InsertFunction>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspLaterRatedIssueDelete">
+                  <ScalarProperty Name="LaterRatedIssueID" ParameterName="LaterRatedIssueID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspLaterRatedIssueUpdate">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="LaterRatedIssueWeight" ParameterName="LaterRatedIssueWeight" Version="Current" />
+                  <ScalarProperty Name="IssueID" ParameterName="IssueID" Version="Current" />
+                  <ScalarProperty Name="LaterRatedIssueValue" ParameterName="LaterRatedIssueValue" Version="Current" />
+                  <ScalarProperty Name="LaterRatedIssueID" ParameterName="LaterRatedIssueID" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NumericIssues">
+            <EntityTypeMapping TypeName="PrefAppModel.NumericIssue">
+              <MappingFragment StoreEntitySet="NumericIssue">
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="MaximumOperator" ColumnName="MaximumOperator" />
+                <ScalarProperty Name="MinimumOperator" ColumnName="MinimumOperator" />
+                <ScalarProperty Name="OptimumValueEnd" ColumnName="OptimumValueEnd" />
+                <ScalarProperty Name="OptimumValueStart" ColumnName="OptimumValueStart" />
+                <ScalarProperty Name="MaximumValue" ColumnName="MaximumValue" />
+                <ScalarProperty Name="MinimumValue" ColumnName="MinimumValue" />
+                <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+                <ScalarProperty Name="NumericIssueID" ColumnName="NumericIssueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.NumericIssue">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspNumericIssueDelete">
+                  <ScalarProperty Name="NumericIssueID" ParameterName="NumericIssueID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspNumericIssueUpdate">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="Unit" ParameterName="Unit" Version="Current" />
+                  <ScalarProperty Name="MaximumOperator" ParameterName="MaximumOperator" Version="Current" />
+                  <ScalarProperty Name="MinimumOperator" ParameterName="MinimumOperator" Version="Current" />
+                  <ScalarProperty Name="OptimumValueEnd" ParameterName="OptimumValueEnd" Version="Current" />
+                  <ScalarProperty Name="OptimumValueStart" ParameterName="OptimumValueStart" Version="Current" />
+                  <ScalarProperty Name="MaximumValue" ParameterName="MaximumValue" Version="Current" />
+                  <ScalarProperty Name="MinimumValue" ParameterName="MinimumValue" Version="Current" />
+                  <ScalarProperty Name="IssueID" ParameterName="IssueID" Version="Current" />
+                  <ScalarProperty Name="NumericIssueID" ParameterName="NumericIssueID" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspNumericIssueInsert">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="Unit" ParameterName="Unit" />
+                  <ScalarProperty Name="MaximumOperator" ParameterName="MaximumOperator" />
+                  <ScalarProperty Name="MinimumOperator" ParameterName="MinimumOperator" />
+                  <ScalarProperty Name="OptimumValueEnd" ParameterName="OptimumValueEnd" />
+                  <ScalarProperty Name="OptimumValueStart" ParameterName="OptimumValueStart" />
+                  <ScalarProperty Name="MaximumValue" ParameterName="MaximumValue" />
+                  <ScalarProperty Name="MinimumValue" ParameterName="MinimumValue" />
+                  <ScalarProperty Name="IssueID" ParameterName="IssueID" />
+                  <ScalarProperty Name="NumericIssueID" ParameterName="NumericIssueID" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OptionIssues">
+            <EntityTypeMapping TypeName="PrefAppModel.OptionIssue">
+              <MappingFragment StoreEntitySet="OptionIssue">
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="OptionIssueWeight" ColumnName="OptionIssueWeight" />
+                <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+                <ScalarProperty Name="OptionIssueValue" ColumnName="OptionIssueValue" />
+                <ScalarProperty Name="OptionIssueID" ColumnName="OptionIssueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.OptionIssue">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspOptionIssueDelete">
+                  <ScalarProperty Name="OptionIssueID" ParameterName="OptionIssueID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspOptionIssueUpdate">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="OptionIssueWeight" ParameterName="OptionIssueWeight" Version="Current" />
+                  <ScalarProperty Name="IssueID" ParameterName="IssueID" Version="Current" />
+                  <ScalarProperty Name="OptionIssueValue" ParameterName="OptionIssueValue" Version="Current" />
+                  <ScalarProperty Name="OptionIssueID" ParameterName="OptionIssueID" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspOptionIssueInsert">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="OptionIssueWeight" ParameterName="OptionIssueWeight" />
+                  <ScalarProperty Name="IssueID" ParameterName="IssueID" />
+                  <ScalarProperty Name="OptionIssueValue" ParameterName="OptionIssueValue" />
+                  <ScalarProperty Name="OptionIssueID" ParameterName="OptionIssueID" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreferenceSets">
+            <EntityTypeMapping TypeName="PrefAppModel.PreferenceSet">
+              <MappingFragment StoreEntitySet="PreferenceSet">
+                <ScalarProperty Name="MaxPercentage" ColumnName="MaxPercentage" />
+                <ScalarProperty Name="VariationValue" ColumnName="VariationValue" />
+                <ScalarProperty Name="Checkvariation" ColumnName="Checkvariation" />
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="MainPreferenceSetID" ColumnName="MainPreferenceSetID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PreferenceSetName" ColumnName="PreferenceSetName" />
+                <ScalarProperty Name="PreferenceSetID" ColumnName="PreferenceSetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.PreferenceSet">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspPreferenceSetInsert">
+                  <ScalarProperty Name="MaxPercentage" ParameterName="MaxPercentage" />
+                  <ScalarProperty Name="VariationValue" ParameterName="VariationValue" />
+                  <ScalarProperty Name="Checkvariation" ParameterName="Checkvariation" />
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="MainPreferenceSetID" ParameterName="MainPreferenceSetID" />
+                  <ScalarProperty Name="UserID" ParameterName="UserID" />
+                  <ScalarProperty Name="PreferenceSetName" ParameterName="PreferenceSetName" />
+                  <ScalarProperty Name="PreferenceSetID" ParameterName="PreferenceSetID" />
+                </InsertFunction>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspPreferenceSetDelete">
+                  <ScalarProperty Name="PreferenceSetID" ParameterName="PreferenceSetID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspPreferenceSetUpdate">
+                  <ScalarProperty Name="MaxPercentage" ParameterName="MaxPercentage" Version="Current" />
+                  <ScalarProperty Name="VariationValue" ParameterName="VariationValue" Version="Current" />
+                  <ScalarProperty Name="Checkvariation" ParameterName="Checkvariation" Version="Current" />
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="MainPreferenceSetID" ParameterName="MainPreferenceSetID" Version="Current" />
+                  <ScalarProperty Name="UserID" ParameterName="UserID" Version="Current" />
+                  <ScalarProperty Name="PreferenceSetName" ParameterName="PreferenceSetName" Version="Current" />
+                  <ScalarProperty Name="PreferenceSetID" ParameterName="PreferenceSetID" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageOptionIssues">
+            <EntityTypeMapping TypeName="PrefAppModel.MessageOptionIssue">
+              <MappingFragment StoreEntitySet="MessageOptionIssue">
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="OptionIssueID" ColumnName="OptionIssueID" />
+                <ScalarProperty Name="MessageIssueID" ColumnName="MessageIssueID" />
+                <ScalarProperty Name="MessageOptionIssueID" ColumnName="MessageOptionIssueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.MessageOptionIssue">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspMessageOptionIssueDelete">
+                  <ScalarProperty Name="MessageOptionIssueID" ParameterName="MessageOptionIssueID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspMessageOptionIssueUpdate">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="OptionIssueID" ParameterName="OptionIssueID" Version="Current" />
+                  <ScalarProperty Name="MessageIssueID" ParameterName="MessageIssueID" Version="Current" />
+                  <ScalarProperty Name="MessageOptionIssueID" ParameterName="MessageOptionIssueID" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspMessageOptionIssueInsert">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="OptionIssueID" ParameterName="OptionIssueID" />
+                  <ScalarProperty Name="MessageIssueID" ParameterName="MessageIssueID" />
+                  <ScalarProperty Name="MessageOptionIssueID" ParameterName="MessageOptionIssueID" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConversationMessages">
+            <EntityTypeMapping TypeName="PrefAppModel.ConversationMessage">
+              <MappingFragment StoreEntitySet="ConversationMessage">
+                <ScalarProperty Name="IsExceedVariation" ColumnName="IsExceedVariation" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="RatedDate" ColumnName="RatedDate" />
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="NegConversationID" ColumnName="NegConversationID" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="ConversationMessageID" ColumnName="ConversationMessageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.ConversationMessage">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspConversationMessageDelete">
+                  <ScalarProperty Name="ConversationMessageID" ParameterName="ConversationMessageID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspConversationMessageUpdate">
+                  <ScalarProperty Name="IsExceedVariation" ParameterName="IsExceedVariation" Version="Current" />
+                  <ScalarProperty Name="IsSent" ParameterName="IsSent" Version="Current" />
+                  <ScalarProperty Name="RatedDate" ParameterName="RatedDate" Version="Current" />
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="NegConversationID" ParameterName="NegConversationID" Version="Current" />
+                  <ScalarProperty Name="Percentage" ParameterName="Percentage" Version="Current" />
+                  <ScalarProperty Name="MessageID" ParameterName="MessageID" Version="Current" />
+                  <ScalarProperty Name="ConversationMessageID" ParameterName="ConversationMessageID" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspConversationMessageInsert">
+                  <ScalarProperty Name="IsExceedVariation" ParameterName="IsExceedVariation" />
+                  <ScalarProperty Name="IsSent" ParameterName="IsSent" />
+                  <ScalarProperty Name="RatedDate" ParameterName="RatedDate" />
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="NegConversationID" ParameterName="NegConversationID" />
+                  <ScalarProperty Name="Percentage" ParameterName="Percentage" />
+                  <ScalarProperty Name="MessageID" ParameterName="MessageID" />
+                  <ScalarProperty Name="ConversationMessageID" ParameterName="ConversationMessageID" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageIssues">
+            <EntityTypeMapping TypeName="PrefAppModel.MessageIssue">
+              <MappingFragment StoreEntitySet="MessageIssue">
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+                <ScalarProperty Name="ConversationMessageID" ColumnName="ConversationMessageID" />
+                <ScalarProperty Name="MessageIssueID" ColumnName="MessageIssueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.MessageIssue">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspMessageIssueDelete">
+                  <ScalarProperty Name="MessageIssueID" ParameterName="MessageIssueID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspMessageIssueUpdate">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="Value" ParameterName="Value" Version="Current" />
+                  <ScalarProperty Name="Score" ParameterName="Score" Version="Current" />
+                  <ScalarProperty Name="IssueID" ParameterName="IssueID" Version="Current" />
+                  <ScalarProperty Name="ConversationMessageID" ParameterName="ConversationMessageID" Version="Current" />
+                  <ScalarProperty Name="MessageIssueID" ParameterName="MessageIssueID" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspMessageIssueInsert">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="Value" ParameterName="Value" />
+                  <ScalarProperty Name="Score" ParameterName="Score" />
+                  <ScalarProperty Name="IssueID" ParameterName="IssueID" />
+                  <ScalarProperty Name="ConversationMessageID" ParameterName="ConversationMessageID" />
+                  <ScalarProperty Name="MessageIssueID" ParameterName="MessageIssueID" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NegConversations">
+            <EntityTypeMapping TypeName="PrefAppModel.NegConversation">
+              <MappingFragment StoreEntitySet="NegConversation">
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="PreferenceSetNegID" ColumnName="PreferenceSetNegID" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="ConversationID" ColumnName="ConversationID" />
+                <ScalarProperty Name="NegConversationID" ColumnName="NegConversationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.NegConversation">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspNegConversationDelete">
+                  <ScalarProperty Name="NegConversationID" ParameterName="NegConversationID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspNegConversationUpdate">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="PreferenceSetNegID" ParameterName="PreferenceSetNegID" Version="Current" />
+                  <ScalarProperty Name="Percentage" ParameterName="Percentage" Version="Current" />
+                  <ScalarProperty Name="ConversationID" ParameterName="ConversationID" Version="Current" />
+                  <ScalarProperty Name="NegConversationID" ParameterName="NegConversationID" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspNegConversationInsert">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="PreferenceSetNegID" ParameterName="PreferenceSetNegID" />
+                  <ScalarProperty Name="Percentage" ParameterName="Percentage" />
+                  <ScalarProperty Name="ConversationID" ParameterName="ConversationID" />
+                  <ScalarProperty Name="NegConversationID" ParameterName="NegConversationID" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreferenceSetNegs">
+            <EntityTypeMapping TypeName="PrefAppModel.PreferenceSetNeg">
+              <MappingFragment StoreEntitySet="PreferenceSetNeg">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="NegotiationName" ColumnName="NegotiationName" />
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="PreferenceSetID" ColumnName="PreferenceSetID" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="NegID" ColumnName="NegID" />
+                <ScalarProperty Name="PreferenceSetNegID" ColumnName="PreferenceSetNegID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.PreferenceSetNeg">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspPreferenceSetNegDelete">
+                  <ScalarProperty Name="PreferenceSetNegID" ParameterName="PreferenceSetNegID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspPreferenceSetNegUpdate">
+                  <ScalarProperty Name="StatusID" ParameterName="StatusID" Version="Current" />
+                  <ScalarProperty Name="NegotiationName" ParameterName="NegotiationName" Version="Current" />
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="PreferenceSetID" ParameterName="PreferenceSetID" Version="Current" />
+                  <ScalarProperty Name="Percentage" ParameterName="Percentage" Version="Current" />
+                  <ScalarProperty Name="NegID" ParameterName="NegID" Version="Current" />
+                  <ScalarProperty Name="PreferenceSetNegID" ParameterName="PreferenceSetNegID" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspPreferenceSetNegInsert">
+                  <ScalarProperty Name="StatusID" ParameterName="StatusID" />
+                  <ScalarProperty Name="NegotiationName" ParameterName="NegotiationName" />
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="PreferenceSetID" ParameterName="PreferenceSetID" />
+                  <ScalarProperty Name="Percentage" ParameterName="Percentage" />
+                  <ScalarProperty Name="NegID" ParameterName="NegID" />
+                  <ScalarProperty Name="PreferenceSetNegID" ParameterName="PreferenceSetNegID" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageLaterRatedIssues">
+            <EntityTypeMapping TypeName="PrefAppModel.MessageLaterRatedIssue">
+              <MappingFragment StoreEntitySet="MessageLaterRatedIssue">
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LaterRatedIssueID" ColumnName="LaterRatedIssueID" />
+                <ScalarProperty Name="MessageIssueID" ColumnName="MessageIssueID" />
+                <ScalarProperty Name="MessageLaterRatedIssueID" ColumnName="MessageLaterRatedIssueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.MessageLaterRatedIssue">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspMessageLaterRatedIssueInsert">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="LaterRatedIssueID" ParameterName="LaterRatedIssueID" />
+                  <ScalarProperty Name="MessageIssueID" ParameterName="MessageIssueID" />
+                  <ScalarProperty Name="MessageLaterRatedIssueID" ParameterName="MessageLaterRatedIssueID" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspMessageLaterRatedIssueUpdate">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="LaterRatedIssueID" ParameterName="LaterRatedIssueID" Version="Current" />
+                  <ScalarProperty Name="MessageIssueID" ParameterName="MessageIssueID" Version="Current" />
+                  <ScalarProperty Name="MessageLaterRatedIssueID" ParameterName="MessageLaterRatedIssueID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspMessageLaterRatedIssueDelete">
+                  <ScalarProperty Name="MessageLaterRatedIssueID" ParameterName="MessageLaterRatedIssueID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetMessageIssueSelectMaxMinValue" FunctionName="PrefAppModel.Store.uspMessageIssueSelectMaxMinValue" />
+          <FunctionImportMapping FunctionImportName="UpdateConversationAndNegotiationPercentage" FunctionName="PrefAppModel.Store.uspUpdateConvAndNegPercentage" />
+          <EntitySetMapping Name="PreferenceSetOrganizations">
+            <EntityTypeMapping TypeName="PrefAppModel.PreferenceSetOrganization">
+              <MappingFragment StoreEntitySet="PreferenceSetOrganization">
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="PreferenceSetID" ColumnName="PreferenceSetID" />
+                <ScalarProperty Name="PreferenceSetOrganizationID" ColumnName="PreferenceSetOrganizationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PrefAppModel.PreferenceSetOrganization">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="PrefAppModel.Store.uspPreferenceSetOrganizationInsert">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" />
+                  <ScalarProperty Name="OrganizationID" ParameterName="OrganizationID" />
+                  <ScalarProperty Name="PreferenceSetID" ParameterName="PreferenceSetID" />
+                  <ScalarProperty Name="PreferenceSetOrganizationID" ParameterName="PreferenceSetOrganizationID" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="PrefAppModel.Store.uspPreferenceSetOrganizationUpdate">
+                  <ScalarProperty Name="DeletedOn" ParameterName="DeletedOn" Version="Current" />
+                  <ScalarProperty Name="DeletedBy" ParameterName="DeletedBy" Version="Current" />
+                  <ScalarProperty Name="Deleted" ParameterName="Deleted" Version="Current" />
+                  <ScalarProperty Name="OrganizationID" ParameterName="OrganizationID" Version="Current" />
+                  <ScalarProperty Name="PreferenceSetID" ParameterName="PreferenceSetID" Version="Current" />
+                  <ScalarProperty Name="PreferenceSetOrganizationID" ParameterName="PreferenceSetOrganizationID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="PrefAppModel.Store.uspPreferenceSetOrganizationDelete">
+                  <ScalarProperty Name="PreferenceSetOrganizationID" ParameterName="PreferenceSetOrganizationID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetPreferenceSetForUser" FunctionName="PrefAppModel.Store.uspPreferenceSetSelectForUser" />
+          <FunctionImportMapping FunctionImportName="GetIssueForUser" FunctionName="PrefAppModel.Store.uspIssueSelectForUser" />
+          <FunctionImportMapping FunctionImportName="GetNumericIssueForUser" FunctionName="PrefAppModel.Store.uspNumericIssueSelectForUser" />
+          <FunctionImportMapping FunctionImportName="GetOptionIssueForUser" FunctionName="PrefAppModel.Store.uspOptionIssueSelectForUser" />
+          <FunctionImportMapping FunctionImportName="GetLaterRatedIssueForUser" FunctionName="PrefAppModel.Store.uspLaterRatedIssueSelectForUser" />
+          <FunctionImportMapping FunctionImportName="GetIssueStatisticals" FunctionName="PrefAppModel.Store.uspIssueSelectStatisticals">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrefAppModel.IssueStatisticalsResult">
+                <ScalarProperty Name="IssueName" ColumnName="IssueName" />
+                <ScalarProperty Name="TimesUsed" ColumnName="TimesUsed" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="HighValuesNegs">
+            <EntityTypeMapping TypeName="PrefAppModel.HighValuesNeg">
+              <MappingFragment StoreEntitySet="HighValuesNegs">
+                <ScalarProperty Name="NegID" ColumnName="NegID" />
+                <ScalarProperty Name="CounterPartsCount" ColumnName="CounterPartsCount" />
+                <ScalarProperty Name="PreferenceSetName" ColumnName="PreferenceSetName" />
+                <ScalarProperty Name="NegotiationName" ColumnName="NegotiationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IssueHistoryViews">
+            <EntityTypeMapping TypeName="PrefAppModel.IssueHistoryView">
+              <MappingFragment StoreEntitySet="IssueHistoryView">
+                <ScalarProperty Name="NegID" ColumnName="NegID" />
+                <ScalarProperty Name="IssueWeight" ColumnName="IssueWeight" />
+                <ScalarProperty Name="NegotiationName" ColumnName="NegotiationName" />
+                <ScalarProperty Name="PreferenceSetName" ColumnName="PreferenceSetName" />
+                <ScalarProperty Name="IssueName" ColumnName="IssueName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetIssueHistory" FunctionName="PrefAppModel.Store.uspIssueHistorySearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrefAppModel.IssueHistoryResult">
+                <ScalarProperty Name="IssueName" ColumnName="IssueName" />
+                <ScalarProperty Name="TimesUsed" ColumnName="TimesUsed" />
+                <ScalarProperty Name="AverageScore" ColumnName="AverageScore" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetConversationPeriod" FunctionName="PrefAppModel.Store.uspNegConversationSelectPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrefAppModel.ConversationPeriod">
+                <ScalarProperty Name="MinConversationDate" ColumnName="MinConversationDate" />
+                <ScalarProperty Name="MaxConversationDate" ColumnName="MaxConversationDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetNegotiationPeriod" FunctionName="PrefAppModel.Store.uspPreferenceSetNegSelectPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrefAppModel.ConversationPeriod">
+                <ScalarProperty Name="MinConversationDate" ColumnName="MinConversationDate" />
+                <ScalarProperty Name="MaxConversationDate" ColumnName="MaxConversationDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLastTwoOffersRate" FunctionName="PrefAppModel.Store.uspConversationMessageSelectLast2OffersRate" />
+          <FunctionImportMapping FunctionImportName="GetLastTwoOffersIDs" FunctionName="PrefAppModel.Store.uspConversationMessageSelectLast2OffersIDs" />
+          <FunctionImportMapping FunctionImportName="GetOfferDetailsForConversationMessage" FunctionName="PrefAppModel.Store.uspConversationMessageSelectOfferDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrefAppModel.OfferItem_Result">
+                <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="OptionRate" ColumnName="OptionRate" />
+                <ScalarProperty Name="OptionID" ColumnName="OptionID" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="IssueTypeID" ColumnName="IssueTypeID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="PrefAppModel" ZoomLevel="100">
+        <EntityTypeShape EntityType="PrefAppModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" Height="1.211080729166667" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrefAppModel.ActionType" Width="1.5" PointX="9.75" PointY="1.375" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrefAppModel.IssueType" Width="1.5" PointX="3" PointY="3.375" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrefAppModel.MainPreferenceSet" Width="2" PointX="0.5" PointY="2.25" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrefAppModel.History" PointX="12.125" PointY="1.125" Width="1.5" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="PrefAppModel.Issue" Width="1.5" PointX="5.375" PointY="0.75" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="PrefAppModel.LaterRatedIssue" Width="2" PointX="7.375" PointY="1.375" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="PrefAppModel.NumericIssue" Width="1.5" PointX="7.625" PointY="4.375" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="PrefAppModel.OptionIssue" Width="1.5" PointX="4.375" PointY="5.5" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="PrefAppModel.PreferenceSet" Width="2.25" PointX="0.75" PointY="4.625" Height="2.9417936197916674" />
+        <AssociationConnector Association="PrefAppModel.FK__History__ActionT__2C3393D01">
+          <ConnectorPoint PointX="11.25" PointY="2.172841796875" />
+          <ConnectorPoint PointX="12.125" PointY="2.172841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__Issue__IssueType__2E1BDC421" >
+          <ConnectorPoint PointX="4.5" PointY="3.9179996744791663" />
+          <ConnectorPoint PointX="5.375" PointY="3.9179996744791663" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__Issue__Preferenc__2D27B8091" >
+          <ConnectorPoint PointX="3" PointY="5.235341796875" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="5.2353417968749989" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="5.235341796875" />
+          <ConnectorPoint PointX="6.3816043389892583" PointY="5.235341796875" />
+          <ConnectorPoint PointX="6.3816043389892583" PointY="4.4609993489583326" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__LaterRate__Issue__2F10007B1" >
+          <ConnectorPoint PointX="6.875" PointY="2.74974609375" />
+          <ConnectorPoint PointX="7.375" PointY="2.74974609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__NumericIs__Issue__30F848ED1" >
+          <ConnectorPoint PointX="6.6472318389892582" PointY="4.4609993489583326" />
+          <ConnectorPoint PointX="6.6472318389892582" PointY="4.90871426404655" />
+          <ConnectorPoint PointX="6.709035086161296" PointY="4.9087142640465489" />
+          <ConnectorPoint PointX="6.875701752827962" PointY="4.90871426404655" />
+          <ConnectorPoint PointX="7.625" PointY="4.90871426404655" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__OptionIss__Issue__31EC6D261" >
+          <ConnectorPoint PointX="5.625" PointY="4.4609993489583326" />
+          <ConnectorPoint PointX="5.625" PointY="5.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__Preferenc__MainP__32E0915F1" >
+          <ConnectorPoint PointX="1.625" PointY="3.8456835937499996" />
+          <ConnectorPoint PointX="1.625" PointY="4.625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PrefAppModel.MessageOptionIssue" Width="2.125" PointX="8.625" PointY="9.625" Height="2.5571907552083388" />
+        <AssociationConnector Association="PrefAppModel.FK__MessageOp__Optio__72C60C4A" >
+          <ConnectorPoint PointX="5.875" PointY="8.1028450520833335" />
+          <ConnectorPoint PointX="6.709035086161296" PointY="8.1028450520833335" />
+          <ConnectorPoint PointX="6.875701752827962" PointY="8.1028450520833335" />
+          <ConnectorPoint PointX="9.96875" PointY="8.1028450520833335" />
+          <ConnectorPoint PointX="9.96875" PointY="9.625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PrefAppModel.ConversationMessage" Width="2.5" PointX="8.25" PointY="13.75" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="PrefAppModel.MessageIssue" Width="2.25" PointX="11.5" PointY="8" Height="3.3263964843750031" />
+        <EntityTypeShape EntityType="PrefAppModel.NegConversation" Width="1.5" PointX="6" PointY="13.75" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="PrefAppModel.PreferenceSetNeg" Width="2.25" PointX="3" PointY="13.75" Height="3.1340950520833353" />
+        <AssociationConnector Association="PrefAppModel.FK__Conversat__NegCo__0E6E26BF" >
+          <ConnectorPoint PointX="7.5" PointY="15.155998593749999" />
+          <ConnectorPoint PointX="8.25" PointY="15.155998593749999" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__MessageIs__Conve__0F624AF8" >
+          <ConnectorPoint PointX="8.40625" PointY="13.75" />
+          <ConnectorPoint PointX="8.40625" PointY="8.4998406950414509" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="8.4998406950414509" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="8.4998406950414509" />
+          <ConnectorPoint PointX="11.5" PointY="8.4998406950414509" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__MessageIs__Issue__10566F31" >
+          <ConnectorPoint PointX="6.792368419494629" PointY="4.4609993489583326" />
+          <ConnectorPoint PointX="6.792368419494629" PointY="8.8749228475207182" />
+          <ConnectorPoint PointX="8.3229166666666661" PointY="8.8749228475207182" />
+          <ConnectorPoint PointX="8.4895833333333339" PointY="8.8749228475207182" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="8.8749228475207182" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="8.8749228475207182" />
+          <ConnectorPoint PointX="11.5" PointY="8.8749228475207182" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__MessageOp__Messa__123EB7A3" >
+          <ConnectorPoint PointX="11.5" PointY="10.475698242187502" />
+          <ConnectorPoint PointX="10.75" PointY="10.475698242187502" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__NegConver__Prefe__1332DBDC" >
+          <ConnectorPoint PointX="5.25" PointY="15.124746093749998" />
+          <ConnectorPoint PointX="6" PointY="15.124746093749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__Preferenc__Prefe__14270015" >
+          <ConnectorPoint PointX="2.625" PointY="8.1436979166666656" />
+          <ConnectorPoint PointX="2.625" PointY="15.317047526041668" />
+          <ConnectorPoint PointX="3" PointY="15.317047526041668" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PrefAppModel.MessageLaterRatedIssue" Width="2.625" PointX="13.75" PointY="5.125" Height="2.5571907552083388" />
+        <AssociationConnector Association="PrefAppModel.FK__MessageLa__Later__2645B050" >
+          <ConnectorPoint PointX="9.375" PointY="3.9345914713541692" />
+          <ConnectorPoint PointX="15.0625" PointY="3.9345914713541692" />
+          <ConnectorPoint PointX="15.0625" PointY="5.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrefAppModel.FK__MessageLa__Messa__25518C17" >
+          <ConnectorPoint PointX="13" PointY="8" />
+          <ConnectorPoint PointX="13" PointY="6.4035953776041694" />
+          <ConnectorPoint PointX="13.75" PointY="6.4035953776041694" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PrefAppModel.PreferenceSetOrganization" Width="2.375" PointX="3.75" PointY="9.25" Height="2.3648893229166674" />
+        <AssociationConnector Association="PrefAppModel.FK_PreferenceSetOrganization_PreferenceSet" >
+          <ConnectorPoint PointX="2.8437525" PointY="8.1436979166666656" />
+          <ConnectorPoint PointX="2.8437525" PointY="9.46875" />
+          <ConnectorPoint PointX="3.75" PointY="9.46875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PrefAppModel.HighValuesNeg" Width="1.5" PointX="0.75" PointY="9.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="PrefAppModel.IssueHistoryView" Width="1.5" PointX="10.75" PointY="4.75" Height="1.7879850260416674" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

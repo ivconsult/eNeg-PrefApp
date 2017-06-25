@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9d8b39c7-597c-4947-9d0f-e538309b830e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-MailService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="citPOINT-eNeg-Data-Web-MailService.xsd" MetadataType="Schema" ID="49a9396d-2aa3-44f5-bb08-2d75f4128ddc" SourceId="1" SourceUrl="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-MailService.svc?xsd=xsd1" />
+    <MetadataFile FileName="citPOINT-eNeg-Data-Web-MailService1.xsd" MetadataType="Schema" ID="fb0f7653-d86f-4b0c-b8c7-cc9d8efa49b2" SourceId="1" SourceUrl="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-MailService.svc?xsd=xsd0" />
+    <MetadataFile FileName="citPOINT-eNeg-Data-Web-MailService2.xsd" MetadataType="Schema" ID="b398cf7c-35fb-4cd7-a904-cf8403ff612b" SourceId="1" SourceUrl="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-MailService.svc?xsd=xsd3" />
+    <MetadataFile FileName="citPOINT-eNeg-Data-Web-MailService3.xsd" MetadataType="Schema" ID="554b03d7-d9a7-4b4e-94fa-5c1aca450808" SourceId="1" SourceUrl="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-MailService.svc?xsd=xsd2" />
+    <MetadataFile FileName="citPOINT-eNeg-Data-Web-MailService.disco" MetadataType="Disco" ID="efe9a84a-59da-4187-b52a-02c3b6bc30e1" SourceId="1" SourceUrl="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-MailService.svc?disco" />
+    <MetadataFile FileName="MailService.wsdl" MetadataType="Wsdl" ID="bee27356-6125-406c-a8e1-850b31b51454" SourceId="1" SourceUrl="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-MailService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

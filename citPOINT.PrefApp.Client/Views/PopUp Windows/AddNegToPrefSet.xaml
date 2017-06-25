@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.AddNegToPrefSet"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d"
+             d:DesignHeight="130"
+             d:DesignWidth="325">
+
+    <Grid x:Name="LayoutRoot"
+          Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Name="uxTbHeader"
+                   Text="Please select the Ongoing Negotiation that you want to add:"
+                   TextWrapping="Wrap"
+                   Margin="5"
+                   FontSize="12" />
+        <StackPanel Grid.Row="1"
+                    Margin="5"
+                    Orientation="Vertical">
+            <telerik:RadComboBox Name="uxCboNegotiations"
+                      Height="30"
+                      Width="200"
+                      ItemsSource="{Binding AvailableNegotiations}"
+                      DisplayMemberPath="NegotiationName"
+                      SelectedValuePath="NegotiationID" />
+
+            <telerik:RadButton Name="uxcmdAddNegotiation"
+                               Content="Add"
+                               Margin="10"
+                               Height="25"
+                               Width="200"
+                               Click="uxcmdAddNegotiation_Click" />
+        </StackPanel>
+        <toolkit:BusyIndicator Grid.Row="1"
+                               Name="uxBILoadingNegs"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               IsBusy="{Binding IsBusy}" />
+    </Grid>
+</UserControl>

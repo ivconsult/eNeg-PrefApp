@@ -1,0 +1,215 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.OptionsIssuesValueView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:common="clr-namespace:citPOINT.PrefApp.Common;assembly=citPOINT.PrefApp.Common"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.SL4"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+             mc:Ignorable="d"
+             d:DesignWidth="700"
+             d:DesignHeight="300"
+             MinHeight="100"
+             MinWidth="300"
+             x:Name="uxOptionView">
+
+    <UserControl.Resources>
+        <common:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Border BorderBrush="Black"
+            BorderThickness="0"
+            Margin="0"
+            Padding="0"
+            x:Name="LayoutRoot">
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal">
+                <StackPanel>
+                    <!--BorderBrush="Black"
+                                         BorderThickness="0"-->
+                    <telerik:RadGridView Name="uxOptionsIssueGridView"
+                                         Margin="4"
+                                         MaxHeight="280"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                         Visibility="{Binding CurrentIssue.PreferenceSet.IsEditable,Converter={StaticResource booleanToVisibilityConverter}}"
+                                         
+                                         CanUserDeleteRows="False"
+                                         CanUserInsertRows="False"
+                                         AutoGenerateColumns="False"
+                                         ReorderColumnsMode="None"
+                                         ShowGroupPanel="False"
+                                         GridLinesVisibility="Vertical"
+                                         SelectionMode="Extended"
+                                         IsFilteringAllowed="False"
+                                         RowIndicatorVisibility="Collapsed"
+                                         ItemsSource="{Binding Mode=TwoWay, Path=OptionIssueSource, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
+                        <telerik:RadGridView.Columns>
+
+                            <telerik:GridViewColumn UniqueName="IsSelected"
+                                                    IsResizable="False"
+                                                    IsReorderable="False">
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding Path=IsSelected,Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewColumn>
+
+                            <telerik:GridViewColumn Width="200"
+                                                    Header="Option Name"
+                                                    UniqueName="OptionIssueValue">
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Margin="4"
+                                                 Name="uxOptionName"
+                                                 Text="{Binding OptionIssueValue,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                                                 Tag="{Binding OptionIssueID,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                                                 GotFocus="TextBox_GotFocus"
+                                                 LostFocus="uxOptionName_LostFocus">
+                                        </TextBox>
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewColumn>
+
+                            <telerik:GridViewColumn MaxWidth="300"
+                                                    MinWidth="300"
+                                                    Width="300"
+                                                    Header="Rating"
+                                                    UniqueName="OptionIssueWeight">
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal"
+                                                    MaxWidth="300"
+                                                    MinWidth="300">
+                                            <common:eNegRatingControl x:Name="uxScoreRating"
+                                                                      MinWidth="210"
+                                                                      NumberOfItemsToGenerate="10"
+                                                                      CalValue="{Binding OptionIssueWeight,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                                                                      ValueChanged="uxScoreRating_ValueChanged"
+                                                                      MouseLeftButtonDown="uxScoreRating_MouseLeftButtonDown"
+                                                                      Tag="{Binding OptionIssueID,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}" />
+
+                                            <telerik:RadNumericUpDown Margin="4"
+                                                                      NullValue="NaN"
+                                                                      NumberDecimalDigits="2"
+                                                                      Width="70"
+                                                                      Height="25"
+                                                                      Value="{Binding OptionIssueWeight,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                                                                      Tag="{Binding OptionIssueID,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                                                                      Minimum="0"
+                                                                      Maximum="100"
+                                                                      GotFocus="RadNumericUpDown_GotFocus"
+                                                                      LostFocus="RadNumericUpDown_LostFocus" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewColumn>
+
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+
+                    <StackPanel HorizontalAlignment="Right"
+                                Orientation="Horizontal"
+                                Margin="0,0,3,0">
+                        <telerik:RadButton Content="Add Options"
+                                Width="100"
+                                Margin="2"
+                                           TabIndex="0"
+                                HorizontalAlignment="Right"
+                                Name="uxcmdAddNewOption"
+                                Command="{Binding AddNewOptionCommand}"
+                                Visibility="{Binding CurrentIssue.PreferenceSet.IsEditable, Converter={StaticResource booleanToVisibilityConverter}}" />
+                        <telerik:RadButton Content="Delete"
+                                Name="uxcmdDeleteOption"
+                                Width="100"
+                                Margin="2"
+                                           TabIndex="1"
+                                Command="{Binding DeleteOptionCommand}"
+                                Visibility="{Binding CurrentIssue.PreferenceSet.IsEditable, Converter={StaticResource booleanToVisibilityConverter}}" />
+                    </StackPanel>
+                </StackPanel>
+                <!--MaxHeight="280"--> 
+                <!--BorderBrush="Black"
+                                     BorderThickness="1"-->
+                <telerik:RadGridView Name="uxOptionsIssueReadOnlyGridView"
+                                     Margin="4"
+                                     Visibility="{Binding CurrentIssue.PreferenceSet.IsReadOnly,Converter={StaticResource booleanToVisibilityConverter}}"
+                                    
+                                     CanUserDeleteRows="False"
+                                     CanUserInsertRows="False"
+                                     RowIndicatorVisibility="Collapsed"
+                                     AutoGenerateColumns="False"
+                                     ReorderColumnsMode="None"
+                                     ShowGroupPanel="False"
+                                     GridLinesVisibility="Vertical"
+                                     SelectionMode="Extended"
+                                     IsFilteringAllowed="False"
+                                     ItemsSource="{Binding Mode=TwoWay, Path=OptionIssueSource}">
+                    <telerik:RadGridView.Columns>
+
+                        <telerik:GridViewColumn Width="200"
+                                                Header="Option Name"
+                                                UniqueName="OptionIssueValue">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="5"
+                                               Name="uxOptionName"
+                                               Text="{Binding OptionIssueValue,Mode=OneWay}" />
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewColumn>
+
+                        <telerik:GridViewColumn MaxWidth="300"
+                                                MinWidth="300"
+                                                Width="300"
+                                                Header="Rating"
+                                                UniqueName="OptionIssueWeight">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal"
+                                                MaxWidth="300"
+                                                MinWidth="300">
+                                        <common:eNegRatingControl x:Name="uxScoreRating"
+                                                                  MinWidth="210"
+                                                                  NumberOfItemsToGenerate="10"
+                                                                  CalValue="{Binding OptionIssueWeight,Mode=OneWay}"
+                                                                  IsReadOnly="True" />
+
+                                        <telerik:RadNumericUpDown Margin="4"
+                                                                  NullValue="NaN"
+                                                                  NumberDecimalDigits="2"
+                                                                  Width="70"
+                                                                  Height="25"
+                                                                  ShowButtons="False"
+                                                                  Value="{Binding OptionIssueWeight,Mode=OneWay}"
+                                                                  Minimum="0"
+                                                                  Maximum="100"
+                                                                  Background="White"
+                                                                  IsEnabled="False" />
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewColumn>
+
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+            </StackPanel>
+
+            <sdk:ValidationSummary Grid.Row="1"
+                                   Margin="5"
+                                   Name="uxValidationSummary"
+                                   Target="{Binding ElementName=uxOptionsIssueGridView, ValidatesOnExceptions=True,ValidatesOnDataErrors=True,ValidatesOnNotifyDataErrors=True}" />
+
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,1747 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="eNegService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_eNegServiceSoap_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <http:NtlmAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd3" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd4" namespace="DomainServices" />
+      <xsd:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/citPOINT.eNeg.Data.Web" />
+      <xsd:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationsByListOfIDs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationsByListOfIDs" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationsByListOfIDs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationsByListOfIDsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationsByListOfIDs_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q1="DomainServices" name="detail" element="q1:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetConversationsByNegotiationID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConversationsByNegotiationID" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetConversationsByNegotiationID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConversationsByNegotiationIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetConversationsByNegotiationID_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q2="DomainServices" name="detail" element="q2:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetMessagesByNegotiationID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessagesByNegotiationID" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetMessagesByNegotiationID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessagesByNegotiationIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetMessagesByNegotiationID_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q3="DomainServices" name="detail" element="q3:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetMessagesByNegotiationIDForApps_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessagesByNegotiationIDForApps" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetMessagesByNegotiationIDForApps_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessagesByNegotiationIDForAppsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetMessagesByNegotiationIDForApps_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q4="DomainServices" name="detail" element="q4:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateAppsStatisticalsByMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAppsStatisticalsByMessages" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateAppsStatisticalsByMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAppsStatisticalsByMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateAppsStatisticalsByMessages_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q5="DomainServices" name="detail" element="q5:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateReset_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReset" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateReset_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResetResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateReset_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q6="DomainServices" name="detail" element="q6:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserByOperationString_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByOperationString" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserByOperationString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByOperationStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserByOperationString_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q7="DomainServices" name="detail" element="q7:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateUserByConfirmMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserByConfirmMail" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateUserByConfirmMail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserByConfirmMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateUserByConfirmMail_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q8="DomainServices" name="detail" element="q8:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_DeleteUserOperationByUserID_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserOperationByUserID" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_DeleteUserOperationByUserID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserOperationByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_DeleteUserOperationByUserID_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q9="DomainServices" name="detail" element="q9:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUsersCountExceptCurrentUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersCountExceptCurrentUser" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUsersCountExceptCurrentUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersCountExceptCurrentUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUsersCountExceptCurrentUser_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q10="DomainServices" name="detail" element="q10:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUsersCountByAlphabetExceptCurrentUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersCountByAlphabetExceptCurrentUser" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUsersCountByAlphabetExceptCurrentUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersCountByAlphabetExceptCurrentUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUsersCountByAlphabetExceptCurrentUser_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q11="DomainServices" name="detail" element="q11:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_FindUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindUser" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_FindUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_FindUser_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q12="DomainServices" name="detail" element="q12:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_FindUsersCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindUsersCount" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_FindUsersCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindUsersCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_FindUsersCount_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q13="DomainServices" name="detail" element="q13:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationPageNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationPageNumber" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationPageNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationPageNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationPageNumber_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q14="DomainServices" name="detail" element="q14:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationCountByStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationCountByStatus" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationCountByStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationCountByStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationCountByStatus_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q15="DomainServices" name="detail" element="q15:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiations" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiations_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q16="DomainServices" name="detail" element="q16:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetConversations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConversations" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetConversations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConversationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetConversations_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q17="DomainServices" name="detail" element="q17:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationApplicationStatusByNegotiationID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationApplicationStatusByNegotiationID" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationApplicationStatusByNegotiationID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationApplicationStatusByNegotiationIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationApplicationStatusByNegotiationID_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q18="DomainServices" name="detail" element="q18:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_CheckOnNegotiationRepeat_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckOnNegotiationRepeat" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_CheckOnNegotiationRepeat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckOnNegotiationRepeatResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_CheckOnNegotiationRepeat_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q19="DomainServices" name="detail" element="q19:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserOrganizationsForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserOrganizationsForUser" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserOrganizationsForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserOrganizationsForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserOrganizationsForUser_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q20="DomainServices" name="detail" element="q20:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationsForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationsForUser" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationsForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationsForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationsForUser_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q21="DomainServices" name="detail" element="q21:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationsOwners_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationsOwners" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationsOwners_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationsOwnersResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationsOwners_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q22="DomainServices" name="detail" element="q22:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationMembers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationMembers" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationMembers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationMembers_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q23="DomainServices" name="detail" element="q23:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationMembersStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationMembersStatus" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationMembersStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationMembersStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationMembersStatus_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q24="DomainServices" name="detail" element="q24:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_CanUserLeaveOrganization_InputMessage">
+    <wsdl:part name="parameters" element="tns:CanUserLeaveOrganization" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_CanUserLeaveOrganization_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CanUserLeaveOrganizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_CanUserLeaveOrganization_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q25="DomainServices" name="detail" element="q25:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateUserCulture_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserCulture" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateUserCulture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserCultureResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateUserCulture_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q26="DomainServices" name="detail" element="q26:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCultures_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCultures" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCultures_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCulturesResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCultures_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q27="DomainServices" name="detail" element="q27:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetPreferedLanguage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPreferedLanguage" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetPreferedLanguage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPreferedLanguageResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetPreferedLanguage_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q28="DomainServices" name="detail" element="q28:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfile" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetProfile_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q29="DomainServices" name="detail" element="q29:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetRight_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRight" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetRight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRightResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetRight_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q30="DomainServices" name="detail" element="q30:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRole" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetRole_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q31="DomainServices" name="detail" element="q31:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetRoleRight_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleRight" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetRoleRight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleRightResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetRoleRight_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q32="DomainServices" name="detail" element="q32:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetSecurityQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSecurityQuestion" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetSecurityQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSecurityQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetSecurityQuestion_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q33="DomainServices" name="detail" element="q33:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUser_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q34="DomainServices" name="detail" element="q34:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserApplicationStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserApplicationStatus" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserApplicationStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserApplicationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserApplicationStatus_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q35="DomainServices" name="detail" element="q35:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRole" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserRole_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q36="DomainServices" name="detail" element="q36:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationOrganizations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationOrganizations" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationOrganizations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationOrganizationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationOrganizations_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q37="DomainServices" name="detail" element="q37:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizations" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizations_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q38="DomainServices" name="detail" element="q38:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationTypes" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetOrganizationTypes_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q39="DomainServices" name="detail" element="q39:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_AddMessageToConversation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMessageToConversation" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_AddMessageToConversation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMessageToConversationResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_AddMessageToConversation_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q40="DomainServices" name="detail" element="q40:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationsByUserID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationsByUserID" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationsByUserID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationsByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationsByUserID_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q41="DomainServices" name="detail" element="q41:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetActiveSupportApplicationsForConversation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveSupportApplicationsForConversation" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetActiveSupportApplicationsForConversation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveSupportApplicationsForConversationResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetActiveSupportApplicationsForConversation_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q42="DomainServices" name="detail" element="q42:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UserCanLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserCanLogin" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UserCanLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserCanLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UserCanLogin_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q43="DomainServices" name="detail" element="q43:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByID" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserByID_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q44="DomainServices" name="detail" element="q44:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_MakeUserOnline_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeUserOnline" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_MakeUserOnline_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MakeUserOnlineResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_MakeUserOnline_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q45="DomainServices" name="detail" element="q45:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_MakeUserOffline_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeUserOffline" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_MakeUserOffline_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MakeUserOfflineResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_MakeUserOffline_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q46="DomainServices" name="detail" element="q46:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAppsActiveForDM_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppsActiveForDM" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAppsActiveForDM_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppsActiveForDMResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAppsActiveForDM_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q47="DomainServices" name="detail" element="q47:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateDataMatchingStatusInAddon_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDataMatchingStatusInAddon" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateDataMatchingStatusInAddon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDataMatchingStatusInAddonResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_UpdateDataMatchingStatusInAddon_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q48="DomainServices" name="detail" element="q48:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_RetrieveApplicationDMStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveApplicationDMStatus" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_RetrieveApplicationDMStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveApplicationDMStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_RetrieveApplicationDMStatus_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q49="DomainServices" name="detail" element="q49:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAvailableNegotiationsToAnalysis_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableNegotiationsToAnalysis" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAvailableNegotiationsToAnalysis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableNegotiationsToAnalysisResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAvailableNegotiationsToAnalysis_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q50="DomainServices" name="detail" element="q50:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserOperations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserOperations" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserOperations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserOperationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetUserOperations_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q51="DomainServices" name="detail" element="q51:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAccountType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountType" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAccountType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAccountType_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q52="DomainServices" name="detail" element="q52:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetActionTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActionTypes" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetActionTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActionTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetActionTypes_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q53="DomainServices" name="detail" element="q53:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetApplications_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplications" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetApplications_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetApplications_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q54="DomainServices" name="detail" element="q54:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAttachements_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAttachements" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAttachements_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAttachementsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetAttachements_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q55="DomainServices" name="detail" element="q55:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategories" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCategories_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q56="DomainServices" name="detail" element="q56:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCategoryLogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryLogs" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCategoryLogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCategoryLogs_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q57="DomainServices" name="detail" element="q57:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetChannels_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChannels" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetChannels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChannelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetChannels_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q58="DomainServices" name="detail" element="q58:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetChannelTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChannelTypes" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetChannelTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChannelTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetChannelTypes_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q59="DomainServices" name="detail" element="q59:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCountry_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountry" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCountry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetCountry_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q60="DomainServices" name="detail" element="q60:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetHistories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistories" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetHistories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetHistories_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q61="DomainServices" name="detail" element="q61:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetLogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLogs" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetLogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetLogs_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q62="DomainServices" name="detail" element="q62:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessages" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetMessages_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q63="DomainServices" name="detail" element="q63:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationApplicationStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationApplicationStatus" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationApplicationStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationApplicationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationApplicationStatus_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q64="DomainServices" name="detail" element="q64:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationStatus" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegotiationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_GetNegotiationStatus_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q65="DomainServices" name="detail" element="q65:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_SubmitChanges_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitChanges" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_SubmitChanges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitChangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="eNegServiceSoap_SubmitChanges_DomainServiceFault_FaultMessage">
+    <wsdl:part xmlns:q66="DomainServices" name="detail" element="q66:DomainServiceFault" />
+  </wsdl:message>
+  <wsdl:portType name="eNegServiceSoap">
+    <wsdl:operation name="GetNegotiationsByListOfIDs">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationsByListOfIDs" message="tns:eNegServiceSoap_GetNegotiationsByListOfIDs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationsByListOfIDsResponse" message="tns:eNegServiceSoap_GetNegotiationsByListOfIDs_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationsByListOfIDsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetNegotiationsByListOfIDs_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConversationsByNegotiationID">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetConversationsByNegotiationID" message="tns:eNegServiceSoap_GetConversationsByNegotiationID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetConversationsByNegotiationIDResponse" message="tns:eNegServiceSoap_GetConversationsByNegotiationID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetConversationsByNegotiationIDDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetConversationsByNegotiationID_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesByNegotiationID">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetMessagesByNegotiationID" message="tns:eNegServiceSoap_GetMessagesByNegotiationID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetMessagesByNegotiationIDResponse" message="tns:eNegServiceSoap_GetMessagesByNegotiationID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetMessagesByNegotiationIDDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetMessagesByNegotiationID_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesByNegotiationIDForApps">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetMessagesByNegotiationIDForApps" message="tns:eNegServiceSoap_GetMessagesByNegotiationIDForApps_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetMessagesByNegotiationIDForAppsResponse" message="tns:eNegServiceSoap_GetMessagesByNegotiationIDForApps_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetMessagesByNegotiationIDForAppsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetMessagesByNegotiationIDForApps_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAppsStatisticalsByMessages">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateAppsStatisticalsByMessages" message="tns:eNegServiceSoap_UpdateAppsStatisticalsByMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateAppsStatisticalsByMessagesResponse" message="tns:eNegServiceSoap_UpdateAppsStatisticalsByMessages_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateAppsStatisticalsByMessagesDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_UpdateAppsStatisticalsByMessages_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReset">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateReset" message="tns:eNegServiceSoap_UpdateReset_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateResetResponse" message="tns:eNegServiceSoap_UpdateReset_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateResetDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_UpdateReset_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByOperationString">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserByOperationString" message="tns:eNegServiceSoap_GetUserByOperationString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserByOperationStringResponse" message="tns:eNegServiceSoap_GetUserByOperationString_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserByOperationStringDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetUserByOperationString_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserByConfirmMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateUserByConfirmMail" message="tns:eNegServiceSoap_UpdateUserByConfirmMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateUserByConfirmMailResponse" message="tns:eNegServiceSoap_UpdateUserByConfirmMail_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateUserByConfirmMailDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_UpdateUserByConfirmMail_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserOperationByUserID">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/DeleteUserOperationByUserID" message="tns:eNegServiceSoap_DeleteUserOperationByUserID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/DeleteUserOperationByUserIDResponse" message="tns:eNegServiceSoap_DeleteUserOperationByUserID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/DeleteUserOperationByUserIDDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_DeleteUserOperationByUserID_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersCountExceptCurrentUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUsersCountExceptCurrentUser" message="tns:eNegServiceSoap_GetUsersCountExceptCurrentUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUsersCountExceptCurrentUserResponse" message="tns:eNegServiceSoap_GetUsersCountExceptCurrentUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUsersCountExceptCurrentUserDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetUsersCountExceptCurrentUser_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersCountByAlphabetExceptCurrentUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUsersCountByAlphabetExceptCurrentUser" message="tns:eNegServiceSoap_GetUsersCountByAlphabetExceptCurrentUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUsersCountByAlphabetExceptCurrentUserResponse" message="tns:eNegServiceSoap_GetUsersCountByAlphabetExceptCurrentUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUsersCountByAlphabetExceptCurrentUserDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetUsersCountByAlphabetExceptCurrentUser_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/FindUser" message="tns:eNegServiceSoap_FindUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/FindUserResponse" message="tns:eNegServiceSoap_FindUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/FindUserDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_FindUser_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindUsersCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/FindUsersCount" message="tns:eNegServiceSoap_FindUsersCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/FindUsersCountResponse" message="tns:eNegServiceSoap_FindUsersCount_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/FindUsersCountDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_FindUsersCount_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationPageNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationPageNumber" message="tns:eNegServiceSoap_GetNegotiationPageNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationPageNumberResponse" message="tns:eNegServiceSoap_GetNegotiationPageNumber_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationPageNumberDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetNegotiationPageNumber_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationCountByStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationCountByStatus" message="tns:eNegServiceSoap_GetNegotiationCountByStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationCountByStatusResponse" message="tns:eNegServiceSoap_GetNegotiationCountByStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationCountByStatusDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetNegotiationCountByStatus_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiations">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiations" message="tns:eNegServiceSoap_GetNegotiations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationsResponse" message="tns:eNegServiceSoap_GetNegotiations_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetNegotiations_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConversations">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetConversations" message="tns:eNegServiceSoap_GetConversations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetConversationsResponse" message="tns:eNegServiceSoap_GetConversations_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetConversationsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetConversations_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationApplicationStatusByNegotiationID">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationApplicationStatusByNegotiationID" message="tns:eNegServiceSoap_GetNegotiationApplicationStatusByNegotiationID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationApplicationStatusByNegotiationIDResponse" message="tns:eNegServiceSoap_GetNegotiationApplicationStatusByNegotiationID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationApplicationStatusByNegotiationIDDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetNegotiationApplicationStatusByNegotiationID_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckOnNegotiationRepeat">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/CheckOnNegotiationRepeat" message="tns:eNegServiceSoap_CheckOnNegotiationRepeat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/CheckOnNegotiationRepeatResponse" message="tns:eNegServiceSoap_CheckOnNegotiationRepeat_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/CheckOnNegotiationRepeatDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_CheckOnNegotiationRepeat_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserOrganizationsForUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserOrganizationsForUser" message="tns:eNegServiceSoap_GetUserOrganizationsForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserOrganizationsForUserResponse" message="tns:eNegServiceSoap_GetUserOrganizationsForUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserOrganizationsForUserDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetUserOrganizationsForUser_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationsForUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationsForUser" message="tns:eNegServiceSoap_GetOrganizationsForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationsForUserResponse" message="tns:eNegServiceSoap_GetOrganizationsForUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationsForUserDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetOrganizationsForUser_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationsOwners">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationsOwners" message="tns:eNegServiceSoap_GetOrganizationsOwners_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationsOwnersResponse" message="tns:eNegServiceSoap_GetOrganizationsOwners_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationsOwnersDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetOrganizationsOwners_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationMembers">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationMembers" message="tns:eNegServiceSoap_GetOrganizationMembers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationMembersResponse" message="tns:eNegServiceSoap_GetOrganizationMembers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationMembersDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetOrganizationMembers_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationMembersStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationMembersStatus" message="tns:eNegServiceSoap_GetOrganizationMembersStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationMembersStatusResponse" message="tns:eNegServiceSoap_GetOrganizationMembersStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationMembersStatusDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetOrganizationMembersStatus_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CanUserLeaveOrganization">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/CanUserLeaveOrganization" message="tns:eNegServiceSoap_CanUserLeaveOrganization_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/CanUserLeaveOrganizationResponse" message="tns:eNegServiceSoap_CanUserLeaveOrganization_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/CanUserLeaveOrganizationDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_CanUserLeaveOrganization_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserCulture">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateUserCulture" message="tns:eNegServiceSoap_UpdateUserCulture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateUserCultureResponse" message="tns:eNegServiceSoap_UpdateUserCulture_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateUserCultureDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_UpdateUserCulture_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCultures">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCultures" message="tns:eNegServiceSoap_GetCultures_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCulturesResponse" message="tns:eNegServiceSoap_GetCultures_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCulturesDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetCultures_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreferedLanguage">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetPreferedLanguage" message="tns:eNegServiceSoap_GetPreferedLanguage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetPreferedLanguageResponse" message="tns:eNegServiceSoap_GetPreferedLanguage_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetPreferedLanguageDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetPreferedLanguage_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetProfile" message="tns:eNegServiceSoap_GetProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetProfileResponse" message="tns:eNegServiceSoap_GetProfile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetProfileDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetProfile_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRight">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetRight" message="tns:eNegServiceSoap_GetRight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetRightResponse" message="tns:eNegServiceSoap_GetRight_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetRightDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetRight_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetRole" message="tns:eNegServiceSoap_GetRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetRoleResponse" message="tns:eNegServiceSoap_GetRole_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetRoleDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetRole_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleRight">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetRoleRight" message="tns:eNegServiceSoap_GetRoleRight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetRoleRightResponse" message="tns:eNegServiceSoap_GetRoleRight_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetRoleRightDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetRoleRight_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSecurityQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetSecurityQuestion" message="tns:eNegServiceSoap_GetSecurityQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetSecurityQuestionResponse" message="tns:eNegServiceSoap_GetSecurityQuestion_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetSecurityQuestionDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetSecurityQuestion_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUser" message="tns:eNegServiceSoap_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserResponse" message="tns:eNegServiceSoap_GetUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetUser_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserApplicationStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserApplicationStatus" message="tns:eNegServiceSoap_GetUserApplicationStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserApplicationStatusResponse" message="tns:eNegServiceSoap_GetUserApplicationStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserApplicationStatusDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetUserApplicationStatus_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserRole" message="tns:eNegServiceSoap_GetUserRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserRoleResponse" message="tns:eNegServiceSoap_GetUserRole_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserRoleDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetUserRole_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationOrganizations">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationOrganizations" message="tns:eNegServiceSoap_GetNegotiationOrganizations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationOrganizationsResponse" message="tns:eNegServiceSoap_GetNegotiationOrganizations_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationOrganizationsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetNegotiationOrganizations_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizations">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizations" message="tns:eNegServiceSoap_GetOrganizations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationsResponse" message="tns:eNegServiceSoap_GetOrganizations_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetOrganizations_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationTypes" message="tns:eNegServiceSoap_GetOrganizationTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationTypesResponse" message="tns:eNegServiceSoap_GetOrganizationTypes_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetOrganizationTypesDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetOrganizationTypes_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMessageToConversation">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/AddMessageToConversation" message="tns:eNegServiceSoap_AddMessageToConversation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/AddMessageToConversationResponse" message="tns:eNegServiceSoap_AddMessageToConversation_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/AddMessageToConversationDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_AddMessageToConversation_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationsByUserID">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationsByUserID" message="tns:eNegServiceSoap_GetNegotiationsByUserID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationsByUserIDResponse" message="tns:eNegServiceSoap_GetNegotiationsByUserID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationsByUserIDDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetNegotiationsByUserID_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveSupportApplicationsForConversation">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetActiveSupportApplicationsForConversation" message="tns:eNegServiceSoap_GetActiveSupportApplicationsForConversation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetActiveSupportApplicationsForConversationResponse" message="tns:eNegServiceSoap_GetActiveSupportApplicationsForConversation_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetActiveSupportApplicationsForConversationDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetActiveSupportApplicationsForConversation_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserCanLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/UserCanLogin" message="tns:eNegServiceSoap_UserCanLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/UserCanLoginResponse" message="tns:eNegServiceSoap_UserCanLogin_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/UserCanLoginDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_UserCanLogin_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserByID" message="tns:eNegServiceSoap_GetUserByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserByIDResponse" message="tns:eNegServiceSoap_GetUserByID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserByIDDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetUserByID_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeUserOnline">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/MakeUserOnline" message="tns:eNegServiceSoap_MakeUserOnline_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/MakeUserOnlineResponse" message="tns:eNegServiceSoap_MakeUserOnline_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/MakeUserOnlineDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_MakeUserOnline_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeUserOffline">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/MakeUserOffline" message="tns:eNegServiceSoap_MakeUserOffline_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/MakeUserOfflineResponse" message="tns:eNegServiceSoap_MakeUserOffline_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/MakeUserOfflineDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_MakeUserOffline_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppsActiveForDM">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAppsActiveForDM" message="tns:eNegServiceSoap_GetAppsActiveForDM_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAppsActiveForDMResponse" message="tns:eNegServiceSoap_GetAppsActiveForDM_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAppsActiveForDMDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetAppsActiveForDM_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDataMatchingStatusInAddon">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateDataMatchingStatusInAddon" message="tns:eNegServiceSoap_UpdateDataMatchingStatusInAddon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateDataMatchingStatusInAddonResponse" message="tns:eNegServiceSoap_UpdateDataMatchingStatusInAddon_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/UpdateDataMatchingStatusInAddonDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_UpdateDataMatchingStatusInAddon_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveApplicationDMStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/RetrieveApplicationDMStatus" message="tns:eNegServiceSoap_RetrieveApplicationDMStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/RetrieveApplicationDMStatusResponse" message="tns:eNegServiceSoap_RetrieveApplicationDMStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/RetrieveApplicationDMStatusDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_RetrieveApplicationDMStatus_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableNegotiationsToAnalysis">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAvailableNegotiationsToAnalysis" message="tns:eNegServiceSoap_GetAvailableNegotiationsToAnalysis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAvailableNegotiationsToAnalysisResponse" message="tns:eNegServiceSoap_GetAvailableNegotiationsToAnalysis_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAvailableNegotiationsToAnalysisDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetAvailableNegotiationsToAnalysis_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserOperations">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserOperations" message="tns:eNegServiceSoap_GetUserOperations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserOperationsResponse" message="tns:eNegServiceSoap_GetUserOperations_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetUserOperationsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetUserOperations_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountType">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAccountType" message="tns:eNegServiceSoap_GetAccountType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAccountTypeResponse" message="tns:eNegServiceSoap_GetAccountType_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAccountTypeDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetAccountType_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActionTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetActionTypes" message="tns:eNegServiceSoap_GetActionTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetActionTypesResponse" message="tns:eNegServiceSoap_GetActionTypes_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetActionTypesDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetActionTypes_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplications">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetApplications" message="tns:eNegServiceSoap_GetApplications_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetApplicationsResponse" message="tns:eNegServiceSoap_GetApplications_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetApplicationsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetApplications_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachements">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAttachements" message="tns:eNegServiceSoap_GetAttachements_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAttachementsResponse" message="tns:eNegServiceSoap_GetAttachements_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetAttachementsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetAttachements_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCategories" message="tns:eNegServiceSoap_GetCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCategoriesResponse" message="tns:eNegServiceSoap_GetCategories_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCategoriesDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetCategories_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryLogs">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCategoryLogs" message="tns:eNegServiceSoap_GetCategoryLogs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCategoryLogsResponse" message="tns:eNegServiceSoap_GetCategoryLogs_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCategoryLogsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetCategoryLogs_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChannels">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetChannels" message="tns:eNegServiceSoap_GetChannels_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetChannelsResponse" message="tns:eNegServiceSoap_GetChannels_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetChannelsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetChannels_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChannelTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetChannelTypes" message="tns:eNegServiceSoap_GetChannelTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetChannelTypesResponse" message="tns:eNegServiceSoap_GetChannelTypes_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetChannelTypesDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetChannelTypes_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCountry">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCountry" message="tns:eNegServiceSoap_GetCountry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCountryResponse" message="tns:eNegServiceSoap_GetCountry_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetCountryDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetCountry_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistories">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetHistories" message="tns:eNegServiceSoap_GetHistories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetHistoriesResponse" message="tns:eNegServiceSoap_GetHistories_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetHistoriesDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetHistories_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogs">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetLogs" message="tns:eNegServiceSoap_GetLogs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetLogsResponse" message="tns:eNegServiceSoap_GetLogs_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetLogsDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetLogs_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetMessages" message="tns:eNegServiceSoap_GetMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetMessagesResponse" message="tns:eNegServiceSoap_GetMessages_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetMessagesDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetMessages_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationApplicationStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationApplicationStatus" message="tns:eNegServiceSoap_GetNegotiationApplicationStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationApplicationStatusResponse" message="tns:eNegServiceSoap_GetNegotiationApplicationStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationApplicationStatusDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetNegotiationApplicationStatus_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationStatus" message="tns:eNegServiceSoap_GetNegotiationStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationStatusResponse" message="tns:eNegServiceSoap_GetNegotiationStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/GetNegotiationStatusDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_GetNegotiationStatus_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitChanges">
+      <wsdl:input wsaw:Action="http://tempuri.org/eNegServiceSoap/SubmitChanges" message="tns:eNegServiceSoap_SubmitChanges_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/eNegServiceSoap/SubmitChangesResponse" message="tns:eNegServiceSoap_SubmitChanges_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/eNegServiceSoap/SubmitChangesDomainServiceFault" name="DomainServiceFault" message="tns:eNegServiceSoap_SubmitChanges_DomainServiceFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_eNegServiceSoap" type="tns:eNegServiceSoap">
+    <wsp:PolicyReference URI="#BasicHttpBinding_eNegServiceSoap_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetNegotiationsByListOfIDs">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetNegotiationsByListOfIDs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetConversationsByNegotiationID">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetConversationsByNegotiationID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesByNegotiationID">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetMessagesByNegotiationID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesByNegotiationIDForApps">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetMessagesByNegotiationIDForApps" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAppsStatisticalsByMessages">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/UpdateAppsStatisticalsByMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReset">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/UpdateReset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByOperationString">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetUserByOperationString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserByConfirmMail">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/UpdateUserByConfirmMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserOperationByUserID">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/DeleteUserOperationByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersCountExceptCurrentUser">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetUsersCountExceptCurrentUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersCountByAlphabetExceptCurrentUser">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetUsersCountByAlphabetExceptCurrentUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FindUser">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/FindUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FindUsersCount">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/FindUsersCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationPageNumber">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetNegotiationPageNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationCountByStatus">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetNegotiationCountByStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiations">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetNegotiations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetConversations">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetConversations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationApplicationStatusByNegotiationID">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetNegotiationApplicationStatusByNegotiationID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CheckOnNegotiationRepeat">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/CheckOnNegotiationRepeat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserOrganizationsForUser">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetUserOrganizationsForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationsForUser">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetOrganizationsForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationsOwners">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetOrganizationsOwners" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationMembers">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetOrganizationMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationMembersStatus">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetOrganizationMembersStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CanUserLeaveOrganization">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/CanUserLeaveOrganization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserCulture">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/UpdateUserCulture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCultures">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetCultures" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreferedLanguage">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetPreferedLanguage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfile">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRight">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetRight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRole">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleRight">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetRoleRight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSecurityQuestion">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetSecurityQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserApplicationStatus">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetUserApplicationStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRole">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetUserRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationOrganizations">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetNegotiationOrganizations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizations">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetOrganizations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationTypes">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetOrganizationTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddMessageToConversation">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/AddMessageToConversation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationsByUserID">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetNegotiationsByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveSupportApplicationsForConversation">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetActiveSupportApplicationsForConversation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UserCanLogin">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/UserCanLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByID">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetUserByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MakeUserOnline">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/MakeUserOnline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MakeUserOffline">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/MakeUserOffline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppsActiveForDM">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetAppsActiveForDM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDataMatchingStatusInAddon">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/UpdateDataMatchingStatusInAddon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveApplicationDMStatus">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/RetrieveApplicationDMStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableNegotiationsToAnalysis">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetAvailableNegotiationsToAnalysis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserOperations">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetUserOperations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountType">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetAccountType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetActionTypes">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetActionTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplications">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetApplications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachements">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetAttachements" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryLogs">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetCategoryLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetChannels">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetChannels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetChannelTypes">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetChannelTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountry">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistories">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetHistories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogs">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationApplicationStatus">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetNegotiationApplicationStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegotiationStatus">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/GetNegotiationStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitChanges">
+      <soap:operation soapAction="http://tempuri.org/eNegServiceSoap/SubmitChanges" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainServiceFault">
+        <soap:fault use="literal" name="DomainServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="eNegService">
+    <wsdl:port name="BasicHttpBinding_eNegServiceSoap" binding="tns:BasicHttpBinding_eNegServiceSoap">
+      <soap:address location="http://localhost:9000/Services/citPOINT-eNeg-Data-Web-eNegService.svc/Soap" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.AssignPrefSetToNegotiationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d"
+             d:DesignHeight="53"
+             d:DesignWidth="672">
+    
+    <Grid x:Name="LayoutRoot" 
+          Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="270*"/>
+            <ColumnDefinition Width="327"/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Text="There is no data to analysis, please add one."
+                   VerticalAlignment="Top" 
+                   Grid.Column="0"
+                   Margin="5,10"
+                   FontSize="12"
+                   TextWrapping="Wrap" />
+        
+        <StackPanel Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <telerik:RadComboBox x:Name="uxcboPrefSets"
+                                 IsEditable="True"
+                                 EmptyText="Select Preference Set..."
+                                 Margin="5"
+                                 Height="30"
+                                 Width="200"
+                                 VerticalAlignment="Top"
+                                 SelectedIndex="-1"
+                                 ItemsSource="{Binding PreferenceSetsVM.MySetsCollection.PreferenceSets}"
+                                 DisplayMemberPath="PreferenceSetName"
+                                 SelectedItem="{Binding SelectedPrefSet, Mode=TwoWay}"
+                                 telerik:TextSearch.TextPath="PreferenceSetName" />
+            
+            <telerik:RadButton Height="30"
+                    Width="100"
+                    Margin="5"
+                    Content="Assign Set"
+                    VerticalAlignment="Top"
+                    Command="{Binding AssignPreferenceSetCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

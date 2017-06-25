@@ -1,0 +1,320 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.NumericTextView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d"
+             d:DesignHeight="500"
+             d:DesignWidth="500"
+             xmlns:mySelector="clr-namespace:citPOINT.PrefApp.Common;assembly=citPOINT.PrefApp.Common"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.SL4"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
+
+    <UserControl.Resources>
+        <mySelector:BooleanToVisibilityConverter x:Name="booleanToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Border BorderBrush="Black"
+            BorderThickness="0"
+            Margin="0"
+            Padding="0">
+        <Grid x:Name="LayoutRoot"
+              Background="White" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="20*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <!-- 0-Link Back -->
+                <RowDefinition Height="25" />
+                <!-- 1-Unit -->
+                <RowDefinition Height="30" />
+
+                <!-- 2-Minimum_Value -->
+                <RowDefinition Height="30" />
+
+                <!-- 3-Optimum Start __ Optimum End -->
+                <RowDefinition Height="30" />
+
+                <!-- 4-Maximum-->
+                <RowDefinition Height="30" />
+
+                <!-- 5-Operators Min -->
+                <RowDefinition Height="Auto" />
+
+                <!-- 6-Operators Max -->
+                <RowDefinition Height="Auto" />
+
+                <!-- 7-Validation Sammary -->
+                <RowDefinition Height="Auto" />
+             </Grid.RowDefinitions>
+
+            <HyperlinkButton Grid.Column="1"
+                             Grid.ColumnSpan="7"
+                             Content="Switch to Advanced Mode"
+                             HorizontalAlignment="Right"
+                             Margin="0,5,10,0"
+                             TabIndex="0"
+                             Name="uxcmdGotoAdvancedMode"
+                             Command="{Binding GoToNumericGraphicModeCommand}" />
+
+            <!-- Unit Group -->
+            <TextBlock Grid.Row="1"
+                       HorizontalAlignment="Left"
+                       Text="{Binding  CurrentNumericIssue.Issue.IssueName,StringFormat='The unit of {0}:',Mode=TwoWay,FallbackValue='The unit of Price:'}"
+                       VerticalAlignment="Center" />
+            <TextBox Grid.Row="1"
+                     Grid.Column="1"
+                     Margin="2"
+                     TabIndex="1"
+                     Name="uxtxtUnit"
+                     Text="{Binding  CurrentNumericIssue.Unit,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,FallbackValue=$}"
+                     IsReadOnly="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsReadOnly}" />
+
+
+            <!-- Minimum Values -->
+            <TextBlock Grid.Column="2"
+                       Grid.Row="2"
+                       HorizontalAlignment="Left"
+                       Text="{Binding  CurrentNumericIssue.Unit,Mode=TwoWay,FallbackValue=$}"
+                       VerticalAlignment="Center" />
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="2"
+                       HorizontalAlignment="Left"
+                       Text="{Binding  CurrentNumericIssue.Issue.IssueName, StringFormat='Minimum of {0}:', Mode=TwoWay,FallbackValue='Minimum of Price:'}"
+                       VerticalAlignment="Center" />
+            
+
+            <telerik:RadNumericUpDown Grid.Column="1"
+                                      Grid.Row="2"
+                                      Margin="2"
+                                      TabIndex="2"
+                                      Name="uxtxtMinValue"
+                                      NullValue="NaN"
+                                      NumberDecimalDigits="2"
+                                      KeyDown="UserControl_KeyDown"
+                                      ShowButtons="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                                      Background="White"
+                                      IsEnabled="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                                      Value="{Binding CurrentNumericIssue.MinimumValue,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="LostFocus">
+                        <cmd:EventToCommand Command="{Binding PlotChartCommand,
+                                                Mode=OneWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </telerik:RadNumericUpDown>
+
+
+
+
+            <!-- Optimum Start Values -->
+
+            <TextBlock Grid.Row="3"
+                       Text="{Binding  CurrentNumericIssue.Issue.IssueName,StringFormat='Optimum of {0} between:',Mode=TwoWay,FallbackValue='Optimum of Price between:'}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left" />
+
+            <TextBlock  Grid.Row="3"
+                        Grid.Column="2"
+                        Text="{Binding  CurrentNumericIssue.Unit,Mode=TwoWay,FallbackValue=$}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left" />
+
+            <telerik:RadNumericUpDown  Grid.Column="1"
+                                       Grid.Row="3"
+                                       Margin="2"
+                                       TabIndex="3"
+                                       Name="uxtxtOptimumValueStart"
+                                       NullValue="NaN"
+                                       NumberDecimalDigits="2"
+                                       KeyDown="UserControl_KeyDown"
+                                       ShowButtons="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                                       Background="White"
+                                       IsEnabled="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                                       Value="{Binding  CurrentNumericIssue.OptimumValueStart,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="LostFocus">
+                        <cmd:EventToCommand Command="{Binding PlotChartCommand,
+                                                Mode=OneWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </telerik:RadNumericUpDown>
+            <TextBlock  Grid.Row="3"
+                        Grid.Column="5"
+                        VerticalAlignment="Center"
+                        Text="{Binding  CurrentNumericIssue.Unit,Mode=TwoWay,FallbackValue=$}"
+                        HorizontalAlignment="Left" />
+            <!-- Optimum End Values -->
+
+            <TextBlock  Grid.Column="3"
+                        Grid.Row="3"
+                        Text="and"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center" />
+            
+            <telerik:RadNumericUpDown  Grid.Column="4"
+                                       Grid.Row="3"
+                                       Margin="2"
+                                       TabIndex="4"
+                                       Name="uxtxtOptimumValueEnd"
+                                       NullValue="NaN"
+                                       NumberDecimalDigits="2"
+                                       ShowButtons="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                                       Background="White"
+                                       IsEnabled="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                                       KeyDown="UserControl_KeyDown"
+                                       Value="{Binding  CurrentNumericIssue.OptimumValueEnd,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                                        >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="LostFocus">
+                        <cmd:EventToCommand Command="{Binding PlotChartCommand,
+                                                Mode=OneWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </telerik:RadNumericUpDown>
+
+
+            <!-- Maximum Values -->
+            <TextBlock  Grid.Row="4"
+                        Grid.Column="2"
+                        Text="{Binding  CurrentNumericIssue.Unit,Mode=TwoWay,FallbackValue=$}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left" />
+
+
+            <TextBlock Grid.Row="4"
+                       Text="{Binding  CurrentNumericIssue.Issue.IssueName,StringFormat='Maximum of {0}:',Mode=TwoWay,FallbackValue='Maximum of Price:'}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left" />
+
+
+            <telerik:RadNumericUpDown Grid.Column="1"
+                                          Grid.Row="4"
+                                          Margin="2"
+                                      TabIndex="5"
+                                          Name="uxtxtMaxValue"
+                                          NullValue="NaN"
+                                          NumberDecimalDigits="2"
+                                          KeyDown="UserControl_KeyDown"
+                                          ShowButtons="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                                          Background="White"
+                                          IsEnabled="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                                          Value="{Binding CurrentNumericIssue.MaximumValue,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                                          >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="LostFocus">
+                            <cmd:EventToCommand Command="{Binding PlotChartCommand,
+                                                Mode=OneWay}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </telerik:RadNumericUpDown>
+
+            
+
+            <!-- Min Operators -->
+            <StackPanel Grid.ColumnSpan="2"
+                        Grid.Row="5"
+                        HorizontalAlignment="Left"
+                        Margin="10"
+                        Name="uxpnlMinOperators"
+                        Background="White"
+                        Visibility="{Binding IsMinimumOperatorsEnabled, Mode=TwoWay,Converter={StaticResource booleanToVisibilityConverter}}">
+
+                <TextBlock Name="uxlblMinOusideValuesAre"
+                           Margin="0,5"
+                           TextWrapping="Wrap">
+                              <Run Text="Outside " />
+                              <Run FontWeight="Bold"
+                                   FontStyle="Italic"
+                                   Text="Minimum" />
+                              <Run Text=" Values are..." />
+                </TextBlock>
+
+                <RadioButton Content="Better than Minimum"
+                             Name="uxrdoMinOptBetter"
+                             Margin="4"
+                             TabIndex="6"
+                             IsEnabled="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                             IsChecked="{Binding CurrentNumericIssue.MinOperatorBetter,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                             Command="{Binding PlotChartCommand}" />
+                <RadioButton Content="Equal to minimum"
+                             Name="uxrdoMinOptEqual"
+                             Margin="4"
+                             TabIndex="7"
+                             IsEnabled="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                             IsChecked="{Binding CurrentNumericIssue.MinOperatorEqual,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                             Command="{Binding PlotChartCommand}" />
+                <RadioButton Content="Worse than minimum"
+                             Name="uxrdoMinOptWorse"
+                             Margin="4"
+                             TabIndex="8"
+                             IsEnabled="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                             IsChecked="{Binding CurrentNumericIssue.MinOperatorWorse,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                             Command="{Binding PlotChartCommand}" />
+            </StackPanel>
+
+            <!-- Max Operators -->
+            <StackPanel Name="uxpnlMaxOperators"
+                        Grid.Row="6"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Left"
+                        Margin="10"
+                        Background="White"
+                        Visibility="{Binding  IsMaximumOperatorsEnabled, Mode=TwoWay,Converter={StaticResource booleanToVisibilityConverter}}">
+
+                <TextBlock Name="uxlblMaxOusideValuesAre"
+                           Margin="0,5"
+                           TextWrapping="Wrap">
+                              <Run Text="Outside " />
+                              <Run FontWeight="Bold"
+                                   FontStyle="Italic"
+                                   Text="Maximum " />
+                              <Run Text="Values are..." />
+                </TextBlock>
+
+                <RadioButton Content="Better than Maximum"
+                             Name="uxrdoMaxOptBetter"
+                             Margin="4"
+                             TabIndex="6"
+                             IsEnabled="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                             IsChecked="{Binding CurrentNumericIssue.MaxOperatorBetter,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                             Command="{Binding PlotChartCommand}" />
+                <RadioButton Content="Equal to maximum"
+                             Name="uxrdoMaxOptEqual"
+                             Margin="4"
+                             TabIndex="7"
+                             IsEnabled="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                             IsChecked="{Binding CurrentNumericIssue.MaxOperatorEqual,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                             Command="{Binding PlotChartCommand}" />
+                <RadioButton Content="Worse than maximum"
+                             Name="uxrdoMaxOptWorse"
+                             Margin="4"
+                             TabIndex="8"
+                             IsEnabled="{Binding CurrentNumericIssue.Issue.PreferenceSet.IsEditable}"
+                             IsChecked="{Binding CurrentNumericIssue.MaxOperatorWorse,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                             Command="{Binding PlotChartCommand}" />
+            </StackPanel>
+
+            <sdk:ValidationSummary Grid.ColumnSpan="6"
+                                   Grid.Row="7"
+                                   Margin="4"
+                                   Target="{Binding ElementName=LayoutRoot, ValidatesOnExceptions=True}" />
+
+                <TextBlock Name="uxtxtComplete"
+                       Text="Please Complete these sentences."
+                       VerticalAlignment="Center"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Left"
+                       Grid.ColumnSpan="4"
+                       Margin="0,4" />
+        </Grid>
+    </Border>
+</UserControl>

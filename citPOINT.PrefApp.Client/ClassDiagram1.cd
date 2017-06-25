@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="citPOINT.PrefApp.Client.IssuesView">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Members>
+      <Method Name="CalcTotalScore" Hidden="true" />
+      <Method Name="CheckBox_CheckChanged" Hidden="true" />
+      <Method Name="Cleanup" Hidden="true" />
+      <Method Name="ComboBox_SelectionChanged" Hidden="true" />
+      <Method Name="FocusCertainIssueName" Hidden="true" />
+      <Field Name="isIssueComboFocused" Hidden="true" />
+      <Field Name="IsLastControlIsStarts" Hidden="true" />
+      <Field Name="IsLastTextUpdated" Hidden="true" />
+      <Method Name="IssuesView" Hidden="true" />
+      <Method Name="OnAddNewIssue" Hidden="true" />
+      <Method Name="OnAddNewPopUp" Hidden="true" />
+      <Method Name="RadNumericUpDown_GotFocus" Hidden="true" />
+      <Method Name="RadNumericUpDown_LostFocus" Hidden="true" />
+      <Field Name="ScoreValue" Hidden="true" />
+      <Method Name="SetCurrentRow" Hidden="true" />
+      <Method Name="TextBox_GotFocus" Hidden="true" />
+      <Method Name="uxcboIssueType_GotFocus" Hidden="true" />
+      <Method Name="uxcmdAddValue_Click" Hidden="true" />
+      <Method Name="uxIssueGridView_DataLoaded" Hidden="true" />
+      <Method Name="uxScoreRating_MouseLeftButtonDown" Hidden="true" />
+      <Method Name="uxScoreRating_ValueChanged" Hidden="true" />
+      <Method Name="uxtxtIssueName_KeyDown" Hidden="true" />
+      <Method Name="uxtxtIssueName_LostFocus" Hidden="true" />
+      <Property Name="ViewModel" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>EQAAEAgcAAAAgBAgAIAAAAAAEBIAAAAAEAQQAGQCBAE=</HashCode>
+      <FileName>Views\Manage Preference Sets Views\Issues\IssuesView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

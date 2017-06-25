@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.AddLaterRatedPopUp"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:common="clr-namespace:citPOINT.PrefApp.Common;assembly=citPOINT.PrefApp.Common"
+    xmlns:local="clr-namespace:citPOINT.PrefApp.Client"
+    mc:Ignorable="d"
+    d:DesignHeight="160" 
+             d:DesignWidth="400"
+             KeyDown="UserControl_KeyDown">
+
+    <UserControl.Resources>
+        <local:IssueTypesSource x:Key="DataSource" />
+        <common:IssueTypeEnableConverter x:Key="IssueTypeEnableConverter" />
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+
+        <telerik:RadWrapPanel Grid.Row="0" 
+                              Grid.ColumnSpan="3"
+                              Margin="6"
+                              Orientation="Horizontal">
+            <TextBlock Text="During set creation, you defined data from the issue "/>
+            <TextBlock Text="&quot;"/>
+            <TextBlock Text="{Binding CurrentLaterRated.Issue.IssueName}"/>
+            <TextBlock Text="&quot;"/>
+            <TextBlock Text=" to be rated later, So please rate it now:"/>
+        </telerik:RadWrapPanel>
+        
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="Option Name:"
+                   Margin="6,10"/>
+        
+        <TextBox Grid.Row="1" Grid.Column="1" 
+                 Grid.ColumnSpan="2"
+                 Name="uxtxtOptionName"
+                 Text="{Binding CurrentLaterRated.LaterRatedIssueValue,Mode=TwoWay}"
+                 Height="30" 
+                 TabIndex="0"/>
+        
+        <TextBlock Grid.Row="2" Grid.Column="0"
+                   Text="Rating:"
+                   Margin="6,10"/>
+        
+        <StackPanel Grid.Row="2" Grid.Column="1"
+                    Grid.ColumnSpan="2" Orientation="Horizontal">
+            <common:eNegRatingControl x:Name="uxScoring"
+                                      Margin="0,7"
+                                      MinWidth="210"
+                                      Height="25"
+                                      TabIndex="1"
+                                      NumberOfItemsToGenerate="10"
+                                      CalValue="{Binding CurrentLaterRated.LaterRatedIssueWeight, Mode=OneWay, ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                                      ValueChanged="uxScoring_ValueChanged"/>
+
+            <telerik:RadNumericUpDown Name="uxUpDownRating" NullValue="NaN"
+                                      NumberDecimalDigits="2"
+                                      Width="90"
+                                      Height="25"
+                                      TabIndex="2"
+                                      Value="{Binding CurrentLaterRated.LaterRatedIssueWeight,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True}"
+                                      Minimum="0"
+                                      Maximum="100" 
+                                      ValueChanged="uxUpDownRating_ValueChanged"/>
+        </StackPanel>
+
+        <telerik:RadButton Grid.Row="3" Grid.Column="1" 
+                Name="uxcmdAddOption"
+                Content="OK"
+                Margin="5,8"
+                Height="25"
+                           TabIndex="3"
+                Width="190" 
+                Command="{Binding CloseAddNewIssuePopUpWindowCommand}"
+                CommandParameter="{Binding CurrentLaterRated}"/>
+    </Grid>
+</UserControl>

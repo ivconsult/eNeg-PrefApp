@@ -1,0 +1,175 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.PrefSetsPanel"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:common="clr-namespace:citPOINT.PrefApp.Common;assembly=citPOINT.PrefApp.Common"
+             mc:Ignorable="d"
+             d:DesignHeight="600"
+             d:DesignWidth="300">
+    <UserControl.Resources>
+
+        <common:NotOperatorValueConverter x:Key="notOperatorValueConverter" />
+
+        <common:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+
+        <DataTemplate x:Key="PrefSetsTemplate"
+                      x:Name="PrefSetsTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding PreferenceSetName}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <telerik:HierarchicalDataTemplate  x:Key="MainPrefSetsTemplate"
+                                           x:Name="MainPrefSetsTemplate"
+                                           ItemsSource="{Binding PreferenceSets}"
+                                           ItemTemplate="{StaticResource PrefSetsTemplate}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding MainPreferenceSetName}" />
+            </StackPanel>
+        </telerik:HierarchicalDataTemplate >
+
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          Background="White">
+        <Border BorderBrush="Black"
+                BorderThickness="0,0,0,1">
+            <telerik:RadPanelBar VerticalAlignment="Stretch"
+                                 ExpandMode="Single"
+                                 Margin="0,0,0,5"
+                                 HorizontalContentAlignment="Stretch"
+                                 HorizontalAlignment="Stretch"
+                                 Name="uxpbAllTrees"
+                                 >
+
+                <telerik:RadPanelBarItem IsExpanded="True"
+                                         Name="uxpnlMySets"
+                                         Selected="RadPanelBarItem_Selected">
+                    <telerik:RadPanelBarItem.Header>
+                        <TextBlock Text="My Sets"
+                                   Margin="5,2" />
+                    </telerik:RadPanelBarItem.Header>
+                    <!-- My Sets -->
+                    <telerik:RadTreeView Name="uxTreeMySets"
+                                         Grid.Column="0"
+                                         Grid.Row="0"
+                                         BorderBrush="Black"
+                                         BorderThickness="0"
+                                         Background="White"
+                                         Margin="-3"
+                                         IsLineEnabled="False"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                         SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                         ItemsSource="{Binding Path=MySetsCollection.PreferenceSets, Mode=TwoWay}"
+                                         ItemTemplate="{StaticResource PrefSetsTemplate}"
+                                         IsHitTestVisible="{Binding Path=IsBusy, Mode=TwoWay,Converter={StaticResource notOperatorValueConverter}}"
+                                         PreviewSelectionChanged="uxTreeMySets_PreviewSelectionChanged"
+                                         >
+
+                        <telerik:RadContextMenu.ContextMenu>
+                            <telerik:RadContextMenu Opened="contextMenu_Opened"
+                                                    x:Name="uxContextMySets">
+
+                                <telerik:RadMenuItem Header="Delete Set"
+                                                     Command="{Binding DeleteItemCommand}">
+                                    <telerik:RadMenuItem.Icon>
+                                        <Image Source="/citPOINT.PrefApp.Client;component/Images/Delete-icon.png"
+                                               Stretch="Uniform" />
+                                    </telerik:RadMenuItem.Icon>
+                                </telerik:RadMenuItem>
+
+                                <telerik:RadMenuItem Header="Rename Set"
+                                                     Command="{Binding RenamePreferenceSetCommand}">
+                                    <telerik:RadMenuItem.Icon>
+                                        <Image Source="/citPOINT.PrefApp.Client;component/Images/Edit_Receivers.png"
+                                               Stretch="Uniform" />
+                                    </telerik:RadMenuItem.Icon>
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadContextMenu.ContextMenu>
+                    </telerik:RadTreeView>
+                </telerik:RadPanelBarItem>
+
+                <telerik:RadPanelBarItem IsExpanded="False"
+                                         Selected="RadPanelBarItem_Selected">
+                    <telerik:RadPanelBarItem.Header>
+                        <TextBlock Text="Organization Sets"
+                                   Margin="5,2" />
+                    </telerik:RadPanelBarItem.Header>
+                    <!-- My Sets -->
+                    <telerik:RadTreeView Name="uxTreeOrganizationSets"
+                                         Grid.Column="0"
+                                         Grid.Row="0"
+                                         BorderBrush="Black"
+                                         BorderThickness="0"
+                                         Background="White"
+                                         Margin="-3"
+                                         IsLineEnabled="False"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                         SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                         ItemsSource="{Binding Path=OrganizationSetsCollection.PreferenceSets, Mode=TwoWay}"
+                                         ItemTemplate="{StaticResource PrefSetsTemplate}"
+                                         IsHitTestVisible="{Binding Path=IsBusy, Mode=TwoWay,Converter={StaticResource notOperatorValueConverter}}">
+
+                        <telerik:RadContextMenu.ContextMenu>
+                            <telerik:RadContextMenu Opened="contextMenu_Opened"
+                                                    x:Name="uxContextOrganizationSets">
+
+                                <telerik:RadMenuItem Header="Copy to My Sets"
+                                                     Command="{Binding PublishPreferenceSetToMySetsCommand}"
+                                                     CommandParameter="START">
+                                    <telerik:RadMenuItem.Icon>
+                                        <Image Source="/citPOINT.PrefApp.Client;component/Images/copy.png"
+                                               Stretch="Uniform" />
+                                    </telerik:RadMenuItem.Icon>
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadContextMenu.ContextMenu>
+                    </telerik:RadTreeView>
+                </telerik:RadPanelBarItem>
+
+                <telerik:RadPanelBarItem IsExpanded="False"
+                                         Selected="RadPanelBarItem_Selected">
+                    <telerik:RadPanelBarItem.Header>
+                        <TextBlock Text="Set Store"
+                                   Margin="5,2" />
+                    </telerik:RadPanelBarItem.Header>
+                    <!-- Set Store -->
+                    <telerik:RadTreeView Name="uxTreeSetStore"
+                                         Grid.Column="0"
+                                         Grid.Row="0"
+                                         BorderBrush="Black"
+                                         BorderThickness="0"
+                                         Background="White"
+                                         Margin="-3"
+                                         IsLineEnabled="False"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                         SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                         ItemsSource="{Binding Path=SetStoreCollection.PreferenceSets, Mode=TwoWay}"
+                                         ItemTemplate="{StaticResource PrefSetsTemplate}"
+                                         IsHitTestVisible="{Binding Path=IsBusy, Mode=TwoWay,Converter={StaticResource notOperatorValueConverter}}">
+
+                        <telerik:RadContextMenu.ContextMenu>
+                            <telerik:RadContextMenu Opened="contextMenu_Opened"
+                                                    x:Name="uxContextSetStore">
+                                <telerik:RadMenuItem Header="Copy to My Sets"
+                                                     Command="{Binding PublishPreferenceSetToMySetsCommand}"
+                                                     CommandParameter="START">
+                                    <telerik:RadMenuItem.Icon>
+                                        <Image Source="/citPOINT.PrefApp.Client;component/Images/copy.png"
+                                               Stretch="Uniform" />
+                                    </telerik:RadMenuItem.Icon>
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadContextMenu.ContextMenu>
+                    </telerik:RadTreeView>
+                </telerik:RadPanelBarItem>
+            </telerik:RadPanelBar>
+        </Border>
+    </Grid>
+</UserControl>

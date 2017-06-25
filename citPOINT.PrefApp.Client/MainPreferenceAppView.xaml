@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.MainPreferenceAppView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d"
+             MinHeight="100"
+             MinWidth="100"
+             d:DesignHeight="219"
+             d:DesignWidth="403"
+             xmlns:local="clr-namespace:citPOINT.PrefApp.Client"
+             HorizontalAlignment="Stretch"
+             HorizontalContentAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             VerticalContentAlignment="Stretch">
+    
+    <Grid        HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch">
+
+        <ContentControl Name="uxCntContent"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        VerticalContentAlignment="Stretch" />
+
+        <Grid Name="uxgrdLoading"
+              Background="LightGray"
+              Opacity="0.9"
+              Visibility="Collapsed">
+            <telerik:RadBusyIndicator IsBusy="True"  />
+        </Grid>
+    </Grid>
+
+</UserControl>

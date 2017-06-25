@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Client.NumericView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:eNegControls="clr-namespace:citPOINT.eNeg.Common;assembly=citPOINT.eNeg.Common"
+             xmlns:mySelector="clr-namespace:citPOINT.PrefApp.Common;assembly=citPOINT.PrefApp.Common"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:citPOINT.PrefApp.Client"
+             d:DesignHeight="500"
+             d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <mySelector:BooleanToVisibilityConverter x:Name="booleanToVisibilityConverter" />
+        <eNegControls:NotBooleanToVisibilityConverter x:Name="notBooleanToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!--<RowDefinition Height="50*" />-->
+        </Grid.RowDefinitions>
+
+        
+
+        <local:NumericIssueGraphView x:Name="uxnumericIssueGraphView"
+                                     Visibility="{Binding ShowGraphModeView,Converter={StaticResource booleanToVisibilityConverter}}"
+                                     HorizontalAlignment="Stretch"
+                                     HorizontalContentAlignment="Stretch"
+                                     VerticalContentAlignment="Stretch"
+                                     VerticalAlignment="Top" />
+
+        <local:NumericTextView x:Name="uxnumericTextView" Visibility="{Binding ShowGraphModeView,Converter={StaticResource notBooleanToVisibilityConverter}}"
+                               HorizontalAlignment="Stretch"
+                               HorizontalContentAlignment="Stretch"
+                               VerticalContentAlignment="Stretch"
+                               VerticalAlignment="Top" />
+
+
+        
+        <!--<eNegControls:FlipControl HorizontalContentAlignment="Stretch"
+                                  VerticalContentAlignment="Stretch"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch"
+                                  Name="uxFliper" />-->
+    </Grid>
+</UserControl>

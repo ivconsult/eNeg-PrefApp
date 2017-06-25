@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="citPOINT.PrefApp.Common.eNegRichTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="134"
+             d:DesignWidth="262">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <Grid x:Name="uxMainStackPanel"
+              Background="White"
+              Margin="-2"
+              >
+
+
+            <RichTextBox  Name="uxtxtRichTextBox"
+                          SelectionChanged="uxtxtRichTextBox_SelectionChanged"
+                          TextWrapping="Wrap"
+                          IsReadOnly="True"
+                          Background="White"
+                          IsTabStop="True"
+                       >
+                <Paragraph  TextAlignment="Center"  FontSize="50">
+                    <LineBreak />
+                    <Run Foreground="#FFFF0000">R</Run>
+                    <Run Foreground="#AAFF0000">i</Run>
+                    <Run Foreground="#AFFF0000">c</Run>
+                    <Run Foreground="#66FF0000">h</Run>
+                    <LineBreak />
+                    <Run Foreground="#FFFF0000">T</Run>
+                    <Run Foreground="#FFFFAA55">E</Run>
+                    <Run Foreground="#FFFFAA55">X</Run>
+                    <Run Foreground="#FF00AA55">T</Run>
+                    <LineBreak />
+                    <Run Foreground="#FFAA0000">B</Run>
+                    <Run Foreground="#FFCC0000">O</Run>
+                    <Run Foreground="#FFFF0000">X</Run>
+
+                </Paragraph>
+            </RichTextBox>
+
+            <TextBlock Foreground="Red"
+                       Name="uxLblUpper"
+                       FontSize="15"
+                       Text="asdasdasdasdgasdfjh afdgasf asdgsh fjasdgfjh asdgh"
+                       Opacity="0"
+                       Visibility="Collapsed"
+                       
+                       MouseLeftButtonDown="uxLblUpper_MouseLeftButtonDown" />
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>
